@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <script src="./js/index.js" defer></script>
+  </head>
+  <body>
+    <div class="main-container">
+        <div class="form-container">
+          <div class="header">
+            <img class="logo-finlatina" src="./img/logo.png" alt="logo">
+            <div class="titulo">
+              <h2 id="inicio">Prestamos Finlatina</h2>
+            </div>
+          </div>
+
+          <div class="container-progress">
+
+            <div class="container-responsive">
+              <span class="responsive-step">Informacion Personal</span>
+              <span class="responsive-step">Informacion de Contacto</span>
+              <span class="responsive-step">Ubicación</span>
+              <span class="responsive-step">Ocupación</span>
+              <span class="responsive-step">Fotos</span>
+              <div class="progress-bar-responsive" data-label="loading...">
+                <div class="progress-responsive"></div>
+              </div>
+            </div>
+
+            <div class="progress-bar">
+              <div class="step-container">
+                <div class="progress-step">1</div>
+                <p class="info-step">Informacion personal</p>
+              </div>
+              <div class="step-container">
+                <div class="progress-step">2</div>
+                <p class="info-step">Informacion de contacto</p>
+              </div>
+              <div class="step-container">
+                <div class="progress-step">3</div>
+                <p class="info-step">Ubicación</p>
+              </div>
+              <div class="step-container">
+                <div class="progress-step">4</div>
+                <p class="info-step">Ocupacion</p>
+              </div>
+              <div class="step-container">
+                <div class="progress-step">5</div>
+                <p class="info-step">Fotos</p>
+              </div>
+            </div>
+          </div>
+
+          <section class="confirm-container">
+            <div class="titulo titulo-confirm">
+              <h3>Informacion Personal</h3>
+            </div>
+            <div class="card-confirm">
+              <div class="info-section">
+                <p class="info-text">Nombre y Apellido:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Numero de C.I.:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Fecha de Nacimiento:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Sexo:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Estado Civil:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Lugar de Trabajo:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Area de Laboral:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Ocupación:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Ingresos:</p>
+                <p class="info"></p>
+              </div>
+            </div>
+
+            <div class="titulo titulo-confirm">
+              <h3>Informacion De Contacto</h3>
+            </div>
+            <div class="card-confirm">
+              <div class="info-section">
+                <p class="info-text">Correo Electrónico:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Número de Celular:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Primera Referencia Personal:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Segunda Referencia Personal:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Referencia Comercial:</p>
+                <p class="info"></p>
+              </div>
+            </div>
+
+            <div class="titulo titulo-confirm">
+              <h3>Ubicación</h3>
+            </div>
+            <div class="card-confirm">
+              <div class="info-section">
+                <p class="info-text">Ciudad:</p>
+                <p class="info"></p>
+              </div>
+              <div class="info-section">
+                <p class="info-text">Dirección:</p>
+                <p class="info"></p>
+              </div>
+            </div>
+
+            <div class="titulo titulo-confirm">
+              <h3>Ocupación</h3>
+            </div>
+            <div class="card-confirm">
+              <div class="info-section">
+                <p class="info-text">¿En los últimos 2 años ocupaste un cargo relevante en la función pública?</p>
+                <p class="info-text">Respuesta: </p>
+                <p class="info"></p>
+                <div class="pep-confirm">
+                  <p class="info-text">Entidad:</p>
+                  <p class="info-pep"></p>
+                  <div class="info-text">Cargo ocupado:</div>
+                  <p class="info-pep"></p>
+                </div>
+                <p class="info-text">¿En los últimos 2 años alguno de tus parientes (políticos o por consanguinidad) ocuparon un cargo relevante en la función pública?</p>
+                <p class="info-text">Respuesta: </p>
+                <p class="info"></p>
+                <div class="pep-fam-confirm">
+                  <p class="info-text">Entidad:</p>
+                  <p class="info-pep-fam"></p>
+                  <p class="info-text">Cargo ocupado:</p>
+                  <p class="info-pep-fam"></p>
+                </div>
+              </div>
+              <div class="info-section">
+                <p class="info-text"></p>
+                <p class="info"></p>
+              </div>
+            </div>
+
+            <div class="titulo titulo-confirm">
+              <h3>Fotos</h3>
+            </div>
+            <div class="card-confirm">
+              <div class="info-section">
+                <p class="info-text">Primera Foto:</p>
+                <img class="foto-frontal-confirm" src="" alt="foto-frontal-confirm">
+              </div>
+              <div class="info-section">
+                <p class="info-text">Segunda Foto:</p>
+                <img src="" alt="foto-trasera-confirm" class="foto-trasera-confirm">
+              </div>
+              <div class="info-section">
+                <p class="info-text">Selfie:</p>
+                <img src="" alt="selfie-confirm" class="selfie-confirm">
+              </div>
+            </div>
+          </section>
+
+            <div class="form-container-flex">
+
+
+<!-- --------------------------Inicio del primer form ------------------------- -->
+                <form class="form form-1" action="">
+                    <label>
+                      <span class="span-input">Nombre y Apellido</span>
+                        <input
+                          class="input-data input-name"
+                          type="text" name="username"
+                          autocomplete="off">
+                        <p class="err-space err"></p>
+                    </label>
+                    <label>
+                      <span class="span-input">Numero de C.I</span>
+                        <input
+                          class="input-data input-ci"
+                          type="text" name="userci"
+                          autocomplete="off">
+                        <p class="err-space"></p>
+                    </label>
+                    <label>
+                      <span class="span-input">Ingrese su Fecha de Nacimiento</span>
+                        <input type="date" class="input-data input-fecha"><!--Cambio fecha input-->
+                        <p class="err-space"></p>
+                    </label>
+                    <label>
+                      <span class="span-input">Seleccione su Sexo</span>
+                        <div class="select-container">
+                          <select class="select-genero input-data" name="genero" id="">
+                            <option value="" selected></option>
+                            <option class="select-option selected" value="Masculino">Masculino</option>
+                            <option class="select-option selected" value="Femenino">Femenino</option>
+                          </select>
+                        </div>
+                        <p class="err-space"> </p>
+                    </label>
+                    <label>
+                      <span class="span-input">Seleccione su Estado Civil</span>
+                        <div class="select-container">
+                          <select class="select-estado-civil input-data" name="estado-civil" id="">
+                            <option value="" selected></option>
+                            <option class="selected" value="Soltero">Soltero</option>
+                            <option class="selected" value="Casado">Casado</option>
+                        </select>
+                        </div>
+                        <p class="err-space"></p>
+                    </label>
+                    <label>
+                      <span class="span-input">Lugar de Trabajo</span>
+                        <input
+                          type="text"
+                          class="input-data input-trabajo">
+                        <p class="err-space"></p>
+                    </label>
+                    <label>
+                      <span class="span-input">Área Laboral</span>
+                        <input type="text" class="input-data input-AL">
+                        <p class="err-space"></p>
+                    </label>
+                    <label>
+                      <span class="span-input">Seleccione su Ocupación</span>
+                        <div class="select-container">
+                          <select class="select-ocupacion input-data" name="Ocupacion" id="">
+                            <option value="" selected></option>
+                            <option class="selected" value="ejemplo1">ejemplo1</option>
+                            <option class="selected" value="ejemplo2">ejemplo2</option>
+                          </select>
+                        </div>
+                        <p class="err-space"></p>
+                    </label>
+                    <label>
+                      <span class="span-input">Ingrese su Sueldo</span>
+                        <input
+                          type="text"
+                          class="input-data input-ingresos">
+                        <p class="err-space"></p>
+                    </label>
+                    <label>
+                      <span class="span-input">Ingrese el monto a solicitar</span>
+                        <input
+                          type="text"
+                          class="input-data input-credito-solicitar">
+                        <p class="err-space"></p>
+                    </label>
+                </form>
+<!--  -------------------------------inicio del segundo Formulario-------------------------------------------- -->
+
+                <form class="form form-2" action="">
+                  <label>
+                    <span class="span-input">Correo Electrónico</span>
+                    <input
+                      type="text"
+                      class="input-data input-email">
+                    <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Número de Celular</span>
+                    <input
+                      type="text"
+                      class="input-data input-phone"
+                      placeholder="09XXXXXXXX">
+                    <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Nombre y Apellido de la Referencia Personal</span>
+                      <input
+                        class="input-data input-name-ref"
+                        type="text" name="username"
+                        autocomplete="off">
+                      <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Numero de Celular de la Primera Referencia Personal</span>
+                    <input
+                      type="text"
+                      class="input-data input-first-ref"
+                      placeholder="09XXXXXXXX">
+                    <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Nombre y Apellido de la Segunda Referencia Personal</span>
+                      <input
+                        class="input-data input-name-second-ref"
+                        type="text" name="username"
+                        autocomplete="off">
+                      <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Numero de Celular de la Segunda Referencia Personal</span>
+                    <input
+                      type="text"
+                      class="input-data input-second-ref"
+                      placeholder="09XXXXXXXX">
+                    <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Nombre y Apellido de la Primera Referencia Comercial</span>
+                      <input
+                        class="input-data input-name-comercial"
+                        type="text" name="username"
+                        autocomplete="off">
+                      <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Numero de Celular de la Primera Referencia Comercial</span>
+                    <input
+                      type="text"
+                      class="input-data input-ref-comer"
+                      placeholder="09XXXXXXXX">
+                    <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Nombre y Apellido de la Segunda Referencia Comercial</span>
+                      <input
+                        class="input-data input-name-second-ref-comer"
+                        type="text" name="username"
+                        autocomplete="off">
+                      <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Numero de Celular de la Segunda Referencia Comercial</span>
+                    <input
+                      type="text"
+                      class="input-data input-second-ref-comer"
+                      placeholder="09XXXXXXXX">
+                    <p class="err-space"></p>
+                  </label>
+                </form>
+<!--  -------------------------------fin del segundo formulario-------------------------------- -->
+
+                <form class="form form-3" action="">
+                  <label>
+                    <span class="span-input">Ciudad</span>
+                    <div class="select-container">
+                      <select  class="input-data select-ciudad" name="Ciudad" id="">
+                        <option value="" selected></option>
+                      </select>
+                    </div>
+                    <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Dirección</span>
+                    <input class="input-data input-dir" type="text">
+                    <p class="err-space"></p>
+                  </label>
+                </form>
+
+<!-- -----------------------fin del tercer formulario----------------------------- -->
+
+                <form class="form form-4" action="">
+                  <div class="pep-1">
+                    <p class="text-pep">¿En los últimos 2 años ocupaste un cargo relevante en la función pública?</p>
+                    <div class="input-radio-config">
+                      <input type="radio" name="pep" id="sipep" value="">
+                      <label for="sipep">Si</label>
+                    </div>
+                    <div class="input-radio-config">
+                      <input type="radio" name="pep" id="nopep" value="">
+                      <label for="nopep">No</label>
+                    </div>
+                    <div class="input-pep1">
+                      <label>
+                        <span class="span-input">Entidad</span>
+                        <input class="input-data input-entidad" type="text">
+                        <p class="err-space"></p>
+                      </label>
+                      <label>
+                        <span class="span-input">Cargo público ocupado</span>
+                        <input class="input-data input-cargo" type="text">
+                        <p class="err-space"></p>
+                      </label>
+                    </div>
+                  </div>
+
+<!------------------------------------------------------------------------------------>
+
+                  <div class="pep-2">
+                    <p class="text-pep">¿En los últimos 2 años alguno de tus parientes (políticos o por consanguinidad) ocuparon un cargo relevante en la función pública?</p>
+                    <div class="input-radio-config">
+                      <input type="radio" name="politico" id="fam-pol-si" value="">
+                      <label for="fam-pol-si">Si</label>
+                    </div>
+                    <div class="input-radio-config">
+                      <input type="radio" name="politico" id="fam-pol-no" value="">
+                      <label for="fam-pol-no">No</label>
+                    </div>
+                    <div class="input-pep2">
+                      <label>
+                        <span class="span-input">Entidad</span>
+                        <input class="input-data input-entidad-fam" type="text">
+                        <p class="err-space"></p>
+                      </label>
+                      <label>
+                        <span class="span-input">Cargo público ocupado</span>
+                        <input class="input-data input-cargo-fam" type="text">
+                        <p class="err-space"></p>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+
+<!-- -------------------------- fin del cuarto form ----------------------------- -->
+                <form class="form form-5" action="">
+                  <div class="video-container">
+                    <video class="video" src=""></video>
+                    <div class="loader"></div>
+                  </div>
+                  <div>
+                    <div class="button button-foto">Tomar Foto</div>
+                  </div>
+                  <div>
+                    <div class="select-container">
+                      <select class="input-data select-foto" name="array-list" id="select-disp"></select>
+                    </div>
+                  </div>
+                  <div class="card card-1">
+                    <img class="no-image no-image-1" src="./img/no-image.png" alt="no-image1">
+                    <canvas class="lienzo lienzo-1"></canvas>
+                    <p class="text-card">Imagen Frontal CI</p>
+                    <img class="delete-image delete-1" src="./img/red-x.webp" alt="delete1">
+                  </div>
+                  <div class="card card-2">
+                    <img class="no-image no-image-2" src="./img/no-image.png" alt="no-image2">
+                    <canvas class="lienzo lienzo-2"></canvas>
+                    <p class="text-card">Imagen Dorso CI</p>
+                    <img class="delete-image delete-2" src="./img/red-x.webp" alt="delete2">
+                  </div>
+                  <div class="card card-3">
+                    <img class="no-image no-image-3" src="./img/no-image.png" alt="no-image3">
+                    <canvas class="lienzo lienzo-3"></canvas>
+                    <p class="text-card">Selfie</p>
+                    <img class="delete-image delete-3" src="./img/red-x.webp" alt="delete3">
+                  </div>
+                </form>
+
+<!-- -------------------------------Fin del Form-5-------------------------------- -->
+
+            </div>
+            <div class="button-container">
+              <button class="button button-atras">Atras</button>
+              <button class="button button-volver">Volver</button>
+              <button class="button-siguiente"><a href="#inicio" class="link link-disabled">Siguiente</a></button>
+              <button type="submit" class="button button-confirm">Confirmar</button>
+            </div>
+            <div class="datos-confirmados">
+              <h2 class="titulo">¡Gracias por acceder a nuestros servicios!</h2>
+            </div>
+        </div>
+
+
+      <aside class="image-container">
+        <div class="image"></div>
+      </aside>
+    </div>
+    <footer></footer>
+  </body>
+</html>

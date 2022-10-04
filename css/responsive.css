@@ -1,0 +1,118 @@
+/*===================================== ESCRITORIO, SCREENS GRANDES ====*/
+@media only screen and (max-width: 1300px) {
+  .image-container{
+    width: 50%;
+  }
+  .form-container-flex{
+    width: 60%;
+  }
+  .button-container{
+    width: 60%;
+  }
+  .confirm-container{
+    width: 60%;
+  }
+}
+
+/*=========================================== ESCRITORIO < 1200px ====*/
+@media only screen and (max-width: 1200px) {
+}
+
+/*============================================= IPAD PAISAJE ====*/
+@media screen and (max-width : 1024px) {
+  .image-container{
+    display: none;
+  }
+  .form-container-flex{
+    width: 70%;
+  }
+  .button-container{
+    width: 70%;
+  }
+  .confirm-container{
+    width: 70%;
+  }
+}
+
+/*=============================================  ====*/
+@media screen and (max-width: 900px) {
+  .header{
+    flex-direction: column;
+  }
+
+  .form-container-flex{
+    width: 90%;
+  }
+  .button-container{
+    width: 90%;
+  }
+  .confirm-container{
+    width: 90%;
+  }
+
+}
+
+/*============================================== IPAD RETRATO ====*/
+@media only screen and (max-width: 768px) {
+
+  .header{
+    margin-bottom: 0;
+  }
+
+  .container-progress{
+    padding-top: 12px;
+    margin-bottom: 12px;
+    position: sticky;
+    top: 0px;
+    background: #f0f2f1;
+    width: 100%;
+  }
+  .container-responsive{
+    width: 100%;
+    display: flex;
+    border-radius: 8px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .progress-bar{
+    display: none;
+  }
+  .video-container{
+    height: 300px;
+  }
+  .confirm-container{
+      margin-bottom: 80px;
+  }
+  .form-container-flex{
+    margin-bottom: 80px;
+  }
+  .button-container{
+    position: fixed;
+    bottom: 0;
+    margin: 0%;
+    width: 90%;
+    height: 60px;
+    background-color: #f0f2f1;
+    padding-top: 6px;
+  }
+}
+
+/*==============================================  GALAXY NOTE====*/
+@media handheld, only screen and (max-width: 640px) {
+
+}
+
+/*=========================================== IPHONE PAISAJE ====*/
+@media handheld, only screen and (max-width: 480px) {
+
+}
+
+@media handheld, only screen and (max-width: 320px) {
+
+}
+
+/*============================================ SCREEN PEQUEÑOS ====*/
+@media handheld, only screen and (max-width: 240px) {
+}
