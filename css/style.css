@@ -149,7 +149,7 @@ select {
   height: 35px;
   margin-top: 5px;
   padding: 0px 10px;
-  font-weight: 100;
+  /* font-weight: 100; */
   font-size: 12px;
 }
 
