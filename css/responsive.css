@@ -3,6 +3,11 @@
   .image-container{
     width: 50%;
   }
+
+  .image{
+    width: 50%;
+  }
+
   .form-container-flex{
     width: 60%;
   }

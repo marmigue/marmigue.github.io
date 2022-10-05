@@ -59,7 +59,7 @@ console.log( inputNameSecondRefComer );
 //Expresiones Regulares usadas para la validacion
 const regExpPhone = /^09[0-9]{2}([\s-.]?[0-9]{3}){2}$/;
 const regExpNum = /^\d+$/; //Se tiene que mejorar la expresion para validar simbolos
-const regExpLetras = /^[a-zA-Z\s]+$/;//probar casos
+const regExpLetras = /^[a-zA-Z\u00C0-\u017F\s]+$/;//probar casos
 const regExpCI = /^([\d]{1,3})?([\s.-]?\d{3}){2}$/;
 const regExpEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const regExpAll = /./;
