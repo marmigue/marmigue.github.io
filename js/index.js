@@ -47,12 +47,12 @@ const fotoTraseraConfirm = document.querySelector( ".foto-trasera-confirm" );
 const selfieConfirm = document.querySelector( ".selfie-confirm" );
 const datosConfirmados = document.querySelector( ".datos-confirmados" );
 const btnContainer = document.querySelector( ".button-container" );
-const inputCredito = document.querySelector( ".input-credito-solicitar" );
-const inputSecondRefComer = document.querySelector( ".input-second-ref-comer" );
-const inputNameRef = document.querySelector( ".input-name-ref" );
-const inputNameSecondRef = document.querySelector( ".input-name-second-ref" );
-const inputNameComercial = document.querySelector( ".input-name-comercial" );
-const inputNameSecondRefComer = document.querySelector( ".input-name-second-ref-comer" );
+const inputCredito = document.querySelector( ".input-credito-solicitar" );//valor del prestamos solicitado
+const inputNameRef = document.querySelector( ".input-name-ref" );//nombre de la primera referencia
+const inputNameSecondRef = document.querySelector( ".input-name-second-ref" );//nombre de la segunda referencia personal
+const inputNameComercial = document.querySelector( ".input-name-comercial" );//nombre primera referencia comercial
+const inputNameSecondRefComer = document.querySelector( ".input-name-second-ref-comer" );//nombre segunda referencia comercial
+const inputSecondRefComer = document.querySelector( ".input-second-ref-comer" );//numero segunda referencia comercial
 const aLink = document.querySelector( '.link' );
 
 console.log( inputNameSecondRefComer );
@@ -94,10 +94,10 @@ const disableButtonNext = ()=>{
 
 
 const infoConfirm = ()=>{
-
+  
   let pepBool1 = false;
   let pepBool2 = false;
-
+  
   info[0].innerText = inputNombre.value;
   info[1].innerText = inputCI.value;
   info[2].innerText = inputFecha.value;
@@ -137,12 +137,12 @@ const infoConfirm = ()=>{
   fotoFrontalConfirm.src = lienzo1.toDataURL();
   fotoTraseraConfirm.src = lienzo2.toDataURL();
   selfieConfirm.src = lienzo3.toDataURL();
-
+  
   let subCad = inputNombre.value.split( ' ' );
-
+  
   console.log( subCad );
-
-
+  
+  
   let send1 = {
     "tipoPersona": "F",
     "tipoDocumento": "CI",
@@ -163,32 +163,33 @@ const infoConfirm = ()=>{
     "ingresosMensuales": inputIngresos.value,
     "pep": ( pepBool1 || pepBool2 ),
     "referenciasPersonales": [
+      {
+        "origenReferencia": inputNameRef.value,
+        "numeroTelefono": inputFirstRef.value
+      },
         {
-            "origenReferencia": "Jorge Almada",
-            "numeroTelefono": inputFirstRef.value
+          "origenReferencia": inputNameSecondRef.value,
+          "numeroTelefono": inputSecondRef.value
+        }
+      ],
+      "referenciasComerciales": [
+        {
+          "origenReferencia": inputNameComercial.value,
+          "numeroTelefono": inputRefComer.value
         },
         {
-            "origenReferencia": "Gustavo Garcia",
-            "numeroTelefono": inputSecondRef.value
+          "origenReferencia": inputNameSecondRefComer.value,
+          "numeroTelefono": inputSecondRefComer.value
         }
     ],
-    "referenciasComerciales": [
-        {
-            "origenReferencia": "Comercial GODOY",
-            "numeroTelefono": inputRefComer
-        },
-        {
-            "origenReferencia": "TUPI S. A.",
-            "numeroTelefono": "021987654"
-        }
-    ],
-    "montoSolicitado": 100,
+    "montoSolicitado": inputCredito.value,
     "idMoneda": "GS",
     "idModalidad": 65,
     "plazo": 360,
     "comentarioCliente": "PRUEBA"
   }
   console.log( JSON.stringify( send1 ) );
+  prueba( 'http://192.168.0.103:3000/api/creditos/finlatina/solicitar');
 }
 
 const setForm = ( prevous, current )=>{ //coloca un formulario en activo y desactiva el anterior
@@ -927,3 +928,51 @@ setCities();
 // }
 
 // getToken( "https://secure.finlatina.com.py/auth/realms/vaquita-desa/protocol/openid-connect/token", requesToken );
+
+
+// http://192.168.0.103/api/creditos/finlatina/solicitar
+
+
+const prueba = async (API)=>{
+
+  var raw = JSON.stringify({
+    "tipoPersona": "F",
+    "tipoDocumento": "CI",
+    "numeroDocumento": "4498993",
+    "primerNombre": "A",
+    "primerApellido": "V",
+    "fechaNacimiento": null,
+    "estadoCivil": "S",
+    "idNacionalidad": 1,
+    "sexo": "F",
+    "telefono": "021456789",
+    "correoElectronico": "ap@gmail.com",
+    "numeroCelular": "0986123456",
+    "direccion": "Destacamento cazal 123456",
+    "idLocalidad": 1001,
+    "montoSolicitado": 1,
+    "idMoneda": "GS",
+    "idModalidad": 65,
+    "plazo": 360,
+    "comentarioCliente": "PRUEBA"
+  });
+
+
+  let requestOptions2 = {
+    header:{
+      'Content-Type' : 'aplication/json'
+    },
+    method: 'POST',
+    body: raw
+  }
+  try{
+    const response = await fetch(API, requestOptions2);
+    console.log( 'Prueba' );
+    console.log( response );
+  }catch(e){
+    console.log(e);
+  }
+}
+
+
+
