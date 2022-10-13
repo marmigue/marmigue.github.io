@@ -97,10 +97,13 @@ const infoConfirm = ()=>{
   
   let pepBool1 = false;
   let pepBool2 = false;
+
+  let fech = inputFecha.value.split( '-' );
+  let newFech = `${fech[2]}-${fech[1]}-${fech[0]}`;
   
   info[0].innerText = inputNombre.value;
   info[1].innerText = inputCI.value;
-  info[2].innerText = inputFecha.value;
+  info[2].innerText = newFech;
   info[3].innerText = selectGenero.value;
   info[4].innerText = selectEstCiv.value;
   info[5].innerText = inputTrabajo.value;
@@ -188,8 +191,8 @@ const infoConfirm = ()=>{
     "plazo": 360,
     "comentarioCliente": "PRUEBA"
   }
-  console.log( JSON.stringify( send1 ) );
-  prueba( 'http://192.168.0.103:3000/api/creditos/finlatina/solicitar');
+  // console.log( JSON.stringify( send1 ) );
+  // prueba( 'http://192.168.0.103:3000/api/creditos/finlatina/solicitar');
 }
 
 const setForm = ( prevous, current )=>{ //coloca un formulario en activo y desactiva el anterior
@@ -201,6 +204,7 @@ const checkButtonState = (regExp, e)=>{ //verifica si el input esta siendo llena
   const field = e.target;//Tambien se encarga de cambiar el estado del boton "siguiente"
   const fieldvalue = e.target.value;
   field.nextElementSibling.classList.remove( "error" );
+  field.style.border = '1px solid #ccc';
   field.nextElementSibling.innerText = "";
   if( regExp.test( fieldvalue ) ){
     formCompleted( previousPointer );
@@ -427,6 +431,7 @@ const isEmpty = ( value ) =>{//verifica si el campo esta vacio
 }
 
 const setError = ( field, text )=>{//establece la etiqueta p(por debajo del imput) con un valor de error.
+  field.style.border = '1px solid red';
   if( field.tagName === 'SELECT' ){
     const padre = field.parentElement;
     padre.nextElementSibling.innerText = text
@@ -450,7 +455,7 @@ const emptyInput = (e) => { //verifica que un imput esta vacio
   }
 }
 
-const chekcEmail = (e)=>{
+const checkEmail = (e)=>{
   const field = e.target;
   const fieldvalue = e.target.value;
   if( isEmpty( fieldvalue ) ){
@@ -458,7 +463,7 @@ const chekcEmail = (e)=>{
   }else if( regExpEmail.test( fieldvalue ) ){
     field.nextElementSibling.innerText = "";
   }else{
-    setError( field, "Email incorrecto" );
+    setError( field, "Correo electrónico incorrecto" );
   }
 }
 
@@ -470,7 +475,7 @@ const ciValidation = (e)=>{
   }else if( regExpCI.test( fieldvalue ) ){
     field.nextElementSibling.innerText = "";
   }else{
-    setError( field, "Campo incorrecto" );
+    setError( field, "Puede ingresar solamente numeros" );
   }
 }
 
@@ -520,7 +525,7 @@ const checkNumberPhone = (e)=>{
   if( isEmpty( fieldvalue ) ){
     setError( field, "Ingrece un numero de Celular" );
   } else if( !regExpPhone.test( fieldvalue )){
-    setError( field, "No es un numero de Celular" );
+    setError( field, "Ingrese un número de celular válido" );
   } else {
     field.nextElementSibling.innerText = "";
   }
@@ -618,7 +623,7 @@ inputIngresos.addEventListener( "blur", ingresos );
 inputIngresos.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
 inputCredito.addEventListener( "blur", ingresos );
 inputCredito.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
-inputEmail.addEventListener( "blur", chekcEmail );
+inputEmail.addEventListener( "blur", checkEmail );
 inputEmail.addEventListener( "keyup", (e)=> checkButtonState( regExpEmail, e ) );
 inputPhone.addEventListener( "blur", checkNumberPhone );
 inputPhone.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
