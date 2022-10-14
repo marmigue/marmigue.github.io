@@ -591,22 +591,6 @@ const mayorDeEdad = ( dato )=>{
 }
 
 
-let capitalizar = (e)=>{
-  let tmp;
-  let minuscula;
-  if( e.target.value.length === 1 ){
-      e.target.value = e.target.value.substring(0,1).toUpperCase();
-  }else{
-      tmp = e.target.value.substring(0,1).toUpperCase();
-      minuscula = e.target.value.substring(1);
-      e.target.value = tmp.concat( minuscula );
-  }
-}
-
-
-
-
-
 
 // phone.addEventListener( "blur",  checkNumber);
 selectGenero.addEventListener( "blur", setSelect);
@@ -627,11 +611,9 @@ inputNameSecondRefComer.addEventListener( "blur", checkText );
 inputNameSecondRefComer.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
 inputTrabajo.addEventListener( "blur", emptyInput );
 inputTrabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );//tener en cuenta cambiar la exp reg
-inputTrabajo.addEventListener( "keyup", (e)=> capitalizar(e) );
 inputFecha.addEventListener( "blur", validarFecha );
 inputAL.addEventListener( "blur", emptyInput );
 inputAL.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
-inputAL.addEventListener( "keyup", (e)=> capitalizar(e) );
 inputDir.addEventListener( "blur", emptyInput );
 inputDir.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputNombre.addEventListener( "blur", checkText );
