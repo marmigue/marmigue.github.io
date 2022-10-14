@@ -603,28 +603,6 @@ let capitalizar = (e)=>{
   }
 }
 
-let cap = (e)=>{
-  let tmp;
-  let minuscula;
-  if( e.length === 1 ){
-      e = e.substring(0,1).toUpperCase();
-  }else{
-      tmp = e.substring(0,1).toUpperCase();
-      minuscula = e.substring(1);
-      e = tmp.concat( minuscula );
-  }
-  return e;
-}
-
-const CapitalizarNombre = (e)=>{
-  let cad = e.target.value.split( ' ' );
-  for(let i = 0; i<cad.length; i++){
-      cad[i] = cap(cad[i]);
-  }
-  
-  e.target.value = cad;
-  e.target.value = e.target.value.replace(/,/g," ");
-}
 
 
 
@@ -641,16 +619,12 @@ selectCiudad.addEventListener( "blur", setSelect );
 selectCiudad.addEventListener( "change", setSelect );
 inputNameRef.addEventListener( "blur", checkText );
 inputNameRef.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
-inputNameRef.addEventListener( "keyup", CapitalizarNombre );
 inputNameSecondRef.addEventListener( "blur", checkText );
 inputNameSecondRef.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
-inputNameSecondRef.addEventListener( "keyup", CapitalizarNombre );
 inputNameComercial.addEventListener( "blur", checkText );
 inputNameComercial.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
-inputNameComercial.addEventListener( "keyup", CapitalizarNombre );
 inputNameSecondRefComer.addEventListener( "blur", checkText );
 inputNameSecondRefComer.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
-inputNameSecondRefComer.addEventListener( "keyup", CapitalizarNombre );
 inputTrabajo.addEventListener( "blur", emptyInput );
 inputTrabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );//tener en cuenta cambiar la exp reg
 inputTrabajo.addEventListener( "keyup", (e)=> capitalizar(e) );
@@ -662,7 +636,6 @@ inputDir.addEventListener( "blur", emptyInput );
 inputDir.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputNombre.addEventListener( "blur", checkText );
 inputNombre.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
-inputNombre.addEventListener( "keyup", CapitalizarNombre );
 inputCI.addEventListener( "blur", ciValidation );
 inputCI.addEventListener( "keyup", (e)=> checkButtonState( regExpCI, e ) );
 inputIngresos.addEventListener( "blur", ingresos );
