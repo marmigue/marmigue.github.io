@@ -501,6 +501,7 @@ const setSelect = ( e ) => {
     formCompleted( currentPointer-1 );
   }else{
     padre.nextElementSibling.innerText = '';
+    field.style.border = '1px solid #ccc';
     // padre.nextElementSibling.classList.add( "selected" );
     formCompleted( currentPointer-1 );
   }
