@@ -293,13 +293,11 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
     for( let i = 0; i<8; i++ ){
       if( dataForm[i].value != '' ){
         let next = dataForm[i].nextElementSibling
-        console.log( dataForm[i].tagName );
         if( dataForm[i].tagName !== 'SELECT' ){
           if( next.textContent === '' ){
             cont++;
           }
         }else{
-          console.log( dataForm[i].parentElement.nextElementSibling.textContent );
           let pText = dataForm[i].parentElement.nextElementSibling.textContent;
           if( pText === '' ){
             cont++;
@@ -312,7 +310,6 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       aLink.classList.remove( "link-disabled" );
       valid = true;
     }
-    console.log( cont );
   }else if( current === 1 ){
     for( let i = 0; i<14; i++ ){
       if( dataForm[i].value != '' ){
@@ -323,7 +320,6 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
             cont++;
           }
         }else{
-          console.log( dataForm[i].parentElement.nextElementSibling.textContent );
           let pText = dataForm[i].parentElement.nextElementSibling.textContent;
           if( pText === '' ){
             cont++;
