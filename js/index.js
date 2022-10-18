@@ -15,6 +15,7 @@ const inputPhone = document.querySelector(".input-phone");
 const inputFirstRef = document.querySelector( ".input-first-ref" );
 const inputSecondRef = document.querySelector( ".input-second-ref" );
 const inputRefComer = document.querySelector( ".input-ref-comer" );
+const inputNumberCorp = document.querySelector( ".input-number-corp" );
 const btnAtras = document.querySelector( ".button-atras" );
 const btnSiguiente = document.querySelector( ".button-siguiente" );
 const btnVolver = document.querySelector( ".button-volver" );
@@ -55,7 +56,7 @@ const inputNameSecondRefComer = document.querySelector( ".input-name-second-ref-
 const inputSecondRefComer = document.querySelector( ".input-second-ref-comer" );//numero segunda referencia comercial
 const aLink = document.querySelector( '.link' );
 
-console.log( inputNameSecondRefComer );
+console.log( inputNumberCorp );
 //Expresiones Regulares usadas para la validacion
 const regExpPhone = /^09[0-9]{2}([\s-.]?[0-9]{3}){2}$/;
 const regExpNum = /^\d+$/; //Se tiene que mejorar la expresion para validar simbolos
@@ -313,7 +314,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
     }
     console.log( cont );
   }else if( current === 1 ){
-    for( let i = 0; i<13; i++ ){
+    for( let i = 0; i<14; i++ ){
       if( dataForm[i].value != '' ){
         let next = dataForm[i].nextElementSibling;
 
@@ -330,7 +331,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
         }
       }
     }
-    if( cont === 13 ){ //cambiar el valor para cuando se agreguen mas input al form 2
+    if( cont === 14 ){ //cambiar el valor para cuando se agreguen mas input al form 2
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -581,6 +582,12 @@ const validarFecha = ()=>{
   formCompleted[0];
 }
 
+
+const resetErrorStateDate = ()=>{
+  inputFecha.nextElementSibling.innerText = '';
+  inputFecha.style.border = '1px solid #ccc';
+}
+
 const mayorDeEdad = ( dato )=>{
 
   let year = parseInt(dato[0]);
@@ -634,6 +641,7 @@ inputNameSecondRefComer.addEventListener( "keyup", (e)=> checkButtonState(regExp
 inputTrabajo.addEventListener( "blur", emptyInput );
 inputTrabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );//tener en cuenta cambiar la exp reg
 inputFecha.addEventListener( "blur", validarFecha );
+inputFecha.addEventListener( "change", resetErrorStateDate );
 inputAL.addEventListener( "blur", emptyInput );
 inputAL.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputDir.addEventListener( "blur", emptyInput );
@@ -658,6 +666,8 @@ inputRefComer.addEventListener( "blur", checkNumberPhone );
 inputRefComer.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
 inputSecondRefComer.addEventListener( "blur", checkNumberPhone );
 inputSecondRefComer.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
+inputNumberCorp.addEventListener( "blur", checkNumberPhone );
+inputNumberCorp.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
 inputEnt.addEventListener( "blur", emptyInput );
 inputEnt.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputCarg.addEventListener( "blur", emptyInput );
