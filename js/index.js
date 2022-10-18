@@ -313,7 +313,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
     }
     console.log( cont );
   }else if( current === 1 ){
-    for( let i = 0; i<12; i++ ){
+    for( let i = 0; i<13; i++ ){
       if( dataForm[i].value != '' ){
         let next = dataForm[i].nextElementSibling;
 
@@ -330,7 +330,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
         }
       }
     }
-    if( cont === 12 ){ //cambiar el valor para cuando se agreguen mas input al form 2
+    if( cont === 13 ){ //cambiar el valor para cuando se agreguen mas input al form 2
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -572,11 +572,13 @@ const validarFecha = ()=>{
       setError( inputFecha, 'Debes ser mayor de edad' );
     }else{
       inputFecha.nextElementSibling.innerText = '';
+      inputFecha.style.border = '1px solid #ccc';
       formCompleted( 0 );
     }
   }else{
     setError( inputFecha, 'Fecha no valida' );
   }
+  formCompleted[0];
 }
 
 const mayorDeEdad = ( dato )=>{
@@ -597,6 +599,17 @@ const mayorDeEdad = ( dato )=>{
 
   return edad;
   
+}
+
+
+
+const isInclude = ( classList, stringValue )=>{//valida si el string esta contenido dentro de la classList de un input
+  for (let className of classList ) {
+      if( className == stringValue ){
+          return true;
+      }
+  }
+  return false
 }
 
 
