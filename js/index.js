@@ -289,7 +289,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
   let valid = false;
   // console.log( 'Se inicio formCompleted' );
   if( current === 0 ){
-    for( let i = 0; i<10; i++ ){
+    for( let i = 0; i<8; i++ ){
       if( dataForm[i].value != '' ){
         let next = dataForm[i].nextElementSibling
         console.log( dataForm[i].tagName );
@@ -305,7 +305,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
           }
         }
       }
-    }if( cont === 10 ){ //cambiar el valor para cuando se agreguen mas input para el form 1
+    }if( cont === 8 ){ //cambiar el valor para cuando se agreguen mas input para el form 1
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -313,16 +313,24 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
     }
     console.log( cont );
   }else if( current === 1 ){
-    for( let i = 0; i<10; i++ ){
+    for( let i = 0; i<12; i++ ){
       if( dataForm[i].value != '' ){
         let next = dataForm[i].nextElementSibling;
-        if( next.textContent === '' ){
-          console.log(cont);
-          cont++;
+
+        if( dataForm[i].tagName !== 'SELECT' ){
+          if( next.textContent === '' ){
+            cont++;
+          }
+        }else{
+          console.log( dataForm[i].parentElement.nextElementSibling.textContent );
+          let pText = dataForm[i].parentElement.nextElementSibling.textContent;
+          if( pText === '' ){
+            cont++;
+          }
         }
       }
     }
-    if( cont === 10 ){ //cambiar el valor para cuando se agreguen mas input al form 2
+    if( cont === 12 ){ //cambiar el valor para cuando se agreguen mas input al form 2
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
