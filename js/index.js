@@ -487,10 +487,10 @@ const ciValidation = (e)=>{
     setError( field, "Ingrese el numero de ci" );
   }else if( regExpCI.test( fieldvalue ) ){
     field.nextElementSibling.innerText = "";
-  }else if( fieldvalue.length < 6 ){
-      setError( field, "Numero de cedula invalido" );
+  }else if( regExpLetras.test( fieldvalue ) ){
+    setError( field, "Ingrese solo numeros" );
   }else{
-    setError( field, "Puede ingresar solamente numeros" );
+    setError( field, "Valor de cedula invalido" );
   }
 }
 
