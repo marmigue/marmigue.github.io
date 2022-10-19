@@ -61,8 +61,9 @@ const barrioTrabajo = document.querySelector( ".input-dir-trabajo" );
 const calle1Trabajo = document.querySelector( ".input-calle1-trabajo" );
 const calle2Trabajo = document.querySelector( ".input-calle2-trabajo" );
 const edificioTrabajo = document.querySelector( ".numero-edificio-trabajo" );
+const fechaIngreso = document.querySelector( ".fecha-ingreso" );
 
-console.log( edificioTrabajo );
+console.log( fechaIngreso );
 //Expresiones Regulares usadas para la validacion
 const regExpPhone = /^09[0-9]{2}([\s-.]?[0-9]{3}){2}$/;
 const regExpNum = /^\d+$/; //Se tiene que mejorar la expresion para validar simbolos
@@ -113,35 +114,48 @@ const infoConfirm = ()=>{
   info[2].innerText = newFech;
   info[3].innerText = selectGenero.value;
   info[4].innerText = selectEstCiv.value;
-  info[5].innerText = inputTrabajo.value;
-  info[6].innerText = inputAL.value;
+  info[5].innerText = inputEmail.value;
+  info[6].innerText = inputPhone.value;
   info[7].innerText = selectOcup.value;
-  info[8].innerText = inputIngresos.value;
-  info[9].innerText = inputEmail.value;
-  info[10].innerText = inputPhone.value;
-  info[11].innerText = inputFirstRef.value;
-  info[12].innerText = inputSecondRef.value;
-  info[13].innerText = inputRefComer.value;
-  info[14].innerText = selectCiudad.value;
-  info[15].innerText = inputDir.value;
+  info[8].innerText = inputAL.value;
+  info[9].innerText = inputTrabajo.value;
+  info[10].innerText = inputIngresos.value;
+  info[11].innerText = fechaIngreso.value;
+  info[12].innerText = inputNumberCorp.value;
+  info[13].innerText = inputNameRef.value;
+  info[14].innerText = inputFirstRef.value;
+  info[15].innerText = inputNameSecondRef.value;
+  info[16].innerText = inputSecondRef.value;
+  info[17].innerText = inputNameComercial.value;
+  info[18].innerText = inputRefComer.value;
+  info[19].innerText = selectCiudad.value;
+  info[20].innerText = inputDir.value;
+  info[21].innerText = inputCalle1.value;
+  info[22].innerText = inputCalle2.value;
+  info[23].innerText = numeroCasa.value;
+  info[24].innerText = ciudadesTrabajo.value;
+  info[25].innerText = barrioTrabajo.value;
+  info[26].innerText = calle1Trabajo.value;
+  info[27].innerText = calle2Trabajo.value;
+  info[28].innerText = edificioTrabajo.value;
   if( inputSiPep.value !== ''){
-    info[16].innerText = 'Si';
+    info[29].innerText = 'Si';
     pepConfirm.style.display = 'block';
     pepEnteidadConfirm[0].innerText = inputEnt.value;
     pepEnteidadConfirm[1].innerText = inputCarg.value;
     pepBool1 = true;
   } else{
-    info[16].innerText = 'No';
+    info[29].innerText = 'No';
     pepBool1 = false;
   }
   if( inputFamSi.value !== '' ){
-    info[17].innerText = 'Si';
+    info[30].innerText = 'Si';
     pepFamConfirm.style.display = 'block';
     pepFamEntidadConfirm[0].innerText = inputEntFam.value;
     pepFamEntidadConfirm[1].innerText = inputCargFam.value;
     pepBool2 = true;
   }else{
-    info[17].innerText = 'No';
+    info[30].innerText = 'No';
     pepBool2 = false;
   }
   fotoFrontalConfirm.src = lienzo1.toDataURL();
