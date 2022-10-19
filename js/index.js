@@ -52,11 +52,12 @@ const inputCredito = document.querySelector( ".input-credito-solicitar" );//valo
 const inputNameRef = document.querySelector( ".input-name-ref" );//nombre de la primera referencia
 const inputNameSecondRef = document.querySelector( ".input-name-second-ref" );//nombre de la segunda referencia personal
 const inputNameComercial = document.querySelector( ".input-name-comercial" );//nombre primera referencia comercial
-const inputNameSecondRefComer = document.querySelector( ".input-name-second-ref-comer" );//nombre segunda referencia comercial
-const inputSecondRefComer = document.querySelector( ".input-second-ref-comer" );//numero segunda referencia comercial
 const aLink = document.querySelector( '.link' );
+const numeroCasa = document.querySelector( ".numero-casa" );
+const inputCalle1 = document.querySelector( ".input-calle1" );
+const inputCalle2 = document.querySelector( ".input-calle2" );
 
-console.log( inputNumberCorp );
+console.log( inputCalle1 );
 //Expresiones Regulares usadas para la validacion
 const regExpPhone = /^09[0-9]{2}([\s-.]?[0-9]{3}){2}$/;
 const regExpNum = /^\d+$/; //Se tiene que mejorar la expresion para validar simbolos
@@ -144,8 +145,6 @@ const infoConfirm = ()=>{
   
   let subCad = inputNombre.value.split( ' ' );
   
-  console.log( subCad );
-  
   
   let send1 = {
     "tipoPersona": "F",
@@ -181,10 +180,6 @@ const infoConfirm = ()=>{
           "origenReferencia": inputNameComercial.value,
           "numeroTelefono": inputRefComer.value
         },
-        {
-          "origenReferencia": inputNameSecondRefComer.value,
-          "numeroTelefono": inputSecondRefComer.value
-        }
     ],
     "montoSolicitado": inputCredito.value,
     "idMoneda": "GS",
@@ -220,10 +215,9 @@ const moverSiguiente = ()=>{
     btnAtras.disabled = false;
     btnAtras.classList.remove( "button-disabled" );
     aLink.classList.add( "link-disabled" );
-    console.log( 'CUrrent pointer = ' + currentPointer );
-    console.log( formCompleted(currentPointer) );
+    // console.log( 'CUrrent pointer = ' + currentPointer );
+//     console.log( formCompleted(currentPointer) );
     if( formCompleted( currentPointer ) === false ){
-      console.log('prueba');
       btnSiguiente.disabled = true;
       btnSiguiente.classList.add( "button-disabled" );
     }
@@ -232,9 +226,7 @@ const moverSiguiente = ()=>{
     responsiveStep[currentPointer].style.display = 'inline';
     progressResponsive.style.width = `${jump+=20}%`;
 
-    console.log( 'CurrentPointer : ' + currentPointer );
     setForm( previousPointer, currentPointer );
-    console.log( 'CurrentPointer = ' + currentPointer );
   }else{
     apagarCamara();
     progressContainer.style.display = 'none';
@@ -277,7 +269,6 @@ const moverAtras = ()=>{
     }else if( currentPointer === 4 ){
       apagarCamara();
     }
-    console.log( 'CurrentPointer = ' + currentPointer );
   }
 }
 
@@ -311,7 +302,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       valid = true;
     }
   }else if( current === 1 ){
-    for( let i = 0; i<14; i++ ){
+    for( let i = 0; i<12; i++ ){
       if( dataForm[i].value != '' ){
         let next = dataForm[i].nextElementSibling;
 
@@ -327,19 +318,19 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
         }
       }
     }
-    if( cont === 14 ){ //cambiar el valor para cuando se agreguen mas input al form 2
+    if( cont === 12 ){ //cambiar el valor para cuando se agreguen mas input al form 2
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
       valid = true;
     }
   }else if( current === 2 ){
-    for( let i = 0; i<2; i++ ){
+    for( let i = 0; i<5; i++ ){
       if( dataForm[i].value != '' ){
         cont++;
       }
     }
-    if( cont === 2 ){
+    if( cont === 5 ){
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -353,7 +344,6 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       valid = true;
     }
   }else if( current === 4 ){
-    console.log( 'se inicia la conexion' );
     if( fotosTomadas[0] === true && fotosTomadas[1] === true && fotosTomadas[2] === true ){
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
@@ -452,7 +442,6 @@ const setError = ( field, text )=>{//establece la etiqueta p(por debajo del impu
 const emptyInput = (e) => { //verifica que un imput esta vacio
   const field = e.target;
   const fieldvalue = e.target.value;
-  console.log( isEmpty(fieldvalue) );
   if( isEmpty( fieldvalue ) ){
     setError( field, "Complete el campo" );
   }else{
@@ -502,7 +491,6 @@ const setSelect = ( e ) => {
   const padre = field.parentElement;
   if( isEmpty( fieldvalue ) ){
     setError( field, "Seleccione una opcion" );
-    console.log(padre);
     formCompleted( currentPointer-1 );
   }else{
     padre.nextElementSibling.innerText = '';
@@ -616,6 +604,18 @@ const isInclude = ( classList, stringValue )=>{//valida si el string esta conten
 }
 
 
+const CheckNumber = (e)=>{
+  const field = e.target;
+  const fieldvalue = e.target.value;
+  if( isEmpty( fieldvalue ) ){
+    setError( field, "Seleccione el numero de casa" );
+  }else if( regExpNum.test( fieldvalue ) ){
+    field.nextElementSibling.innerText = "";
+  }else{
+    setError( field, "Ingrese un numero" );
+  }
+}
+
 
 // phone.addEventListener( "blur",  checkNumber);
 selectGenero.addEventListener( "blur", setSelect);
@@ -632,8 +632,6 @@ inputNameSecondRef.addEventListener( "blur", checkText );
 inputNameSecondRef.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
 inputNameComercial.addEventListener( "blur", checkText );
 inputNameComercial.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
-inputNameSecondRefComer.addEventListener( "blur", checkText );
-inputNameSecondRefComer.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
 inputTrabajo.addEventListener( "blur", emptyInput );
 inputTrabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );//tener en cuenta cambiar la exp reg
 inputFecha.addEventListener( "blur", validarFecha );
@@ -660,8 +658,6 @@ inputSecondRef.addEventListener( "blur", checkNumberPhone );
 inputSecondRef.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
 inputRefComer.addEventListener( "blur", checkNumberPhone );
 inputRefComer.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
-inputSecondRefComer.addEventListener( "blur", checkNumberPhone );
-inputSecondRefComer.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
 inputNumberCorp.addEventListener( "blur", checkNumberPhone );
 inputNumberCorp.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
 inputEnt.addEventListener( "blur", emptyInput );
@@ -688,7 +684,12 @@ inputEntFam.addEventListener( "keyup", ()=> checkSelectState( inputFamNo, inputE
 inputCargFam.addEventListener( "keyup", ()=>checkSelectState(inputFamNo, inputEntFam, inputCargFam, 2 ) );
 btnVolver.addEventListener( "click", volverInicio );
 btnConfirm.addEventListener( "click", enviarDatos );
-
+inputCalle1.addEventListener( "blur", emptyInput );
+inputCalle1.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
+inputCalle2.addEventListener( "blur", emptyInput );
+inputCalle2.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
+numeroCasa.addEventListener( "blur", CheckNumber );
+numeroCasa.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
 
 /*------------------Inicio de funciones relacionadas al manejo de la camara---------------------- */
 
@@ -704,8 +705,6 @@ const buttonFoto = document.querySelector( ".button-foto" );
 const delete1 = document.querySelector( ".delete-1" );
 const delete2 = document.querySelector( ".delete-2" );
 const delete3 = document.querySelector( ".delete-3" );
-console.log( noImage3 );
-
 let listaCargada = false;
 
 const tieneSoporteUserMedia = ()=> {
@@ -724,9 +723,6 @@ navigator.getMedia =
 let fotosTomadas = [ false, false, false ];
 let dispositivosDisponibles = [];
 let localStream;
-
-
-console.log( navigator.getMedia );
 
 
 
@@ -759,21 +755,18 @@ const iniciarConexion = ()=>{
   navigator.getMedia( {video: true, audio: false}, streamObtenido=>{
     try{
       localStream = streamObtenido;
-      console.log( streamObtenido );
       apagarCamara();
       llenarSelect();
     }catch(error){
       video.srcObject = null;
     }
   }, error=>{
-    console.log( error );
+    console.log( error );//TODO: manejar los errores de forma eficiente
   } );
-  console.log( 'Se pasa el indice' );
 }
 
 
 const iniciarCamara = ( idObtenido )=>{
-  console.log( 'El indice es: '+ idObtenido );
   navigator.getMedia( {
     audio:false,
     video:{
@@ -790,7 +783,7 @@ const iniciarCamara = ( idObtenido )=>{
       video.srcObject = null;
     }
   }, error=>{
-    console.log( error );
+    console.log( error );//TODO: manejar los errores de forma eficiente para que el usuario vea el problema
   } );
 }
 
@@ -802,7 +795,6 @@ const apagarCamara = ()=>{
   } );
   video.srcObject = null;
   video.pause();
-  console.log( 'hola' );
 }
 
 
@@ -881,7 +873,6 @@ select.addEventListener( "change", cambiarDispositivo );
 const setCities = async ()=>{
   const response = await fetch( 'https://apidesa.vaquita.com.py/api/ciudades' );
   const data = await response.json();
-  console.log( data );
   for (let value of data) {
       const option = document.createElement( 'option' );
       option.text = value.nombre;
