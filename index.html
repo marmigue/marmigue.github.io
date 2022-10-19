@@ -13,10 +13,7 @@
     <div class="main-container">
         <div class="form-container">
           <div class="header">
-            <img class="logo-finlatina" src="./img/logo.png" alt="logo">
-            <div class="titulo">
-              <h2 id="inicio">Prestamos Finlatina</h2>
-            </div>
+            <img class="logo-finlatina" id="inicio" src="./img/logo.png" alt="logo">
           </div>
 
           <div class="container-progress">
@@ -24,8 +21,8 @@
             <div class="container-responsive">
               <span class="responsive-step">Informacion Personal</span>
               <span class="responsive-step">Informacion Laboral</span>
-              <span class="responsive-step">Ubicación</span>
-              <span class="responsive-step">Ocupación</span>
+              <span class="responsive-step">Ubicaciones</span>
+              <span class="responsive-step">P.E.P</span>
               <span class="responsive-step">Fotos</span>
               <div class="progress-bar-responsive" data-label="loading...">
                 <div class="progress-responsive"></div>
@@ -43,11 +40,11 @@
               </div>
               <div class="step-container">
                 <div class="progress-step">3</div>
-                <p class="info-step">Ubicación</p>
+                <p class="info-step">Ubicaciones</p>
               </div>
               <div class="step-container">
                 <div class="progress-step">4</div>
-                <p class="info-step">Ocupacion</p>
+                <p class="info-step">P.E.P</p>
               </div>
               <div class="step-container">
                 <div class="progress-step">5</div>
@@ -358,6 +355,7 @@
 <!--  -------------------------------Inicio tercer formulario-------------------------------- -->
 
                 <form class="form form-3" action="javascript:void(0);" autocomplete="off"  >
+                  <h2 class="titulo titulo-main">Ubicacion Personal</h2>
                   <label>
                     <span class="span-input">Ciudad</span>
                     <div class="select-container">
@@ -385,6 +383,38 @@
                   <label>
                     <span class="span-input">Numero de casa</span>
                     <input class="input-data numero-casa" type="text" autocapitalize="sentences">
+                    <p class="err-space"></p>
+                  </label>
+
+                  <h2 class="titulo titulo-main">Ubicacion Laboral</h2>
+
+                  <label>
+                    <span class="span-input">Ciudad</span>
+                    <div class="select-container">
+                      <select  class="input-data select-ciudad-trabajo" name="Ciudad" id="">
+                        <option value="" selected></option>
+                      </select>
+                    </div>
+                    <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Barrio</span>
+                    <input class="input-data input-dir-trabajo" type="text" autocapitalize="sentences">
+                    <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Calle 1</span>
+                    <input class="input-data input-calle1-trabajo" type="text" autocapitalize="sentences">
+                    <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Calle 2</span>
+                    <input class="input-data input-calle2-trabajo" type="text" autocapitalize="sentences">
+                    <p class="err-space"></p>
+                  </label>
+                  <label>
+                    <span class="span-input">Numero de casa</span>
+                    <input class="input-data numero-edificio-trabajo" type="text" autocapitalize="sentences">
                     <p class="err-space"></p>
                   </label>
                 </form>

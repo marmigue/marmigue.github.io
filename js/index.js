@@ -56,6 +56,7 @@ const aLink = document.querySelector( '.link' );
 const numeroCasa = document.querySelector( ".numero-casa" );
 const inputCalle1 = document.querySelector( ".input-calle1" );
 const inputCalle2 = document.querySelector( ".input-calle2" );
+const ciudadesTrabajo = document.querySelector( ".select-ciudad-trabajo" );
 
 console.log( inputCalle1 );
 //Expresiones Regulares usadas para la validacion
@@ -626,6 +627,8 @@ selectOcup.addEventListener( "blur", setSelect );
 selectOcup.addEventListener( "change", setSelect );
 selectCiudad.addEventListener( "blur", setSelect );
 selectCiudad.addEventListener( "change", setSelect );
+ciudadesTrabajo.addEventListener( "blur", setSelect );
+ciudadesTrabajo.addEventListener( "change", setSelect );
 inputNameRef.addEventListener( "blur", checkText );
 inputNameRef.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
 inputNameSecondRef.addEventListener( "blur", checkText );
@@ -882,7 +885,22 @@ const setCities = async ()=>{
   }
 }
 
+
+const setCiudadesTrabajo = async ()=>{
+  const response = await fetch( 'https://apidesa.vaquita.com.py/api/ciudades' );
+  const data = await response.json();
+  for (let value of data) {
+      const option = document.createElement( 'option' );
+      option.text = value.nombre;
+      option.value = value.nombre;
+      option.id = value.ciudadFinlatina;
+      ciudadesTrabajo.append(option);
+  }
+}
+
+
 setCities();
+setCiudadesTrabajo();
 
 
 // var headersToken = new Headers();

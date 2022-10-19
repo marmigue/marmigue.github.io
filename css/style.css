@@ -125,6 +125,7 @@ select {
 
 .header{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 12px;
@@ -134,6 +135,14 @@ select {
 
 .titulo{
   text-align: center;
+}
+
+.titulo-main {
+  background: red;
+  color: white;
+  border-radius: 5px;
+  padding: 2px 26px;
+  margin-bottom: 28px;
 }
 
 .titulo-confirm{
