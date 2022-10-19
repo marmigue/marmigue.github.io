@@ -491,6 +491,13 @@ footer{
   padding: 14px 20px;
 }
 
+.link-confirm{
+  height: 40px;
+  color: white;
+  text-decoration: none;
+  padding: 14px 20px;
+}
+
 
 .link-disabled{
   pointer-events: none;
