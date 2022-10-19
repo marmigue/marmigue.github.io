@@ -57,8 +57,12 @@ const numeroCasa = document.querySelector( ".numero-casa" );
 const inputCalle1 = document.querySelector( ".input-calle1" );
 const inputCalle2 = document.querySelector( ".input-calle2" );
 const ciudadesTrabajo = document.querySelector( ".select-ciudad-trabajo" );
+const barrioTrabajo = document.querySelector( ".input-dir-trabajo" );
+const calle1Trabajo = document.querySelector( ".input-calle1-trabajo" );
+const calle2Trabajo = document.querySelector( ".input-calle2-trabajo" );
+const edificioTrabajo = document.querySelector( ".numero-edificio-trabajo" );
 
-console.log( inputCalle1 );
+console.log( edificioTrabajo );
 //Expresiones Regulares usadas para la validacion
 const regExpPhone = /^09[0-9]{2}([\s-.]?[0-9]{3}){2}$/;
 const regExpNum = /^\d+$/; //Se tiene que mejorar la expresion para validar simbolos
@@ -326,12 +330,12 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       valid = true;
     }
   }else if( current === 2 ){
-    for( let i = 0; i<5; i++ ){
+    for( let i = 0; i<10; i++ ){
       if( dataForm[i].value != '' ){
         cont++;
       }
     }
-    if( cont === 5 ){
+    if( cont === 10 ){
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -643,6 +647,8 @@ inputAL.addEventListener( "blur", emptyInput );
 inputAL.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputDir.addEventListener( "blur", emptyInput );
 inputDir.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
+barrioTrabajo.addEventListener( "blur", emptyInput );
+barrioTrabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputNombre.addEventListener( "blur", checkText );
 inputNombre.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
 inputCI.addEventListener( "blur", ciValidation );
@@ -693,6 +699,13 @@ inputCalle2.addEventListener( "blur", emptyInput );
 inputCalle2.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 numeroCasa.addEventListener( "blur", CheckNumber );
 numeroCasa.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
+
+calle1Trabajo.addEventListener( "blur", emptyInput );
+calle1Trabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
+calle2Trabajo.addEventListener( "blur", emptyInput );
+calle2Trabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
+edificioTrabajo.addEventListener( "blur", CheckNumber );
+edificioTrabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
 
 /*------------------Inicio de funciones relacionadas al manejo de la camara---------------------- */
 
