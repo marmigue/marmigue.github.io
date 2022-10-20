@@ -63,7 +63,9 @@ const calle2Trabajo = document.querySelector( ".input-calle2-trabajo" );
 const edificioTrabajo = document.querySelector( ".numero-edificio-trabajo" );
 const fechaIngreso = document.querySelector( ".fecha-ingreso" );
 
-console.log( fechaIngreso );
+const ventanas = [...document.querySelectorAll( ".ventana" )];
+
+console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
 const regExpPhone = /^09[0-9]{2}([\s-.]?[0-9]{3}){2}$/;
 const regExpNum = /^([1-9]{1,3})([\s-.]?\d{1,3})+$/; //Se tiene que mejorar la expresion para validar simbolos
@@ -1048,3 +1050,9 @@ const prueba = async (API)=>{
 
 
 
+
+/*--------------------  funcion para controlar el estado de las pestañas en el paso 5 -----------------------*/
+
+const changeTab = ( actual )=>{
+
+}

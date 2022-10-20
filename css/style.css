@@ -6,7 +6,7 @@ html{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: helvetica;
+  font-family: "Roboto", Sans-serif;;
 }
 
 .main-container{
@@ -312,7 +312,7 @@ select {
   margin-top: 12px;
 }
 
-.seccion-fotos{
+.ventana{
   background-color: #f5f8fa;
   padding: 8px;
   border-top-left-radius: 8px;
@@ -321,16 +321,20 @@ select {
 }
 
 
-.seccion-activa{
+.ventana-activa{
   background-color: #CC0033;
   color: white;
 }
 
-.fotos-seccion1{
+/* .fotos-seccion1{
+  display: none;
+} */
+
+.fotos-seccion3{
   display: none;
 }
 
-.fotos-seccion3{
+.fotos-seccion2{
   display: none;
 }
 
