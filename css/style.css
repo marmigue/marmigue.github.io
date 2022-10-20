@@ -207,16 +207,16 @@ select {
   right: 0;
 }
 
-.form-1{
+/* .form-1{
   display: none;
-}
+} */
 
 .confirm-container{
   display: none;
   /* margin-bottom: 80px; */
 }
 
-.form-2, .form-3, .form-4{
+.form-2, .form-3, .form-4, .form-5{
   display: none;
 }
 
@@ -487,6 +487,10 @@ select {
   display: none;
 }
 
+.pep-1{
+  margin-bottom: 60px;
+}
+
 
 .datos-confirmados{
   display: none;
@@ -544,5 +548,3 @@ footer{
 .link-disabled{
   pointer-events: none;
 }
-
-
