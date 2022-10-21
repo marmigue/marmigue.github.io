@@ -304,7 +304,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
   let valid = false;
   // console.log( 'Se inicio formCompleted' );
   if( current === 0 ){
-    for( let i = 0; i<8; i++ ){
+    for( let i = 0; i<7; i++ ){
       if( dataForm[i].value != '' ){
         let next = dataForm[i].nextElementSibling
         if( dataForm[i].tagName !== 'SELECT' ){
@@ -318,7 +318,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
           }
         }
       }
-    }if( cont === 8 ){ //cambiar el valor para cuando se agreguen mas input para el form 1
+    }if( cont === 7 ){ //cambiar el valor para cuando se agreguen mas input para el form 1
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -360,12 +360,13 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       valid = true;
     }
   }else if( current === 3 ){
-    for( let i = 0; i<10; i++ ){
-      if( dataForm[i].value != '' ){
+    for( let i = 0; i<9; i++ ){
+      if( dataForm[i].value != '' && dataForm[i].classList.value.includes( 'opcional' ) === false ){
         cont++;
+        console.log(cont);
       }
     }
-    if( cont === 10 ){
+    if( cont === 8 ){
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -379,7 +380,8 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       valid = true;
     }
   }else if( current === 5 ){
-    if( fotosTomadas[0] === true && fotosTomadas[1] === true && fotosTomadas[2] === true ){
+    if( fotosTomadas[0] === true && fotosTomadas[1] === true && fotosTomadas[2] === true && 
+      fotosTomadas[3] === true && fotosTomadas[4] === true && fotosTomadas[5] === true ){
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -745,8 +747,8 @@ inputCI.addEventListener( "blur", ciValidation );
 inputCI.addEventListener( "keyup", (e)=> checkButtonState( regExpCI, e ) );
 inputIngresos.addEventListener( "blur", ingresos );
 inputIngresos.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
-inputCredito.addEventListener( "blur", ingresos );
-inputCredito.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
+// inputCredito.addEventListener( "blur", ingresos );
+// inputCredito.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
 inputEmail.addEventListener( "blur", checkEmail );
 inputEmail.addEventListener( "keyup", (e)=> checkButtonState( regExpEmail, e ) );
 inputPhone.addEventListener( "blur", checkNumberPhone );
@@ -787,15 +789,15 @@ inputCalle1.addEventListener( "blur", emptyInput );
 inputCalle1.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputCalle2.addEventListener( "blur", emptyInput );
 inputCalle2.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
-numeroCasa.addEventListener( "blur", CheckNumber );
-numeroCasa.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
+// numeroCasa.addEventListener( "blur", CheckNumber );
+// numeroCasa.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
 
 calle1Trabajo.addEventListener( "blur", emptyInput );
 calle1Trabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 calle2Trabajo.addEventListener( "blur", emptyInput );
 calle2Trabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
-edificioTrabajo.addEventListener( "blur", CheckNumber );
-edificioTrabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
+// edificioTrabajo.addEventListener( "blur", CheckNumber );
+// edificioTrabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
 
 /*------------------Inicio de funciones relacionadas al manejo de la camara---------------------- */
 
@@ -971,7 +973,7 @@ const tomarFoto = ()=>{
   if( i !== null ){
     pintar( i );
   }
-  formCompleted(4);
+  formCompleted(5);
 }
 
 const eliminarFoto = ( indice )=>{
