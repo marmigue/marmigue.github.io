@@ -23,8 +23,8 @@ const progStep = [...document.querySelectorAll( ".progress-step" )];
 const activeForm = [...document.querySelectorAll( ".form" )];
 const inputEnt = document.querySelector( ".input-entidad" );
 const inputCarg = document.querySelector( ".input-cargo" );
-const inputEntFam = document.querySelector( ".input-entidad-fam" );
-const inputCargFam = document.querySelector( ".input-cargo-fam" );
+const inputEntFam = document.querySelector( ".input-entidad-fam1" );
+const inputCargFam = document.querySelector( ".input-cargo-fam1" );
 const inputSiPep = document.getElementById( "sipep" );
 const inputNoPep = document.getElementById( "nopep" );
 const inputFamSi = document.getElementById( "fam-pol-si" );
@@ -421,20 +421,24 @@ const setInputRadioValue = ( data, e )=>{
 
 
 const AgregarCampos = () =>{
+  disableButtonNext();
+  completedPep2 = false;
   contadorPep2 ++;
   let newDiv = document.createElement('div');
+  newDiv.className = 'container-controler';
   const newElement = 
   `<h4>Familiar ${contadorPep2}:</h4>
   <label>
     <span class="span-input">Entidad</span>
-    <input class="input-data input-entidad-fam" type="text" autocapitalize="words">
+    <input class="input-data input-entidad-fam${contadorPep2}" type="text" autocapitalize="words">
     <p class="err-space"></p>
   </label>
   <label>
     <span class="span-input">Cargo público ocupado</span>
-    <input class="input-data input-cargo-fam" type="text" autocapitalize="sentences">
+    <input class="input-data input-cargo-fam${contadorPep2}" type="text" autocapitalize="sentences">
     <p class="err-space"></p>
   </label>`;
+  newDiv.onkeyup = checkSelectStateFam;
   newDiv.innerHTML = newElement;
   inputPepFam.appendChild( newDiv );
 }
@@ -443,14 +447,43 @@ const AgregarCampos = () =>{
 circularButton.addEventListener( "click", AgregarCampos );
 
 
-const checkSelectState = ( inputNo, inputEntidad, inputCargo, pep )=>{
-  if( inputNo.value !== '' ){
-    ( pep===1 )? completedPep1 = true : completedPep2 = true;
-  }else if( inputEntidad.value !== '' && inputCargo.value !== '' ){
-    ( pep===1 )? completedPep1 = true : completedPep2 = true;
-  }else{
-    console.log( 'Error' );
+inputNoPep, inputEnt, inputCarg, 1
+
+const checkSelectState = ()=>{
+  if( inputNoPep.value !== '' ){
+    completedPep1 = true;
+  }else if ( inputEnt.value !== '' && inputCarg.value !== '' ){
+    completedPep1 = true;
   }
+}
+
+
+const checkSelectStateFam = ()=>{
+  console.log(`Dentro de checkSelectStateFam`);
+  let cont = 0;
+  let controler = [...document.querySelectorAll( '.container-controler' )];
+  if(inputFamNo.value !== ''){
+    completedPep2 = true;
+    console.log(completedPep2);
+  }else{
+    for (let index = 0; index < controler.length; index++) {
+      let entidad = document.querySelector( `.input-entidad-fam${index+1}` );
+      let cargo = document.querySelector( `.input-cargo-fam${index+1}` );
+      console.log(cargo.value);
+      if( entidad.value !== '' ){
+        cont++;
+      }
+      if(cargo.value !== ''){
+        cont++;
+      }
+    }
+    console.log( 'controler.lenght: '+controler.length );
+    if(cont === 2*controler.length){
+      console.log('cont: '+cont);
+      completedPep2 = true;
+    }
+  }
+  formCompleted(4);
 }
 
 
@@ -737,16 +770,16 @@ inputSiPep.addEventListener( "click", (e)=> setInputRadioValue( 'si', e ) );
 inputNoPep.addEventListener( "click", (e)=> setInputRadioValue( 'no', e ) );
 inputFamSi.addEventListener( "click", (e)=> setInputRadioValue( 'si', e ) );
 inputFamNo.addEventListener( "click", (e)=> setInputRadioValue( 'no', e ) );
-inputNoPep.addEventListener( "click", ()=> checkSelectState( inputNoPep, inputEnt, inputCarg, 1 ) );
+inputNoPep.addEventListener( "click", checkSelectState );
 inputNoPep.addEventListener( "click", ()=> formCompleted( currentPointer-1 ) );
 inputSiPep.addEventListener( "click", ()=> resetStatePep(1) );
-inputEnt.addEventListener( "keyup", ()=> checkSelectState( inputNoPep, inputEnt, inputCarg, 1 ) );
-inputCarg.addEventListener( "keyup", ()=> checkSelectState( inputNoPep, inputEnt, inputCarg, 1 ) );
-inputFamNo.addEventListener( "click", ()=> checkSelectState( inputFamNo, inputEntFam, inputCargFam, 2 ) );
+inputEnt.addEventListener( "keyup", checkSelectState );
+inputCarg.addEventListener( "keyup", checkSelectState );
+inputFamNo.addEventListener( "click", checkSelectStateFam );
 inputFamNo.addEventListener( "click", ()=> formCompleted( currentPointer-1 ) );
 inputFamSi.addEventListener( "click", ()=>resetStatePep(2) );
-inputEntFam.addEventListener( "keyup", ()=> checkSelectState( inputFamNo, inputEntFam, inputCargFam, 2 ) );
-inputCargFam.addEventListener( "keyup", ()=>checkSelectState(inputFamNo, inputEntFam, inputCargFam, 2 ) );
+inputEntFam.addEventListener( "keyup", checkSelectStateFam );
+inputCargFam.addEventListener( "keyup", checkSelectStateFam );
 btnVolver.addEventListener( "click", volverInicio );
 btnConfirm.addEventListener( "click", enviarDatos );
 inputCalle1.addEventListener( "blur", emptyInput );
