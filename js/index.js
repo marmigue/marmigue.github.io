@@ -62,7 +62,7 @@ const calle1Trabajo = document.querySelector( ".input-calle1-trabajo" );
 const calle2Trabajo = document.querySelector( ".input-calle2-trabajo" );
 const edificioTrabajo = document.querySelector( ".numero-edificio-trabajo" );
 const fechaIngreso = document.querySelector( ".fecha-ingreso" );
-
+const circularButton = document.querySelector( ".circular-button" );
 const ventanas = [...document.querySelectorAll( ".ventana" )];
 
 console.log( ventanas );
@@ -76,6 +76,7 @@ const regExpAll = /./;
 
 let completedPep1 = false;
 let completedPep2 = false;
+let contadorPep2 = 1;
 let jump = 20;
 let fecha = new Date();
 const currentYear = fecha.getFullYear();
@@ -404,9 +405,11 @@ const setInputRadioValue = ( data, e )=>{
   }else if( data === 'si' && field === inputFamSi ){
     inputFamNo.value = '';
     inputPepFam.style.display = 'block';
+    circularButton.style.display = 'block';
   }else{
     inputFamSi.value = '';
     inputPepFam.style.display = 'none';
+    circularButton.style.display = 'none';
     inputEntFam.value = '';
     inputCargFam.value = '';
   }
@@ -414,7 +417,29 @@ const setInputRadioValue = ( data, e )=>{
 
 /*--------------------------------------------------------------------------------------------*/
 
-/*-------------------Funcion para analizar el estado de los input en el form 4--------------- */
+/*-------------------Funcion para analizar el estado de los input en el form 5--------------- */
+
+
+const AgregarCampos = () =>{
+  contadorPep2 ++;
+  const newElement = 
+  `<h4>Familiar ${contadorPep2}:</h4>
+  <label>
+    <span class="span-input">Entidad</span>
+    <input class="input-data input-entidad-fam" type="text" autocapitalize="words">
+    <p class="err-space"></p>
+  </label>
+  <label>
+    <span class="span-input">Cargo público ocupado</span>
+    <input class="input-data input-cargo-fam" type="text" autocapitalize="sentences">
+    <p class="err-space"></p>
+  </label>`;
+  const element = inputPepFam.innerHTML;
+  inputPepFam.innerHTML = element + newElement;
+}
+
+
+circularButton.addEventListener( "click", AgregarCampos );
 
 
 const checkSelectState = ( inputNo, inputEntidad, inputCargo, pep )=>{
@@ -1060,11 +1085,3 @@ const prueba = async (API)=>{
   }
 }
 
-
-
-
-/*--------------------  funcion para controlar el estado de las pestañas en el paso 5 -----------------------*/
-
-const changeTab = ( actual )=>{
-
-}
