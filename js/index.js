@@ -422,6 +422,7 @@ const setInputRadioValue = ( data, e )=>{
 
 const AgregarCampos = () =>{
   contadorPep2 ++;
+  let newDiv = document.createElement('div');
   const newElement = 
   `<h4>Familiar ${contadorPep2}:</h4>
   <label>
@@ -434,8 +435,8 @@ const AgregarCampos = () =>{
     <input class="input-data input-cargo-fam" type="text" autocapitalize="sentences">
     <p class="err-space"></p>
   </label>`;
-  const element = inputPepFam.innerHTML;
-  inputPepFam.innerHTML = element + newElement;
+  newDiv.innerHTML = newElement;
+  inputPepFam.appendChild( newDiv );
 }
 
 
