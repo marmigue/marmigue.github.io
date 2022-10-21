@@ -232,7 +232,7 @@ const checkButtonState = (regExp, e)=>{ //verifica si el input esta siendo llena
 }
 
 const moverSiguiente = ()=>{
-  if( currentPointer < 5 ){
+  if( currentPointer < 6 ){
     btnAtras.disabled = false;
     btnAtras.classList.remove( "button-disabled" );
     aLink.classList.add( "link-disabled" );
@@ -261,7 +261,7 @@ const moverSiguiente = ()=>{
   }
   currentPointer++;
   previousPointer++;
-  if(currentPointer === 5){
+  if(currentPointer === 6 ){
     loader.style.display = 'inline';
     video.style.display = 'none';
     iniciarConexion();
@@ -287,7 +287,7 @@ const moverAtras = ()=>{
     if( previousPointer === 0 ){
       btnAtras.disabled = true;
       btnAtras.classList.add( "button-disabled" );
-    }else if( currentPointer === 4 ){
+    }else if( currentPointer === 5 ){
       apagarCamara();
     }
   }
@@ -323,7 +323,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       valid = true;
     }
   }else if( current === 1 ){
-    for( let i = 0; i<12; i++ ){
+    for( let i = 0; i<6; i++ ){
       if( dataForm[i].value != '' ){
         let next = dataForm[i].nextElementSibling;
 
@@ -339,13 +339,25 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
         }
       }
     }
-    if( cont === 12 ){ //cambiar el valor para cuando se agreguen mas input al form 2
+    if( cont === 6 ){ //cambiar el valor para cuando se agreguen mas input al form 2
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
       valid = true;
     }
   }else if( current === 2 ){
+    for( let i = 0; i<6; i++ ){
+      if( dataForm[i].value != '' ){
+        cont++;
+      }
+    }
+    if( cont === 6 ){
+      btnSiguiente.disabled = false;
+      btnSiguiente.classList.remove( "button-disabled" );
+      aLink.classList.remove( "link-disabled" );
+      valid = true;
+    }
+  }else if( current === 3 ){
     for( let i = 0; i<10; i++ ){
       if( dataForm[i].value != '' ){
         cont++;
@@ -357,14 +369,14 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       aLink.classList.remove( "link-disabled" );
       valid = true;
     }
-  }else if( current === 3 ){
+  }else if( current === 4 ){
     if( completedPep1 == true && completedPep2 == true ){
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
       valid = true;
     }
-  }else if( current === 4 ){
+  }else if( current === 5 ){
     if( fotosTomadas[0] === true && fotosTomadas[1] === true && fotosTomadas[2] === true ){
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
