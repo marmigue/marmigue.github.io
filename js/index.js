@@ -82,6 +82,7 @@ let fecha = new Date();
 const currentYear = fecha.getFullYear();
 const currentMonth = fecha.getMonth()+1;
 const currentDay = fecha.getDate();
+ventanas[0].classList.add('ventana-activa');
 
 
 progStep[0].classList.add( "step-active" ); //establece el paso 1 como activo
@@ -803,13 +804,22 @@ const select = document.getElementById( "select-disp" );
 const lienzo1 = document.querySelector( ".lienzo-1" );
 const lienzo2 = document.querySelector( ".lienzo-2" );
 const lienzo3 = document.querySelector( ".lienzo-3" );
+const lienzo4 = document.querySelector( ".lienzo-4" );
+const lienzo5 = document.querySelector( ".lienzo-5" );
+const lienzo6 = document.querySelector( ".lienzo-6" );
 const noImage1 = document.querySelector( ".no-image-1" );
 const noImage2 = document.querySelector( ".no-image-2" );
 const noImage3 = document.querySelector( ".no-image-3" );
+const noImage4 = document.querySelector( ".no-image-4" );
+const noImage5 = document.querySelector( ".no-image-5" );
+const noImage6 = document.querySelector( ".no-image-6" );
 const buttonFoto = document.querySelector( ".button-foto" );
 const delete1 = document.querySelector( ".delete-1" );
 const delete2 = document.querySelector( ".delete-2" );
 const delete3 = document.querySelector( ".delete-3" );
+const delete4 = document.querySelector( ".delete-4" );
+const delete5 = document.querySelector( ".delete-5" );
+const delete6 = document.querySelector( ".delete-6" );
 let listaCargada = false;
 
 const tieneSoporteUserMedia = ()=> {
@@ -825,7 +835,7 @@ navigator.getMedia =
       (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) ||
       navigator.webkitGetUserMedia || navigator.msGetUserMedia);
 
-let fotosTomadas = [ false, false, false ];
+let fotosTomadas = [ false, false, false, false, false, false ];
 let dispositivosDisponibles = [];
 let localStream;
 
@@ -929,13 +939,31 @@ const pintar = (indice) =>{
     let ctx = lienzo3.getContext('2d');
     ctx.drawImage(video, 0, 0, lienzo3.width, lienzo3.height );
     fotosTomadas[2] = true;
+  }else if( indice === 3 ){
+    noImage4.style.display = 'none';
+    lienzo4.style.display = 'inline';
+    let ctx = lienzo4.getContext('2d');
+    ctx.drawImage(video, 0, 0, lienzo4.width, lienzo4.height );
+    fotosTomadas[3] = true;
+  }else if( indice === 4 ){
+    noImage5.style.display = 'none';
+    lienzo5.style.display = 'inline';
+    let ctx = lienzo5.getContext('2d');
+    ctx.drawImage(video, 0, 0, lienzo5.width, lienzo5.height );
+    fotosTomadas[4] = true;
+  }else if( indice === 5 ){
+    noImage6.style.display = 'none';
+    lienzo6.style.display = 'inline';
+    let ctx = lienzo6.getContext('2d');
+    ctx.drawImage(video, 0, 0, lienzo6.width, lienzo6.height );
+    fotosTomadas[5] = true;
   }
 }
 
 
 const tomarFoto = ()=>{
   let i = null;
-  for( i = 0; i<3; i++ ){
+  for( i = 0; i<6; i++ ){
     if( fotosTomadas[i] === false ){
       break;
     }
@@ -965,6 +993,24 @@ const eliminarFoto = ( indice )=>{
     noImage3.style.display = 'inline';
     btnSiguiente.disabled = true;
     btnSiguiente.classList.add( "button-disabled" );
+  }else if( indice === 3 ){
+    fotosTomadas[3] = false;
+    lienzo4.style.display = 'none';
+    noImage4.style.display = 'inline';
+    btnSiguiente.disabled = true;
+    btnSiguiente.classList.add( "button-disabled" );
+  }else if( indice === 4 ){
+    fotosTomadas[4] = false;
+    lienzo5.style.display = 'none';
+    noImage5.style.display = 'inline';
+    btnSiguiente.disabled = true;
+    btnSiguiente.classList.add( "button-disabled" );
+  }else if( indice === 5 ){
+    fotosTomadas[5] = false;
+    lienzo6.style.display = 'none';
+    noImage6.style.display = 'inline';
+    btnSiguiente.disabled = true;
+    btnSiguiente.classList.add( "button-disabled" );
   }
 }
 
@@ -973,6 +1019,10 @@ buttonFoto.addEventListener( "click", tomarFoto );
 delete1.addEventListener( "click", ()=> eliminarFoto( 0 ) );
 delete2.addEventListener( "click", ()=> eliminarFoto( 1 ) );
 delete3.addEventListener( "click", ()=> eliminarFoto( 2 ) );
+delete4.addEventListener( "click", ()=> eliminarFoto( 3 ) );
+delete5.addEventListener( "click", ()=> eliminarFoto( 4 ) );
+delete6.addEventListener( "click", ()=> eliminarFoto( 5 ) );
+
 select.addEventListener( "change", cambiarDispositivo );
 
 const setCities = async ()=>{
@@ -1119,3 +1169,22 @@ const prueba = async (API)=>{
   }
 }
 
+
+
+/*-----------------Manejador del estado de los tabs en el form 6-------------------------*/
+
+let ventanaActiva = 0;
+const secciones = [...document.querySelectorAll( '.seccion' )];
+
+const changeTab = (numVentana, e)=>{
+  ventanas[ventanaActiva].classList.remove( 'ventana-activa' );
+  secciones[ventanaActiva].style.display = 'none';
+  ventanas[numVentana].classList.add( 'ventana-activa' );
+  secciones[numVentana].style.display = 'block';
+  ventanaActiva = numVentana;
+}
+
+
+ventanas[0].addEventListener( 'click', (e)=> changeTab( 0, e) );
+ventanas[1].addEventListener( 'click', (e)=> changeTab( 1, e) );
+ventanas[2].addEventListener( 'click', (e)=> changeTab( 2, e) );

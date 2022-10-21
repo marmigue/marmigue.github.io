@@ -229,16 +229,16 @@ select {
   right: 0;
 }
 
-/* .form-1{
+.form-1{
   display: none;
-} */
+}
 
 .confirm-container{
   display: none;
   /* margin-bottom: 80px; */
 }
 
-.form-2, .form-3, .form-4, .form-5, .form-6{
+.form-2, .form-3, .form-4, .form-5{
   display: none;
 }
 
@@ -348,17 +348,23 @@ select {
   color: white;
 }
 
-/* .fotos-seccion1{
+
+.ventana:hover{
+  cursor: pointer;
+}
+
+/* .fotos{
   display: none;
 } */
 
-.fotos-seccion3{
+.boletas{
   display: none;
 }
 
-.fotos-seccion2{
+.documento-domicilio{
   display: none;
 }
+
 
 .seccion-fotos:hover{
   cursor: pointer;
