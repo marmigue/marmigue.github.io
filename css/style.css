@@ -580,3 +580,22 @@ footer{
 .link-disabled{
   pointer-events: none;
 }
+
+.span-fecha{
+  display: block;
+}
+
+
+.fecha-container{
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.fecha{
+  width: 30%;
+}
+
+.ejemplo-select{
+  color: grey;
+}

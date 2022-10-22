@@ -1,6 +1,5 @@
 //Recordar: agregar la funcion onchange sobre los inputs de texto
 const inputNombre = document.querySelector( ".input-name" );
-const inputFecha = document.querySelector( ".input-fecha" );
 const selectGenero = document.querySelector( ".select-genero" );
 const selectEstCiv = document.querySelector( ".select-estado-civil" );
 const selectOcup = document.querySelector( ".select-ocupacion" );
@@ -66,6 +65,11 @@ const circularButton = document.querySelector( ".circular-button" );
 const ventanas = [...document.querySelectorAll( ".ventana" )];
 const parentezco1 = document.querySelector( ".parentezco1" );
 const parentezco2 = document.querySelector( ".parentezco2" );
+const dia = document.querySelector( ".select-dia" );
+const mes = document.querySelector( ".select-mes" );
+const year = document.querySelector( ".select-year" );
+const optionInvalid = document.querySelector( '.option-invalid' );
+
 
 console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -81,18 +85,19 @@ let completedPep2 = false;
 let contadorPep2 = 1;
 let jump = 20;
 let fecha = new Date();
+let currentPointer = 1;//valor al que se apunta cuando se carga el form-1
+let previousPointer = 0;
 const currentYear = fecha.getFullYear();
 const currentMonth = fecha.getMonth()+1;
 const currentDay = fecha.getDate();
+
+
 ventanas[0].classList.add('ventana-activa');
-
-
+optionInvalid.style.color = 'grey';
 progStep[0].classList.add( "step-active" ); //establece el paso 1 como activo
 responsiveStep[0].style.display = 'inline';
 progressResponsive.style.width = '20%';
 
-let currentPointer = 1;//valor al que se apunta cuando se carga el form-1
-let previousPointer = 0;
 btnAtras.disabled = true;
 btnAtras.classList.add( "button-disabled" );
 btnSiguiente.disabled = true;
@@ -100,24 +105,35 @@ btnSiguiente.classList.add( "button-disabled" );
 
 // console.log( inputNoPep );
 
+const checkOptionSelectActive = (elemento)=>{
+  elemento.value === ''? elemento.style.color = 'grey' : elemento.style.color = 'black';
+}
+
+
+checkOptionSelectActive(dia);
+checkOptionSelectActive(mes);
+checkOptionSelectActive(year);
+
+
+dia.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
+mes.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
+year.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
+
+
 
 const disableButtonNext = ()=>{
   btnSiguiente.disabled = true;
   btnSiguiente.classList.add( "button-disabled" );
 }
 
-
 const infoConfirm = ()=>{
   
   let pepBool1 = false;
   let pepBool2 = false;
-
-  let fech = inputFecha.value.split( '-' );
-  let newFech = `${fech[2]}-${fech[1]}-${fech[0]}`;
   
   info[0].innerText = inputNombre.value;
   info[1].innerText = inputCI.value;
-  info[2].innerText = newFech;
+  // info[2].innerText = newFech;
   info[3].innerText = selectGenero.value;
   info[4].innerText = selectEstCiv.value;
   info[5].innerText = inputEmail.value;
@@ -177,7 +193,7 @@ const infoConfirm = ()=>{
     "numeroDocumento": inputCI.value,
     "primerNombre": subCad[0],
     "primerApellido": subCad[1],
-    "fechaNacimiento": inputFecha.value, 
+    // "fechaNacimiento": inputFecha.value, 
     "estadoCivil": selectEstCiv.value,
     "idNacionalidad": 1,
     "sexo": selectGenero.value,
@@ -647,29 +663,30 @@ const enviarDatos = ()=>{
 }
 
 
-const validarFecha = ()=>{
-  const inputFechaArray = inputFecha.value.split( '-' );
-  let year = inputFechaArray[0];
-  if( year < currentYear  && year > 1900 ){
-    let edad = mayorDeEdad( inputFechaArray );
-    if( edad < 18 ){
-      setError( inputFecha, 'Debes ser mayor de edad' );
-    }else{
-      inputFecha.nextElementSibling.innerText = '';
-      inputFecha.style.border = '1px solid #ccc';
-      formCompleted( 0 );
-    }
-  }else{
-    setError( inputFecha, 'Fecha no valida' );
-  }
-  formCompleted[0];
-}
+
+// const validarFecha = ()=>{
+//   const inputFechaArray = inputFecha.value.split( '-' );
+//   let year = inputFechaArray[0];
+//   if( year < currentYear  && year > 1900 ){
+//     let edad = mayorDeEdad( inputFechaArray );
+//     if( edad < 18 ){
+//       setError( inputFecha, 'Debes ser mayor de edad' );
+//     }else{
+//       inputFecha.nextElementSibling.innerText = '';
+//       inputFecha.style.border = '1px solid #ccc';
+//       formCompleted( 0 );
+//     }
+//   }else{
+//     setError( inputFecha, 'Fecha no valida' );
+//   }
+//   formCompleted[0];
+// }
 
 
-const resetErrorStateDate = ()=>{
-  inputFecha.nextElementSibling.innerText = '';
-  inputFecha.style.border = '1px solid #ccc';
-}
+// const resetErrorStateDate = ()=>{
+//   inputFecha.nextElementSibling.innerText = '';
+//   inputFecha.style.border = '1px solid #ccc';
+// }
 
 const mayorDeEdad = ( dato )=>{
 
@@ -735,8 +752,8 @@ inputNameComercial.addEventListener( "blur", checkText );
 inputNameComercial.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
 inputTrabajo.addEventListener( "blur", emptyInput );
 inputTrabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );//tener en cuenta cambiar la exp reg
-inputFecha.addEventListener( "blur", validarFecha );
-inputFecha.addEventListener( "change", resetErrorStateDate );
+// inputFecha.addEventListener( "blur", validarFecha );
+// inputFecha.addEventListener( "change", resetErrorStateDate );
 inputAL.addEventListener( "blur", emptyInput );
 inputAL.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputDir.addEventListener( "blur", emptyInput );
