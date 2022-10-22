@@ -243,8 +243,6 @@ select {
 }
 
 .err-space{
-  height: 16px;
-  margin-top: 8px;
   margin-bottom: 8px;
   padding-left: 4px;
 }
@@ -535,12 +533,6 @@ select {
   padding: 8px;
 }
 
-
-.err-space{
-  height: 20px;
-}
-
-
 footer{
   height: 150px;
 }
@@ -581,21 +573,27 @@ footer{
   pointer-events: none;
 }
 
-.span-fecha{
+/* .span-fecha{
   display: block;
+} */
+
+.ejemplo-select{
+  color: grey;
+}
+
+
+/*----------------fecha----------------*/
+
+.option-invalid{
+  color: grey;
+}
+
+.fecha {
+  width: 30%;
 }
 
 
 .fecha-container{
   display: flex;
-  gap: 8px;
   justify-content: space-between;
-}
-
-.fecha{
-  width: 30%;
-}
-
-.ejemplo-select{
-  color: grey;
 }

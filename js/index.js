@@ -120,6 +120,33 @@ mes.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
 year.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
 
 
+/*---------------------Inicializar Dia---------------------------*/
+
+const inicializarDia = (dia)=>{
+  for (let index = 0; index < 31; index++) {
+    const option = document.createElement( 'option' );
+    option.value = index+1;
+    option.classList.add( 'select-option' );
+    option.innerText = index + 1;
+    dia.appendChild( option );
+  }
+}
+
+const setYear = (year)=>{
+  for (let index = currentYear; index > 1900; index--) {
+    const option = document.createElement( 'option' );
+    option.value = index;
+    option.classList.add( 'select-option' );
+    option.innerText = index;
+    year.appendChild( option );
+  }
+}
+
+inicializarDia(dia);
+setYear(year);
+
+
+/*---------------------------------------------------------------*/
 
 const disableButtonNext = ()=>{
   btnSiguiente.disabled = true;
@@ -322,7 +349,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
   let valid = false;
   // console.log( 'Se inicio formCompleted' );
   if( current === 0 ){
-    for( let i = 0; i<7; i++ ){
+    for( let i = 0; i<9; i++ ){
       if( dataForm[i].value != '' ){
         let next = dataForm[i].nextElementSibling
         if( dataForm[i].tagName !== 'SELECT' ){
@@ -336,7 +363,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
           }
         }
       }
-    }if( cont === 7 ){ //cambiar el valor para cuando se agreguen mas input para el form 1
+    }if( cont === 9 ){ //cambiar el valor para cuando se agreguen mas input para el form 1
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -734,6 +761,12 @@ const CheckNumber = (e)=>{
 
 
 // phone.addEventListener( "blur",  checkNumber);
+dia.addEventListener( "blur", setSelect);
+dia.addEventListener( "change", setSelect );
+mes.addEventListener( "blur", setSelect);
+mes.addEventListener( "change", setSelect );
+year.addEventListener( "blur", setSelect);
+year.addEventListener( "change", setSelect );
 selectGenero.addEventListener( "blur", setSelect);
 selectGenero.addEventListener( "change", setSelect );
 selectEstCiv.addEventListener( "blur", setSelect );

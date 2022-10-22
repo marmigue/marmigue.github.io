@@ -257,7 +257,7 @@
                           class="input-data input-name"
                           type="text" name="username"
                           autocomplete="off" autocapitalize="words">
-                        <p class="err-space err"></p>
+                        <p class="err-space"></p>
                     </label>
                     <label>
                       <span class="span-input">Número de C.I</span>
@@ -265,51 +265,53 @@
                           class="input-data input-ci"
                           type="text" name="userci"
                           autocomplete="off">
-                        <p class="err-space"></p>
+                          <p class="err-space"></p>
                     </label>
-                    <label>
                       <span class="span-input span-fecha">Ingrese su Fecha de Nacimiento</span>
                       <div class="fecha-container">
-                        <div class="select-container fecha">
-                          <select class="select-dia input-data">
-                            <option value="">Día</option>
-                          </select>
-                        </div>
-                        <div class="select-container fecha">
-                          <select class="select-mes input-data">
-                            <option value="" class="option-invalid">Mes</option>
-                            <option value="enero" class="select-option">Enero</option>
-                            <option value="febrero" class="select-option">Febrero</option>
-                            <option value="marzo" class="select-option">Marzo</option>
-                            <option value="abril" class="select-option">Abril</option>
-                            <option value="mayo" class="select-option">Mayo</option>
-                            <option value="junio" class="select-option">Junio</option>
-                            <option value="julio" class="select-option">Julio</option>
-                            <option value="agosto" class="select-option">Agosto</option>
-                            <option value="septiembre" class="select-option">Septiembre</option>
-                            <option value="octubre" class="select-option">Octubre</option>
-                            <option value="noviembre" class="select-option">Noviembre</option>
-                            <option value="diciembre" class="select-option">Diciembre</option>
-                          </select> 
-                        </div>
-                        <div class="select-container fecha">
-                          <select class="select-year input-data">
-                            <option value="">Año</option>
-                          </select>
-                        </div>
+                        <label class="fecha">
+                          <div class="select-container">
+                            <select class="select-dia input-data">
+                              <option value="" class="option-invalid">Día</option>
+                            </select>
+                          </div>
+                          <p class="err-space"></p>
+                        </label>
+                        <label class="fecha">
+                          <div class="select-container">
+                            <select class="select-mes input-data">
+                              <option value="" class="option-invalid">Mes</option>
+                              <option value="enero" class="select-option">Enero</option>
+                              <option value="febrero" class="select-option">Febrero</option>
+                              <option value="marzo" class="select-option">Marzo</option>
+                              <option value="abril" class="select-option">Abril</option>
+                              <option value="mayo" class="select-option">Mayo</option>
+                              <option value="junio" class="select-option">Junio</option>
+                              <option value="julio" class="select-option">Julio</option>
+                              <option value="agosto" class="select-option">Agosto</option>
+                              <option value="septiembre" class="select-option">Septiembre</option>
+                              <option value="octubre" class="select-option">Octubre</option>
+                              <option value="noviembre" class="select-option">Noviembre</option>
+                              <option value="diciembre" class="select-option">Diciembre</option>
+                            </select> 
+                          </div>
+                          <p class="err-space"></p>
+                        </label>
+                        <label class="fecha">
+                          <div class="select-container">
+                            <select class="select-year input-data">
+                              <option value="" class="option-invalid">Año</option>
+                            </select>
+                          </div>
+                          <p class="err-space"></p>
+                        </label>
                       </div>
-                      <!-- <select class="select-mes input-data"></select>
-                      <select class="select-year input-data"></select> -->
-                        <!-- <select type="select" class="input-data select-dia">
-                        <select type="select" class="input-data select-mes">
-                        <select type="select" class="input-data select-year"> -->
-                        <p class="err-space"></p>
-                    </label>
+                        <!-- <p class="err-space"></p> -->
                     <label>
                       <span class="span-input">Seleccione su Sexo</span>
                         <div class="select-container">
                           <select class="select select-genero input-data" name="genero" id="">
-                            <option value="" selected></option>
+                            <option value=""></option>
                             <option class="select-option selected" value="Masculino">Masculino</option>
                             <option class="select-option selected" value="Femenino">Femenino</option>
                           </select>
@@ -381,11 +383,45 @@
                         class="input-data input-ingresos">
                       <p class="err-space"></p>
                   </label>
-                  <label>
-                    <span class="span-input">Introduzca su Fecha de Ingreso a la Empresa</span>
-                      <input type="date" class="input-data fecha-ingreso"><!--Cambio fecha input-->
+                  <span class="span-input span-fecha">Fecha de Ingreso a la Empresa</span>
+                  <div class="fecha-container">
+                    <label class="fecha">
+                      <div class="select-container">
+                        <select class="select-dia-entrada input-data">
+                          <option value="" class="option-invalid">Día</option>
+                        </select>
+                      </div>
                       <p class="err-space"></p>
-                  </label>
+                    </label>
+                    <label class="fecha">
+                      <div class="select-container">
+                        <select class="select-mes-entrada input-data">
+                          <option value="" class="option-invalid">Mes</option>
+                          <option value="enero" class="select-option">Enero</option>
+                          <option value="febrero" class="select-option">Febrero</option>
+                          <option value="marzo" class="select-option">Marzo</option>
+                          <option value="abril" class="select-option">Abril</option>
+                          <option value="mayo" class="select-option">Mayo</option>
+                          <option value="junio" class="select-option">Junio</option>
+                          <option value="julio" class="select-option">Julio</option>
+                          <option value="agosto" class="select-option">Agosto</option>
+                          <option value="septiembre" class="select-option">Septiembre</option>
+                          <option value="octubre" class="select-option">Octubre</option>
+                          <option value="noviembre" class="select-option">Noviembre</option>
+                          <option value="diciembre" class="select-option">Diciembre</option>
+                        </select>
+                      </div>
+                      <p class="err-space"></p>
+                    </label>
+                    <label class="fecha">
+                      <div class="select-container">
+                        <select class="select-year-entrada input-data">
+                          <option value="" class="option-invalid">Año</option>
+                        </select>
+                      </div>
+                      <p class="err-space"></p>
+                    </label>
+                  </div>
                   <label>
                     <span class="span-input">Ingrese su número de celular corporativo</span>
                     <input type="text" class="input-data input-number-corp" placeholder="09XXXXXXXX">
