@@ -66,8 +66,11 @@ const ventanas = [...document.querySelectorAll( ".ventana" )];
 const parentezco1 = document.querySelector( ".parentezco1" );
 const parentezco2 = document.querySelector( ".parentezco2" );
 const dia = document.querySelector( ".select-dia" );
+const diaEntrada = document.querySelector( ".select-dia-entrada" );
 const mes = document.querySelector( ".select-mes" );
+const mesEntrada = document.querySelector( ".select-mes-entrada" );
 const year = document.querySelector( ".select-year" );
+const yearEntrada = document.querySelector( ".select-year-entrada" );
 const optionInvalid = document.querySelector( '.option-invalid' );
 
 
@@ -113,11 +116,17 @@ const checkOptionSelectActive = (elemento)=>{
 checkOptionSelectActive(dia);
 checkOptionSelectActive(mes);
 checkOptionSelectActive(year);
+checkOptionSelectActive(diaEntrada);
+checkOptionSelectActive(mesEntrada);
+checkOptionSelectActive(yearEntrada);
 
 
 dia.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
 mes.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
 year.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
+diaEntrada.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
+mesEntrada.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
+yearEntrada.addEventListener("change", (e)=>checkOptionSelectActive(e.target));
 
 
 /*---------------------Inicializar Dia---------------------------*/
@@ -143,7 +152,9 @@ const setYear = (year)=>{
 }
 
 inicializarDia(dia);
+inicializarDia(diaEntrada);
 setYear(year);
+setYear(yearEntrada);
 
 
 /*---------------------------------------------------------------*/
@@ -169,7 +180,7 @@ const infoConfirm = ()=>{
   info[8].innerText = inputAL.value;
   info[9].innerText = inputTrabajo.value;
   info[10].innerText = inputIngresos.value;
-  info[11].innerText = fechaIngreso.value;
+  // info[11].innerText = fechaIngreso.value;
   info[12].innerText = inputNumberCorp.value;
   info[13].innerText = inputNameRef.value;
   info[14].innerText = inputFirstRef.value;
@@ -767,6 +778,12 @@ mes.addEventListener( "blur", setSelect);
 mes.addEventListener( "change", setSelect );
 year.addEventListener( "blur", setSelect);
 year.addEventListener( "change", setSelect );
+diaEntrada.addEventListener( "blur", setSelect);
+diaEntrada.addEventListener( "change", setSelect );
+mesEntrada.addEventListener( "blur", setSelect);
+mesEntrada.addEventListener( "change", setSelect );
+yearEntrada.addEventListener( "blur", setSelect);
+yearEntrada.addEventListener( "change", setSelect );
 selectGenero.addEventListener( "blur", setSelect);
 selectGenero.addEventListener( "change", setSelect );
 selectEstCiv.addEventListener( "blur", setSelect );
@@ -1019,14 +1036,34 @@ const pintar = (indice) =>{
 
 
 const tomarFoto = ()=>{
-  let i = null;
-  for( i = 0; i<6; i++ ){
-    if( fotosTomadas[i] === false ){
-      break;
+  let fotoTomada = true;
+  let index;
+  if(ventanaActiva === 0){
+    for( i = 0; i<3; i++ ){
+      if( fotosTomadas[i] === false ){
+        fotoTomada=false;
+        index = i;
+        break;
+      }
     }
-  }
-  if( i !== null ){
-    pintar( i );
+    if( fotoTomada !== true ){
+      pintar( index );
+    }
+  }else if(ventanaActiva === 1){
+    for( i = 0; i<5; i++ ){
+      if( fotosTomadas[i] === false ){
+        fotoTomada=false;
+        index = i;
+        break;
+      }
+    }
+    if( fotoTomada !== true ){
+      pintar( index );
+    }
+  }else if(ventanaActiva === 2){
+    if( fotosTomadas[5] === false ){
+      pintar(5);
+    }
   }
   formCompleted(5);
 }
