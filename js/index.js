@@ -64,6 +64,8 @@ const edificioTrabajo = document.querySelector( ".numero-edificio-trabajo" );
 const fechaIngreso = document.querySelector( ".fecha-ingreso" );
 const circularButton = document.querySelector( ".circular-button" );
 const ventanas = [...document.querySelectorAll( ".ventana" )];
+const parentezco1 = document.querySelector( ".parentezco1" );
+const parentezco2 = document.querySelector( ".parentezco2" );
 
 console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -204,7 +206,7 @@ const infoConfirm = ()=>{
           "numeroTelefono": inputRefComer.value
         },
     ],
-    "montoSolicitado": inputCredito.value,
+    // "montoSolicitado": inputCredito.value,
     "idMoneda": "GS",
     "idModalidad": 65,
     "plazo": 360,
@@ -348,12 +350,12 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       valid = true;
     }
   }else if( current === 2 ){
-    for( let i = 0; i<6; i++ ){
+    for( let i = 0; i<8; i++ ){
       if( dataForm[i].value != '' ){
         cont++;
       }
     }
-    if( cont === 6 ){
+    if( cont === 8 ){
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -789,8 +791,11 @@ inputCalle1.addEventListener( "blur", emptyInput );
 inputCalle1.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputCalle2.addEventListener( "blur", emptyInput );
 inputCalle2.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
-// numeroCasa.addEventListener( "blur", CheckNumber );
-// numeroCasa.addEventListener( "keyup", (e)=> checkButtonState( regExpNum, e ) );
+parentezco1.addEventListener( "blur", checkText );
+parentezco1.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
+parentezco2.addEventListener( "blur", checkText );
+parentezco2.addEventListener( "keyup", (e)=> checkButtonState(regExpLetras, e) );
+
 
 calle1Trabajo.addEventListener( "blur", emptyInput );
 calle1Trabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
