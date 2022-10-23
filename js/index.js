@@ -335,7 +335,7 @@ const moverAtras = ()=>{
     progStep[previousPointer].classList.remove( "step-active" );
     responsiveStep[previousPointer].style.display = 'none';
     responsiveStep[previousPointer-1].style.display = 'inline';
-    progressResponsive.style.width = `${jump-=20}%`;
+    progressResponsive.style.width = `${jump-=16.66666667}%`;
 
     
 
@@ -381,7 +381,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       valid = true;
     }
   }else if( current === 1 ){
-    for( let i = 0; i<6; i++ ){
+    for( let i = 0; i<8; i++ ){
       if( dataForm[i].value != '' ){
         let next = dataForm[i].nextElementSibling;
 
@@ -397,7 +397,7 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
         }
       }
     }
-    if( cont === 6 ){ //cambiar el valor para cuando se agreguen mas input al form 2
+    if( cont === 8 ){ //cambiar el valor para cuando se agreguen mas input al form 2
       btnSiguiente.disabled = false;
       btnSiguiente.classList.remove( "button-disabled" );
       aLink.classList.remove( "link-disabled" );
@@ -406,7 +406,10 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
   }else if( current === 2 ){
     for( let i = 0; i<8; i++ ){
       if( dataForm[i].value != '' ){
-        cont++;
+        let next = dataForm[i].nextElementSibling;
+        if(next.textContent === ''){
+          cont++;
+        }
       }
     }
     if( cont === 8 ){
