@@ -99,7 +99,7 @@ ventanas[0].classList.add('ventana-activa');
 optionInvalid.style.color = 'grey';
 progStep[0].classList.add( "step-active" ); //establece el paso 1 como activo
 responsiveStep[0].style.display = 'inline';
-progressResponsive.style.width = '20%';
+progressResponsive.style.width = '16,66666667%';
 
 btnAtras.disabled = true;
 btnAtras.classList.add( "button-disabled" );
@@ -303,7 +303,7 @@ const moverSiguiente = ()=>{
     progStep[currentPointer].classList.add( "step-active" );
     responsiveStep[previousPointer].style.display = 'none';
     responsiveStep[currentPointer].style.display = 'inline';
-    progressResponsive.style.width = `${jump+=20}%`;
+    progressResponsive.style.width = `${jump+=16.6666667}%`;
 
     setForm( previousPointer, currentPointer );
   }else{
@@ -1050,7 +1050,7 @@ const tomarFoto = ()=>{
       pintar( index );
     }
   }else if(ventanaActiva === 1){
-    for( i = 0; i<5; i++ ){
+    for( i = 3; i<5; i++ ){
       if( fotosTomadas[i] === false ){
         fotoTomada=false;
         index = i;
