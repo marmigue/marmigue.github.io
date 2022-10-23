@@ -661,3 +661,18 @@ footer{
   padding: 10px;
   border: solid 1px #a1a5b7;
 }
+
+
+.lista-boletas{
+  display: none;
+}
+
+.archivos-boletas{
+  display: none;
+}
+
+
+.button-red{
+  background-color: #cc0033;
+  font-size: 16px;
+}

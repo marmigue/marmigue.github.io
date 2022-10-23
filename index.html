@@ -670,19 +670,35 @@
                     </div>
                   </div>
                   <div class="seccion boletas">
-                    <div class="card card-4">
-                      <img class="no-image no-image-4" src="./img/no-image.png" alt="no-image4">
-                      <canvas class="lienzo lienzo-4"></canvas>
-                      <p class="text-card">Boleta IPS</p>
-                      <img class="delete-image delete-4" src="./img/red-x.webp" alt="delete4">
+                    <div class="card card-options-client">
+                      <h3>Seleccione el tipo de Cliente:</h3>
+                      <button type="button" class="button button-red button-asalariado">Asalariado</button>
+                      <button type="button" class="button button-red button-comerciante">Comerciante</button>
                     </div>
-                    <div class="card card-5">
-                      <img class="no-image no-image-5" src="./img/no-image.png" alt="no-image5">
-                      <canvas class="lienzo lienzo-5"></canvas>
-                      <p class="text-card">Boleta de Salario</p>
-                      <img class="delete-image delete-5" src="./img/red-x.webp" alt="delete5">
+                    <div class="lista-boletas">
+                      <div class="card card-4">
+                        <img class="no-image no-image-4" src="./img/no-image.png" alt="no-image4">
+                        <canvas class="lienzo lienzo-4"></canvas>
+                        <p class="text-card">Boleta IPS</p>
+                        <img class="delete-image delete-4" src="./img/red-x.webp" alt="delete4">
+                      </div>
+                      <div class="card card-5">
+                        <img class="no-image no-image-5" src="./img/no-image.png" alt="no-image5">
+                        <canvas class="lienzo lienzo-5"></canvas>
+                        <p class="text-card">Boleta de Salario</p>
+                        <img class="delete-image delete-5" src="./img/red-x.webp" alt="delete5">
+                      </div>
                     </div>
-                  </div>
+                    <div class="archivos-boletas">
+                      <div class="drop-area">
+                        <h2>Arrastra y suelta los documentos</h2>
+                        <h3>O</h3>
+                        <button type="button">Selecciona tus archivos</button>
+                        <input type="file" name="" id="input-file" hidden multiple>
+                      </div>
+                      <div id="preview"></div>
+                    </div>
+                    </div>
                   <div class="seccion documento-domicilio">
                     <div class="card card-6">
                       <img class="no-image no-image-6" src="./img/no-image.png" alt="no-image6">
@@ -691,13 +707,7 @@
                       <img class="delete-image delete-6" src="./img/red-x.webp" alt="delete6">
                     </div>
                   </div>
-                  <div class="drop-area">
-                    <h2>Arrastra y suelta los documentos</h2>
-                    <h3>O</h3>
-                    <button type="button">Selecciona tus archivos</button>
-                    <input type="file" name="" id="input-file" hidden multiple>
-                  </div>
-                  <div id="preview"></div>
+
                 </form>
 
 <!-- -------------------------------Fin del Form-5-------------------------------- -->

@@ -1052,7 +1052,7 @@ const tomarFoto = ()=>{
     if( fotoTomada !== true ){
       pintar( index );
     }
-  }else if(ventanaActiva === 1){
+  }else if(ventanaActiva === 1 && isAsalariado == true){
     for( i = 3; i<5; i++ ){
       if( fotosTomadas[i] === false ){
         fotoTomada=false;
@@ -1341,7 +1341,6 @@ function showFiles(files){
   }else{
     for(const file of files){
       processFile(file);
-      arrayFiles.push(file);
     }
   }
 }
@@ -1366,8 +1365,39 @@ function processFile(file){
 
     } );
     fileReader.readAsDataURL(file);
+    arrayFiles.push(file);
     // uploadFile(file, id)
   }else{
     alert('Error');
   }
 }
+
+
+/*------------------Asalariado-Comerciante--------------------------*/
+
+const optionClient = document.querySelector( '.card-options-client' );
+const asalariado = document.querySelector( '.lista-boletas' );
+const comerciante = document.querySelector( '.archivos-boletas' );
+const buttonAsalariado = document.querySelector( '.button-asalariado' );
+const buttonComerciante = document.querySelector( '.button-comerciante' );
+let isAsalariado = false;
+let isComerciante = false;
+
+
+const setAsalariado = ()=>{
+  asalariado.style.display = 'block';
+  optionClient.style.display = 'none';
+  isAsalariado = true;
+  isComerciante = false;
+};
+
+const setComerciante = ()=>{
+  comerciante.style.display = 'block';
+  optionClient.style.display = 'none';
+  isAsalariado = false;
+  isComerciante = true;
+};
+
+
+buttonAsalariado.addEventListener( "click", setAsalariado );
+buttonComerciante.addEventListener( "click", setComerciante );
