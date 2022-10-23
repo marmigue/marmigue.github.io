@@ -486,7 +486,7 @@ const AgregarCampos = () =>{
   let newDiv = document.createElement('div');
   newDiv.className = 'container-controler';
   const newElement = 
-  `<h4>Familiar ${contadorPep2}:</h4>
+  `<h4 class="numero-familia">Familiar ${contadorPep2}:</h4>
   <label>
     <span class="span-input">Entidad</span>
     <input class="input-data input-entidad-fam${contadorPep2}" type="text" autocapitalize="words">

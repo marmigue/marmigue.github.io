@@ -143,6 +143,7 @@ select {
   border-radius: 5px;
   padding: 2px 26px;
   margin-bottom: 28px;
+  margin-top: 28px;
 }
 
 .titulo-confirm{
@@ -186,6 +187,7 @@ select {
   font-weight: 500;
   font-size: 28px;
   display: none;
+  margin-top: 16px;
 }
 
 .circular-button-container{
@@ -321,6 +323,11 @@ select {
 
 .input-pep1, .input-pep2{
   display: none;
+}
+
+.numero-familia{
+  margin-top: 12px;
+  margin-bottom: 8px;
 }
 
 /*-----------form-5 cards-----------*/
@@ -596,4 +603,17 @@ footer{
 .fecha-container{
   display: flex;
   justify-content: space-between;
+}
+
+
+
+/*-----------------------------------------*/
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.calle {
+  width: 49%;
 }
