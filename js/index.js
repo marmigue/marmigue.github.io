@@ -1380,6 +1380,8 @@ const asalariado = document.querySelector( '.lista-boletas' );
 const comerciante = document.querySelector( '.archivos-boletas' );
 const buttonAsalariado = document.querySelector( '.button-asalariado' );
 const buttonComerciante = document.querySelector( '.button-comerciante' );
+const buttonVolverAsalariado = document.querySelector( '.button-volver-asalariado' );
+const buttonVolverCliente = document.querySelector( '.button-volver-comerciante' );
 let isAsalariado = false;
 let isComerciante = false;
 
@@ -1398,6 +1400,21 @@ const setComerciante = ()=>{
   isComerciante = true;
 };
 
+const volverTipoClienteAsalariado = ()=>{
+  optionClient.style.display = 'flex';
+  asalariado.style.display = 'none';
+  isAsalariado = false;
+}
+
+
+const volverTipoClienteComerciante = ()=>{
+  optionClient.style.display = 'flex';
+  comerciante.style.display = 'none';
+  isComerciante = false;
+}
+
 
 buttonAsalariado.addEventListener( "click", setAsalariado );
 buttonComerciante.addEventListener( "click", setComerciante );
+buttonVolverAsalariado.addEventListener( "click", volverTipoClienteAsalariado );
+buttonVolverCliente.addEventListener( "click", volverTipoClienteComerciante );
