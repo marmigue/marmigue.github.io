@@ -1404,6 +1404,7 @@ const volverTipoClienteAsalariado = ()=>{
   optionClient.style.display = 'flex';
   asalariado.style.display = 'none';
   isAsalariado = false;
+  disableButtonNext();
 }
 
 
@@ -1411,6 +1412,7 @@ const volverTipoClienteComerciante = ()=>{
   optionClient.style.display = 'flex';
   comerciante.style.display = 'none';
   isComerciante = false;
+  disableButtonNext();
 }
 
 
