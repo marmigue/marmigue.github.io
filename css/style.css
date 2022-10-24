@@ -685,3 +685,11 @@ footer{
 .button-red:hover{
   cursor: pointer;
 }
+
+
+.asalariado-volver-contenedor, .comerciante-volver-contenedor{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
