@@ -490,27 +490,29 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       }
     }
   }else if( current === 1 ){
-    for( let i = 0; i<8; i++ ){
-      if( dataForm[i].value != '' ){
-        let next = dataForm[i].nextElementSibling;
-
-        if( dataForm[i].tagName !== 'SELECT' ){
-          if( next.textContent === '' ){
-            cont++;
-          }
-        }else{
-          let pText = dataForm[i].parentElement.nextElementSibling.textContent;
-          if( pText === '' ){
-            cont++;
+    if(errorFechaIngreso.innerText === ''){
+      for( let i = 0; i<8; i++ ){
+        if( dataForm[i].value != '' ){
+          let next = dataForm[i].nextElementSibling;
+  
+          if( dataForm[i].tagName !== 'SELECT' ){
+            if( next.textContent === '' ){
+              cont++;
+            }
+          }else{
+            let pText = dataForm[i].parentElement.nextElementSibling.textContent;
+            if( pText === '' ){
+              cont++;
+            }
           }
         }
       }
-    }
-    if( cont === 8 ){ //cambiar el valor para cuando se agreguen mas input al form 2
-      btnSiguiente.disabled = false;
-      btnSiguiente.classList.remove( "button-disabled" );
-      aLink.classList.remove( "link-disabled" );
-      valid = true;
+      if( cont === 8 ){ //cambiar el valor para cuando se agreguen mas input al form 2
+        btnSiguiente.disabled = false;
+        btnSiguiente.classList.remove( "button-disabled" );
+        aLink.classList.remove( "link-disabled" );
+        valid = true;
+      }
     }
   }else if( current === 2 ){
     for( let i = 0; i<8; i++ ){
