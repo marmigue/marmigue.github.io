@@ -75,7 +75,13 @@ const mesEntrada = document.querySelector( ".select-mes-entrada" );
 const year = document.querySelector( ".select-year" );
 const yearEntrada = document.querySelector( ".select-year-entrada" );
 const optionInvalid = document.querySelector( '.option-invalid' );
-
+const boletaContainer = document.querySelector( '.boletas-container' );
+const archivoContainer = document.querySelector( ".archivos-container" );
+const documento1 = document.querySelector( ".info-doc1" );
+const documento2 = document.querySelector( ".info-doc2" );
+const documento3 = document.querySelector( ".info-doc3" );
+const documento4 = document.querySelector( ".info-doc4" );
+const documento5 = document.querySelector( ".info-doc5" );
 
 console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -225,8 +231,20 @@ const infoConfirm = ()=>{
   fotoFrontalConfirm.src = lienzo1.toDataURL();
   fotoTraseraConfirm.src = lienzo2.toDataURL();
   selfieConfirm.src = lienzo3.toDataURL();
-  boletaIPS.src = lienzo4.toDataURL();
-  boletaSalario.src = lienzo5.toDataURL();
+  if(isAsalariado){
+    archivoContainer.style.display = 'none';
+    boletaContainer.style.display = 'block';
+    boletaIPS.src = lienzo4.toDataURL();
+    boletaSalario.src = lienzo5.toDataURL();
+  }else{
+    archivoContainer.style.display = 'block';
+    boletaContainer.style.display = 'none';
+    documento1.innerText = arrayFiles[0].name;
+    documento2.innerText = arrayFiles[1].name;
+    documento3.innerText = arrayFiles[2].name;
+    documento4.innerText = arrayFiles[3].name;
+    documento5.innerText = arrayFiles[4].name;
+  }
   documentoDomicilio.src = lienzo6.toDataURL();
   
   let subCad = inputNombre.value.split( ' ' );
