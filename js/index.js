@@ -45,6 +45,9 @@ const pepFamEntidadConfirm = [...document.querySelectorAll( ".info-pep-fam" )];
 const fotoFrontalConfirm = document.querySelector( ".foto-frontal-confirm" );
 const fotoTraseraConfirm = document.querySelector( ".foto-trasera-confirm" );
 const selfieConfirm = document.querySelector( ".selfie-confirm" );
+const boletaIPS = document.querySelector( ".boleta-ips" );
+const boletaSalario = document.querySelector( ".boleta-salario" );
+const documentoDomicilio = document.querySelector( ".domicilio" );
 const datosConfirmados = document.querySelector( ".datos-confirmados" );
 const btnContainer = document.querySelector( ".button-container" );
 const inputCredito = document.querySelector( ".input-credito-solicitar" );//valor del prestamos solicitado
@@ -90,6 +93,7 @@ let jump = 20;
 let fecha = new Date();
 let currentPointer = 1;//valor al que se apunta cuando se carga el form-1
 let previousPointer = 0;
+let indexFile=0;
 const currentYear = fecha.getFullYear();
 const currentMonth = fecha.getMonth()+1;
 const currentDay = fecha.getDate();
@@ -221,6 +225,9 @@ const infoConfirm = ()=>{
   fotoFrontalConfirm.src = lienzo1.toDataURL();
   fotoTraseraConfirm.src = lienzo2.toDataURL();
   selfieConfirm.src = lienzo3.toDataURL();
+  boletaIPS.src = lienzo4.toDataURL();
+  boletaSalario.src = lienzo5.toDataURL();
+  documentoDomicilio.src = lienzo6.toDataURL();
   
   let subCad = inputNombre.value.split( ' ' );
   
@@ -1352,7 +1359,8 @@ function showFiles(files){
   }else{
     for(const file of files){
       if(arrayFiles.length<5){
-        processFile(file);
+        indexFile++;
+        processFile(file, indexFile);
       }
     }
   }
@@ -1360,7 +1368,7 @@ function showFiles(files){
 }
 
 
-function processFile(file){
+function processFile(file, index){
   const docType = file.type;
   const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'text/txt'];
   if(validExtensions.includes(docType)){
@@ -1369,12 +1377,12 @@ function processFile(file){
     fileReader.addEventListener( 'load', e=>{
       const fileUrl = fileReader.result;
       const image = `
-        <div id=${id} class="card">
+        <div id="archivo${index}" class="card archivo">
           <img src="${fileUrl}" alt="${file.name}" width="50px">
           <span class="text-card">${file.name}</span>
-          <img class="delete-image delete-1" src="./img/red-x.webp" alt="delete1">
-        </div>
-      `;
+          </div>
+          `;
+          // <img class="delete-image delete-archivo${index}" src="./img/red-x.webp" alt="archivo${index}" onclick="deleteFile(${index})">
       let html = preview.innerHTML;
       preview.innerHTML = html + image;
 
@@ -1430,6 +1438,11 @@ const volverTipoClienteComerciante = ()=>{
   comerciante.style.display = 'none';
   isComerciante = false;
   disableButtonNext();
+}
+
+
+const deleteFile = (index)=>{
+  console.log(index);
 }
 
 

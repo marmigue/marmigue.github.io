@@ -383,6 +383,7 @@ select {
   border-radius: 8px;
   box-shadow: 0 1px 8px rgb(22 22 22 / 10%);
   padding: 8px;
+  gap: 6px;
   /* margin-top: 12px; */
 }
 
