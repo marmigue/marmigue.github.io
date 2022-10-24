@@ -633,7 +633,17 @@ const AgregarCampos = () =>{
 }
 
 
+const eliminarCampos = ()=>{
+  if( inputPepFam.children.length >1){
+    console.log( 'click' );
+    inputPepFam.lastChild.remove();
+  }
+  formCompleted(4);
+}
+
+
 circularButton.addEventListener( "click", AgregarCampos );
+circularButtonDelete.addEventListener( "click", eliminarCampos );
 
 
 inputNoPep, inputEnt, inputCarg, 1
