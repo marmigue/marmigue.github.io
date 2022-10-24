@@ -619,12 +619,12 @@ const AgregarCampos = () =>{
   `<h4 class="numero-familia">Familiar ${childrenPepFam.length+1}:</h4>
   <label>
     <span class="span-input">Entidad</span>
-    <input class="input-data input-entidad-fam${childrenPepFam.length+1}" type="text" autocapitalize="words">
+    <input class="input-data input-entidad-fam${childrenPepFam.length+1} input-pep-validation-entidad" type="text" autocapitalize="words">
     <p class="err-space"></p>
   </label>
   <label>
     <span class="span-input">Cargo público ocupado</span>
-    <input class="input-data input-cargo-fam${childrenPepFam.length+1}" type="text" autocapitalize="sentences">
+    <input class="input-data input-cargo-fam${childrenPepFam.length+1} input-pep-validation-cargo" type="text" autocapitalize="sentences">
     <p class="err-space"></p>
   </label>`;
   newDiv.onkeyup = checkSelectStateFam;
@@ -634,15 +634,33 @@ const AgregarCampos = () =>{
 
 
 const eliminarCampos = ()=>{
+  cont = 0;
+  cont2 = 0
   if( inputPepFam.children.length >1){
     console.log( 'click' );
     inputPepFam.lastChild.remove();
-    completedPep2==true;
   }
-  if(formCompleted(4)===true){
-    btnSiguiente.disabled = false;
-    btnSiguiente.classList.remove( "button-disabled" );
+  const inputEntidad = [...inputPepFam.querySelectorAll( '.input-pep-validation-entidad' )];
+  const inputCargo =   [...inputPepFam.querySelectorAll( '.input-pep-validation-cargo' )];
+  console.log(inputEntidad[0].value);
+  for (let index = 0; index < inputEntidad.length; index++) {
+    if(inputEntidad[index].value !== ''){
+      cont++;
+      console.log(cont);
+      console.log( inputEntidad.length );
+    }
   }
+  for (let index = 0; index < inputCargo.length; index++) {
+    if(inputCargo[index].value !== ''){
+      cont2++;
+      // console.log(cont);
+      // console.log( inputEntidad.length );
+    }
+  }
+  if(cont === inputEntidad.length && cont2 === inputCargo.length ){
+    completedPep2 = true;
+  }
+  formCompleted(4);
 }
 
 
