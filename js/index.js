@@ -171,7 +171,7 @@ const infoConfirm = ()=>{
   
   info[0].innerText = inputNombre.value;
   info[1].innerText = inputCI.value;
-  // info[2].innerText = newFech;
+  info[2].innerText = `${dia.value}-${mes.value}-${year.value}`;
   info[3].innerText = selectGenero.value;
   info[4].innerText = selectEstCiv.value;
   info[5].innerText = inputEmail.value;
@@ -180,7 +180,7 @@ const infoConfirm = ()=>{
   info[8].innerText = inputAL.value;
   info[9].innerText = inputTrabajo.value;
   info[10].innerText = inputIngresos.value;
-  // info[11].innerText = fechaIngreso.value;
+  info[11].innerText = `${diaEntrada.value}-${mesEntrada.value}-${yearEntrada.value}`;
   info[12].innerText = inputNumberCorp.value;
   info[13].innerText = inputNameRef.value;
   info[14].innerText = inputFirstRef.value;
@@ -439,12 +439,23 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       valid = true;
     }
   }else if( current === 5 ){
-    if( fotosTomadas[0] === true && fotosTomadas[1] === true && fotosTomadas[2] === true && 
-      fotosTomadas[3] === true && fotosTomadas[4] === true && fotosTomadas[5] === true ){
-      btnSiguiente.disabled = false;
-      btnSiguiente.classList.remove( "button-disabled" );
-      aLink.classList.remove( "link-disabled" );
-      valid = true;
+    if(isAsalariado===true){
+      if( fotosTomadas[0] === true && fotosTomadas[1] === true && fotosTomadas[2] === true && 
+        fotosTomadas[3] === true && fotosTomadas[4] === true && fotosTomadas[5] === true ){
+        btnSiguiente.disabled = false;
+        btnSiguiente.classList.remove( "button-disabled" );
+        aLink.classList.remove( "link-disabled" );
+        valid = true;
+      }
+    }else{
+      if( fotosTomadas[0] === true && fotosTomadas[1] === true && fotosTomadas[2] === true && fotosTomadas[5] === true ){
+        if(arrayFiles.length===5){
+          btnSiguiente.disabled = false;
+          btnSiguiente.classList.remove( "button-disabled" );
+          aLink.classList.remove( "link-disabled" );
+          valid = true;
+        }
+      }
     }
   }
   return valid;
@@ -1340,9 +1351,12 @@ function showFiles(files){
     arrayFiles.push(files);
   }else{
     for(const file of files){
-      processFile(file);
+      if(arrayFiles.length<5){
+        processFile(file);
+      }
     }
   }
+  formCompleted(5);
 }
 
 
@@ -1357,7 +1371,8 @@ function processFile(file){
       const image = `
         <div id=${id} class="card">
           <img src="${fileUrl}" alt="${file.name}" width="50px">
-          <span>${file.name}</span>
+          <span class="text-card">${file.name}</span>
+          <img class="delete-image delete-1" src="./img/red-x.webp" alt="delete1">
         </div>
       `;
       let html = preview.innerHTML;
@@ -1391,6 +1406,7 @@ const setAsalariado = ()=>{
   optionClient.style.display = 'none';
   isAsalariado = true;
   isComerciante = false;
+  formCompleted(5);
 };
 
 const setComerciante = ()=>{
@@ -1398,6 +1414,7 @@ const setComerciante = ()=>{
   optionClient.style.display = 'none';
   isAsalariado = false;
   isComerciante = true;
+  formCompleted(5);
 };
 
 const volverTipoClienteAsalariado = ()=>{
