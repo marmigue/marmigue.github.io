@@ -83,6 +83,7 @@ const documento3 = document.querySelector( ".info-doc3" );
 const documento4 = document.querySelector( ".info-doc4" );
 const documento5 = document.querySelector( ".info-doc5" );
 const errorFechaNacimiento = document.querySelector('.err-fecha-nacimiento');
+const errorFechaIngreso = document.querySelector( '.err-fecha-entrada' );
 
 console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -183,6 +184,13 @@ const verificarFechaNacimiento = ()=>{
 }
 
 
+const verificarFechaIngreso = ()=>{
+  if( diaEntrada.value != '' && mesEntrada.value != '' && yearEntrada.value != '' ){
+    console.log('exito');
+    validarFechaIngreso();
+  }
+}
+
 const validarFecha = ()=>{
   if( year.value < currentYear  && year.value > 1900 ){
     let dato = [`${year.value}`,`${mes.value}`, `${dia.value}`];
@@ -198,6 +206,24 @@ const validarFecha = ()=>{
     }
   }else{
     // setError( inputFecha, 'Fecha no valida' );
+  }
+  formCompleted[0];
+}
+
+
+const validarFechaIngreso = ()=>{
+  if( year.value < currentYear  && year.value > 1900 ){
+    let dato = [`${yearEntrada.value}`,`${mesEntrada.value}`, `${diaEntrada.value}`];
+    console.log(dato);
+    let edad = mayorDeEdad( [`${yearEntrada.value}`,`${mesEntrada.value}`, `${diaEntrada.value}`] );
+    console.log(edad);
+    if( edad < 1 ){
+      errorFechaIngreso.innerText = 'Debes Tener mas de un año en la empresa';
+      errorFechaIngreso.classList.add( "error" );
+    }else{
+      errorFechaIngreso.innerText = '';
+      formCompleted( 0 );
+    }
   }
   formCompleted[0];
 }
@@ -441,25 +467,27 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
   let valid = false;
   // console.log( 'Se inicio formCompleted' );
   if( current === 0 ){
-    for( let i = 0; i<9; i++ ){
-      if( dataForm[i].value != '' ){
-        let next = dataForm[i].nextElementSibling
-        if( dataForm[i].tagName !== 'SELECT' ){
-          if( next.textContent === '' ){
-            cont++;
-          }
-        }else{
-          let pText = dataForm[i].parentElement.nextElementSibling.textContent;
-          if( pText === '' ){
-            cont++;
+    if(errorFechaNacimiento.innerText === ''){
+      for( let i = 0; i<9; i++ ){
+        if( dataForm[i].value != '' ){
+          let next = dataForm[i].nextElementSibling
+          if( dataForm[i].tagName !== 'SELECT' ){
+            if( next.textContent === '' ){
+              cont++;
+            }
+          }else{
+            let pText = dataForm[i].parentElement.nextElementSibling.textContent;
+            if( pText === '' ){
+              cont++;
+            }
           }
         }
+      }if( cont === 9 ){ //cambiar el valor para cuando se agreguen mas input para el form 1
+        btnSiguiente.disabled = false;
+        btnSiguiente.classList.remove( "button-disabled" );
+        aLink.classList.remove( "link-disabled" );
+        valid = true;
       }
-    }if( cont === 9 ){ //cambiar el valor para cuando se agreguen mas input para el form 1
-      btnSiguiente.disabled = false;
-      btnSiguiente.classList.remove( "button-disabled" );
-      aLink.classList.remove( "link-disabled" );
-      valid = true;
     }
   }else if( current === 1 ){
     for( let i = 0; i<8; i++ ){
@@ -832,10 +860,13 @@ year.addEventListener( "change", setSelect );
 year.addEventListener( "change", verificarFechaNacimiento );
 diaEntrada.addEventListener( "blur", setSelect);
 diaEntrada.addEventListener( "change", setSelect );
+diaEntrada.addEventListener("change", verificarFechaIngreso);
 mesEntrada.addEventListener( "blur", setSelect);
 mesEntrada.addEventListener( "change", setSelect );
+mesEntrada.addEventListener("change", verificarFechaIngreso);
 yearEntrada.addEventListener( "blur", setSelect);
 yearEntrada.addEventListener( "change", setSelect );
+yearEntrada.addEventListener("change", verificarFechaIngreso);
 selectGenero.addEventListener( "blur", setSelect);
 selectGenero.addEventListener( "change", setSelect );
 selectEstCiv.addEventListener( "blur", setSelect );
