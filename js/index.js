@@ -313,12 +313,12 @@ const infoConfirm = ()=>{
   fotoFrontalConfirm.src = lienzo1.toDataURL();
   fotoTraseraConfirm.src = lienzo2.toDataURL();
   selfieConfirm.src = lienzo3.toDataURL();
-  if(isAsalariado){
+  if(isAsalariado === true ){
     archivoContainer.style.display = 'none';
     boletaContainer.style.display = 'block';
     boletaIPS.src = lienzo4.toDataURL();
     boletaSalario.src = lienzo5.toDataURL();
-  }else{
+  }else if(isComerciante === true){
     archivoContainer.style.display = 'block';
     boletaContainer.style.display = 'none';
     documento1.innerText = arrayFiles[0].name;
@@ -1444,9 +1444,9 @@ function processFile(file, index){
         <div id="archivo${index}" class="card archivo">
           <img src="${fileUrl}" alt="${file.name}" width="50px">
           <span class="text-card">${file.name}</span>
-          </div>
+          <img class="delete-image delete-archivo${index}" src="./img/red-x.webp" alt="archivo${index}" onclick="deleteFile(${index})">
+        </div>
           `;
-          // <img class="delete-image delete-archivo${index}" src="./img/red-x.webp" alt="archivo${index}" onclick="deleteFile(${index})">
       let html = preview.innerHTML;
       preview.innerHTML = html + image;
 
@@ -1504,9 +1504,11 @@ const volverTipoClienteComerciante = ()=>{
   disableButtonNext();
 }
 
-
 const deleteFile = (index)=>{
+  const prueba = document.querySelector(`.delete-archivo${index}`);
+  prueba.parentElement.remove();
   console.log(index);
+  console.log(prueba);
 }
 
 
