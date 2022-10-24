@@ -84,8 +84,9 @@ const documento4 = document.querySelector( ".info-doc4" );
 const documento5 = document.querySelector( ".info-doc5" );
 const errorFechaNacimiento = document.querySelector('.err-fecha-nacimiento');
 const errorFechaIngreso = document.querySelector( '.err-fecha-entrada' );
+const circularButtonDelete = document.querySelector( '.circular-button-delete' );
 
-console.log( ventanas );
+// console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
 const regExpPhone = /^09[0-9]{2}([\s-.]?[0-9]{3}){2}$/;
 const regExpNum = /^([1-9]{1,3})([\s-.]?\d{1,3})+$/; //Se tiene que mejorar la expresion para validar simbolos
@@ -207,7 +208,7 @@ const validarFecha = ()=>{
   }else{
     // setError( inputFecha, 'Fecha no valida' );
   }
-  formCompleted[0];
+  formCompleted( 0 );
 }
 
 
@@ -222,10 +223,10 @@ const validarFechaIngreso = ()=>{
       errorFechaIngreso.classList.add( "error" );
     }else{
       errorFechaIngreso.innerText = '';
-      formCompleted( 0 );
+      formCompleted( 1 );
     }
   }
-  formCompleted[0];
+  formCompleted(1);
 }
 
 
@@ -494,20 +495,21 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       for( let i = 0; i<8; i++ ){
         if( dataForm[i].value != '' ){
           let next = dataForm[i].nextElementSibling;
-  
+          
           if( dataForm[i].tagName !== 'SELECT' ){
             if( next.textContent === '' ){
+              console.log('enter herer at: '+i);
               cont++;
             }
           }else{
             let pText = dataForm[i].parentElement.nextElementSibling.textContent;
             if( pText === '' ){
+              console.log('enter herer at: '+i);
               cont++;
             }
           }
         }
-      }
-      if( cont === 8 ){ //cambiar el valor para cuando se agreguen mas input al form 2
+      }if( cont === 8 ){ //cambiar el valor para cuando se agreguen mas input al form 2
         btnSiguiente.disabled = false;
         btnSiguiente.classList.remove( "button-disabled" );
         aLink.classList.remove( "link-disabled" );
@@ -590,9 +592,11 @@ const setInputRadioValue = ( data, e )=>{
     inputFamNo.value = '';
     inputPepFam.style.display = 'block';
     circularButton.style.display = 'block';
+    circularButtonDelete.style.display = 'block';
   }else{
     inputFamSi.value = '';
     inputPepFam.style.display = 'none';
+    circularButtonDelete.style.display = 'none';
     circularButton.style.display = 'none';
     inputEntFam.value = '';
     inputCargFam.value = '';
@@ -606,20 +610,21 @@ const setInputRadioValue = ( data, e )=>{
 
 const AgregarCampos = () =>{
   disableButtonNext();
+  const childrenPepFam = [...inputPepFam.children];
   completedPep2 = false;
   contadorPep2 ++;
   let newDiv = document.createElement('div');
   newDiv.className = 'container-controler';
   const newElement = 
-  `<h4 class="numero-familia">Familiar ${contadorPep2}:</h4>
+  `<h4 class="numero-familia">Familiar ${childrenPepFam.length+1}:</h4>
   <label>
     <span class="span-input">Entidad</span>
-    <input class="input-data input-entidad-fam${contadorPep2}" type="text" autocapitalize="words">
+    <input class="input-data input-entidad-fam${childrenPepFam.length+1}" type="text" autocapitalize="words">
     <p class="err-space"></p>
   </label>
   <label>
     <span class="span-input">Cargo público ocupado</span>
-    <input class="input-data input-cargo-fam${contadorPep2}" type="text" autocapitalize="sentences">
+    <input class="input-data input-cargo-fam${childrenPepFam.length+1}" type="text" autocapitalize="sentences">
     <p class="err-space"></p>
   </label>`;
   newDiv.onkeyup = checkSelectStateFam;

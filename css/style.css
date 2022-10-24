@@ -190,10 +190,24 @@ select {
   margin-top: 16px;
 }
 
+.circular-button-delete{
+  border: none;
+  color: white;
+  background-color: #CC0033;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  font-weight: 500;
+  font-size: 28px;
+  display: none;
+  margin-top: 16px;
+}
+
 .circular-button-container{
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  gap: 12px;
 }
 
 .circular-button:hover{
