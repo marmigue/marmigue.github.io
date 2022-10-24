@@ -637,8 +637,12 @@ const eliminarCampos = ()=>{
   if( inputPepFam.children.length >1){
     console.log( 'click' );
     inputPepFam.lastChild.remove();
+    completedPep2==true;
   }
-  formCompleted(4);
+  if(formCompleted(4)===true){
+    btnSiguiente.disabled = false;
+    btnSiguiente.classList.remove( "button-disabled" );
+  }
 }
 
 
