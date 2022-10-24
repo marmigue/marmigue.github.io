@@ -82,6 +82,7 @@ const documento2 = document.querySelector( ".info-doc2" );
 const documento3 = document.querySelector( ".info-doc3" );
 const documento4 = document.querySelector( ".info-doc4" );
 const documento5 = document.querySelector( ".info-doc5" );
+const errorFechaNacimiento = document.querySelector('.err-fecha-nacimiento');
 
 console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -173,6 +174,61 @@ const disableButtonNext = ()=>{
   btnSiguiente.disabled = true;
   btnSiguiente.classList.add( "button-disabled" );
 }
+
+const verificarFechaNacimiento = ()=>{
+  if( dia.value != '' && mes.value != '' && year.value != '' ){
+    console.log('exito');
+    validarFecha();
+  }
+}
+
+
+const validarFecha = ()=>{
+  if( year.value < currentYear  && year.value > 1900 ){
+    let dato = [`${year.value}`,`${mes.value}`, `${dia.value}`];
+    console.log(dato);
+    let edad = mayorDeEdad( [`${year.value}`,`${mes.value}`, `${dia.value}`] );
+    console.log(edad);
+    if( edad < 18 ){
+      errorFechaNacimiento.innerText = 'Debes ser Mayor de Edad';
+      errorFechaNacimiento.classList.add( "error" );
+    }else{
+      errorFechaNacimiento.innerText = '';
+      formCompleted( 0 );
+    }
+  }else{
+    // setError( inputFecha, 'Fecha no valida' );
+  }
+  formCompleted[0];
+}
+
+
+const resetErrorStateDate = ()=>{
+  inputFecha.nextElementSibling.innerText = '';
+  inputFecha.style.border = '1px solid #ccc';
+}
+
+
+const mayorDeEdad = ( dato )=>{
+
+  let year = parseInt(dato[0]);
+  let month = parseInt( dato[1] );
+  let day = parseInt( dato[2] );
+
+  let edad = currentYear - year;
+  
+  if( currentMonth < month ){
+    edad--;
+  }else if( currentMonth === month ){
+    if( currentDay < day ){
+      edad--;
+    }
+  }
+
+  return edad;
+  
+}
+
 
 const infoConfirm = ()=>{
   
@@ -741,52 +797,6 @@ const enviarDatos = ()=>{
 
 
 
-// const validarFecha = ()=>{
-//   const inputFechaArray = inputFecha.value.split( '-' );
-//   let year = inputFechaArray[0];
-//   if( year < currentYear  && year > 1900 ){
-//     let edad = mayorDeEdad( inputFechaArray );
-//     if( edad < 18 ){
-//       setError( inputFecha, 'Debes ser mayor de edad' );
-//     }else{
-//       inputFecha.nextElementSibling.innerText = '';
-//       inputFecha.style.border = '1px solid #ccc';
-//       formCompleted( 0 );
-//     }
-//   }else{
-//     setError( inputFecha, 'Fecha no valida' );
-//   }
-//   formCompleted[0];
-// }
-
-
-// const resetErrorStateDate = ()=>{
-//   inputFecha.nextElementSibling.innerText = '';
-//   inputFecha.style.border = '1px solid #ccc';
-// }
-
-const mayorDeEdad = ( dato )=>{
-
-  let year = parseInt(dato[0]);
-  let month = parseInt( dato[1] );
-  let day = parseInt( dato[2] );
-
-  let edad = currentYear - year;
-  
-  if( currentMonth < month ){
-    edad--;
-  }else if( currentMonth === month ){
-    if( currentDay < day ){
-      edad--;
-    }
-  }
-
-  return edad;
-  
-}
-
-
-
 const isInclude = ( classList, stringValue )=>{//valida si el string esta contenido dentro de la classList de un input
   for (let className of classList ) {
       if( className == stringValue ){
@@ -813,10 +823,13 @@ const CheckNumber = (e)=>{
 // phone.addEventListener( "blur",  checkNumber);
 dia.addEventListener( "blur", setSelect);
 dia.addEventListener( "change", setSelect );
+dia.addEventListener( "change", verificarFechaNacimiento );
 mes.addEventListener( "blur", setSelect);
 mes.addEventListener( "change", setSelect );
+mes.addEventListener( "change", verificarFechaNacimiento );
 year.addEventListener( "blur", setSelect);
 year.addEventListener( "change", setSelect );
+year.addEventListener( "change", verificarFechaNacimiento );
 diaEntrada.addEventListener( "blur", setSelect);
 diaEntrada.addEventListener( "change", setSelect );
 mesEntrada.addEventListener( "blur", setSelect);
