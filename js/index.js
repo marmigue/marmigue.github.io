@@ -1379,7 +1379,7 @@ const button = dropArea.querySelector( 'button' );
 const input = dropArea.querySelector( '#input-file' );
 const preview = document.querySelector( '#preview' );
 let files;
-let arrayFiles = [];
+let arrayFiles = [false,false,false,false,false];
 
 const llamarInput = ()=>{
   input.click();
@@ -1422,9 +1422,14 @@ function showFiles(files){
     arrayFiles.push(files);
   }else{
     for(const file of files){
-      if(arrayFiles.length<5){
-        indexFile++;
-        processFile(file, indexFile);
+      console.log( 'Esta es una prueba' );
+      for( let i = 0; i< arrayFiles.length; i++ ){
+        if( arrayFiles[i] === false ){
+          console.log( 'dentro del array' );
+          indexFile++;
+          processFile(file, indexFile, i);
+          break;
+        }
       }
     }
   }
@@ -1432,7 +1437,7 @@ function showFiles(files){
 }
 
 
-function processFile(file, index){
+function processFile(file, index, i){
   const docType = file.type;
   const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'text/txt'];
   if(validExtensions.includes(docType)){
@@ -1444,7 +1449,7 @@ function processFile(file, index){
         <div id="archivo${index}" class="card archivo">
           <img src="${fileUrl}" alt="${file.name}" width="50px">
           <span class="text-card">${file.name}</span>
-          <img class="delete-image delete-archivo${index}" src="./img/red-x.webp" alt="archivo${index}" onclick="deleteFile(${index})">
+          <img class="delete-image delete-archivo${i}" src="./img/red-x.webp" alt="archivo${index}" onclick="deleteFile(${i})">
         </div>
           `;
       let html = preview.innerHTML;
@@ -1452,7 +1457,9 @@ function processFile(file, index){
 
     } );
     fileReader.readAsDataURL(file);
-    arrayFiles.push(file);
+    arrayFiles[i] = file;
+    console.log('index: '+index);
+    console.log( 'i: '+i );
     // uploadFile(file, id)
   }else{
     alert('Error');
@@ -1509,6 +1516,8 @@ const deleteFile = (index)=>{
   prueba.parentElement.remove();
   console.log(index);
   console.log(prueba);
+  arrayFiles[index] = false;
+  disableButtonNext();
 }
 
 
