@@ -1,3 +1,6 @@
+// import buttonAdd from './buttonAdd.js'
+
+
 //Recordar: agregar la funcion onchange sobre los inputs de texto
 const inputNombre = document.querySelector( ".input-name" );
 const selectGenero = document.querySelector( ".select-genero" );
@@ -108,7 +111,7 @@ const currentMonth = fecha.getMonth()+1;
 const currentDay = fecha.getDate();
 
 
-ventanas[0].classList.add('ventana-activa');
+// ventanas[0].classList.add('ventana-activa'); posiblemente se deje de usar
 optionInvalid.style.color = 'grey';
 progStep[0].classList.add( "step-active" ); //establece el paso 1 como activo
 responsiveStep[0].style.display = 'inline';
@@ -427,11 +430,11 @@ const moverSiguiente = ()=>{
   }
   currentPointer++;
   previousPointer++;
-  if(currentPointer === 6 ){
-    loader.style.display = 'inline';
-    video.style.display = 'none';
-    iniciarConexion();
-  }
+  // if(currentPointer === 6 ){
+  //   loader.style.display = 'inline';
+  //   video.style.display = 'none';
+  //   iniciarConexion();
+  // }
 }
 
 
@@ -1231,15 +1234,15 @@ const eliminarFoto = ( indice )=>{
 }
 
 
-buttonFoto.addEventListener( "click", tomarFoto );
-delete1.addEventListener( "click", ()=> eliminarFoto( 0 ) );
-delete2.addEventListener( "click", ()=> eliminarFoto( 1 ) );
-delete3.addEventListener( "click", ()=> eliminarFoto( 2 ) );
-delete4.addEventListener( "click", ()=> eliminarFoto( 3 ) );
-delete5.addEventListener( "click", ()=> eliminarFoto( 4 ) );
-delete6.addEventListener( "click", ()=> eliminarFoto( 5 ) );
+// buttonFoto.addEventListener( "click", tomarFoto );
+// delete1.addEventListener( "click", ()=> eliminarFoto( 0 ) );
+// delete2.addEventListener( "click", ()=> eliminarFoto( 1 ) );
+// delete3.addEventListener( "click", ()=> eliminarFoto( 2 ) );
+// delete4.addEventListener( "click", ()=> eliminarFoto( 3 ) );
+// delete5.addEventListener( "click", ()=> eliminarFoto( 4 ) );
+// delete6.addEventListener( "click", ()=> eliminarFoto( 5 ) );
 
-select.addEventListener( "change", cambiarDispositivo );
+// select.addEventListener( "change", cambiarDispositivo );
 
 const setCities = async ()=>{
   const response = await fetch( 'https://apidesa.vaquita.com.py/api/ciudades' );
@@ -1401,77 +1404,77 @@ const changeTab = (numVentana, e)=>{
 }
 
 
-ventanas[0].addEventListener( 'click', (e)=> changeTab( 0, e) );
-ventanas[1].addEventListener( 'click', (e)=> changeTab( 1, e) );
-ventanas[2].addEventListener( 'click', (e)=> changeTab( 2, e) );
+// ventanas[0].addEventListener( 'click', (e)=> changeTab( 0, e) );
+// ventanas[1].addEventListener( 'click', (e)=> changeTab( 1, e) );
+// ventanas[2].addEventListener( 'click', (e)=> changeTab( 2, e) );
 
 
 
 
 /*------------------------------------Drag and Drop---------------------------------------*/
 
-const dropArea = document.querySelector( '.drop-area' );
-const dragText = dropArea.querySelector( 'h2' );
-const button = dropArea.querySelector( 'button' );
-const input = dropArea.querySelector( '#input-file' );
-const preview = document.querySelector( '#preview' );
-let files;
-let arrayFiles = [false,false,false,false,false];
+// const dropArea = document.querySelector( '.drop-area' );
+// const dragText = dropArea.querySelector( 'h2' );
+// const button = dropArea.querySelector( 'button' );
+// const input = dropArea.querySelector( '#input-file' );
+// const preview = document.querySelector( '#preview' );
+// let files;
+// let arrayFiles = [false,false,false,false,false];
 
-const llamarInput = ()=>{
-  input.click();
-}
-
-
-button.addEventListener( "click", llamarInput );
-input.addEventListener( "change", (e)=>{
-  files = e.target.files;
-  dropArea.classList.add("active");
-  showFiles(files);
-  dropArea.classList.remove('active');
-} );
+// const llamarInput = ()=>{
+//   input.click();
+// }
 
 
-dropArea.addEventListener( "dragover", (e)=>{
-  e.preventDefault();
-  dropArea.classList.add( "active" );
-  dragText.textContent = 'Suelta para subir los archivos';
-} );
-
-dropArea.addEventListener( "dragleave", (e)=>{
-  e.preventDefault();
-  dropArea.classList.remove( "active" );
-  dragText.textContent = 'Arrastra y suelta los documentos';
-} );
-
-dropArea.addEventListener( "drop", (e)=>{
-  e.preventDefault();
-  files = e.dataTransfer.files;
-  showFiles(files);
-  dropArea.classList.remove( "active" );
-  dragText.textContent = 'Arrastra y suelta los documentos';
-} );
+// button.addEventListener( "click", llamarInput );
+// input.addEventListener( "change", (e)=>{
+//   files = e.target.files;
+//   dropArea.classList.add("active");
+//   showFiles(files);
+//   dropArea.classList.remove('active');
+// } );
 
 
-function showFiles(files){
-  if(files.length=== undefined){
-    processFile(files);
-    arrayFiles.push(files);
-  }else{
-    for(const file of files){
-      console.log( 'Esta es una prueba' );
-      for( let i = 0; i< arrayFiles.length; i++ ){
-        if( arrayFiles[i] === false ){
-          console.log( 'dentro del array' );
-          indexFile++;
-          processFile(file, indexFile, i);
-          break;
-        }
-      }
-    }
-  }
-  formCompleted(5);
-}
+// dropArea.addEventListener( "dragover", (e)=>{
+//   e.preventDefault();
+//   dropArea.classList.add( "active" );
+//   dragText.textContent = 'Suelta para subir los archivos';
+// } );
+
+// dropArea.addEventListener( "dragleave", (e)=>{
+//   e.preventDefault();
+//   dropArea.classList.remove( "active" );
+//   dragText.textContent = 'Arrastra y suelta los documentos';
+// } );
+
+// dropArea.addEventListener( "drop", (e)=>{
+//   e.preventDefault();
+//   files = e.dataTransfer.files;
+//   showFiles(files);
+//   dropArea.classList.remove( "active" );
+//   dragText.textContent = 'Arrastra y suelta los documentos';
+// } );
+
+
+// function showFiles(files){
+//   if(files.length=== undefined){
+//     processFile(files);
+//     arrayFiles.push(files);
+//   }else{
+//     for(const file of files){
+//       console.log( 'Esta es una prueba' );
+//       for( let i = 0; i< arrayFiles.length; i++ ){
+//         if( arrayFiles[i] === false ){
+//           console.log( 'dentro del array' );
+//           indexFile++;
+//           processFile(file, indexFile, i);
+//           break;
+//         }
+//       }
+//     }
+//   }
+//   formCompleted(5);
+// }
 
 
 function processFile(file, index, i){
@@ -1558,7 +1561,7 @@ const deleteFile = (index)=>{
 }
 
 
-buttonAsalariado.addEventListener( "click", setAsalariado );
-buttonComerciante.addEventListener( "click", setComerciante );
-buttonVolverAsalariado.addEventListener( "click", volverTipoClienteAsalariado );
-buttonVolverCliente.addEventListener( "click", volverTipoClienteComerciante );
+// buttonAsalariado.addEventListener( "click", setAsalariado );
+// buttonComerciante.addEventListener( "click", setComerciante );
+// buttonVolverAsalariado.addEventListener( "click", volverTipoClienteAsalariado );
+// buttonVolverCliente.addEventListener( "click", volverTipoClienteComerciante );
