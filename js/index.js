@@ -1450,6 +1450,14 @@ const preview = document.querySelector( '#preview' );
 let files;
 let arrayFiles = [false,false,false,false,false];
 
+document
+  .getElementById("cameraFileInput1")
+  .addEventListener("change", function () {
+    document
+      .getElementById("pictureFromCamera")
+      .setAttribute("src", window.URL.createObjectURL(this.files[0]));
+  });
+
 const llamarInput = ()=>{
   input.click();
 }
