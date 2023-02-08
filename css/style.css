@@ -765,7 +765,7 @@ footer{
 }
 
 .selfie-container{
-  margin: auto;
+  margin: 12px auto;
   width: 150px;
   height: 150px;
   border-radius: 50%;
