@@ -1413,73 +1413,74 @@ const changeTab = (numVentana, e)=>{
 
 /*------------------------------------Drag and Drop---------------------------------------*/
 
-// const dropArea = document.querySelector( '.drop-area' );
-// const dragText = dropArea.querySelector( 'h2' );
-// const button = dropArea.querySelector( 'button' );
-// const input = dropArea.querySelector( '#input-file' );
-// const preview = document.querySelector( '#preview' );
-// let files;
-// let arrayFiles = [false,false,false,false,false];
+const dropArea = document.querySelector( '.drop-area' );
+const dragText = dropArea.querySelector( 'h2' );
+const button = dropArea.querySelector( 'button' );
+const input = dropArea.querySelector( '#input-file' );
+const preview = document.querySelector( '#preview' );
+let files;
+let arrayFiles = [false,false,false,false,false];
 
-// const llamarInput = ()=>{
-//   input.click();
-// }
-
-
-// button.addEventListener( "click", llamarInput );
-// input.addEventListener( "change", (e)=>{
-//   files = e.target.files;
-//   dropArea.classList.add("active");
-//   showFiles(files);
-//   dropArea.classList.remove('active');
-// } );
+const llamarInput = ()=>{
+  input.click();
+}
 
 
-// dropArea.addEventListener( "dragover", (e)=>{
-//   e.preventDefault();
-//   dropArea.classList.add( "active" );
-//   dragText.textContent = 'Suelta para subir los archivos';
-// } );
-
-// dropArea.addEventListener( "dragleave", (e)=>{
-//   e.preventDefault();
-//   dropArea.classList.remove( "active" );
-//   dragText.textContent = 'Arrastra y suelta los documentos';
-// } );
-
-// dropArea.addEventListener( "drop", (e)=>{
-//   e.preventDefault();
-//   files = e.dataTransfer.files;
-//   showFiles(files);
-//   dropArea.classList.remove( "active" );
-//   dragText.textContent = 'Arrastra y suelta los documentos';
-// } );
+button.addEventListener( "click", llamarInput );
+input.addEventListener( "change", (e)=>{
+  files = e.target.files;
+  dropArea.classList.add("active");
+  showFiles(files);
+  dropArea.classList.remove('active');
+} );
 
 
-// function showFiles(files){
-//   if(files.length=== undefined){
-//     processFile(files);
-//     arrayFiles.push(files);
-//   }else{
-//     for(const file of files){
-//       console.log( 'Esta es una prueba' );
-//       for( let i = 0; i< arrayFiles.length; i++ ){
-//         if( arrayFiles[i] === false ){
-//           console.log( 'dentro del array' );
-//           indexFile++;
-//           processFile(file, indexFile, i);
-//           break;
-//         }
-//       }
-//     }
-//   }
-//   formCompleted(5);
-// }
+dropArea.addEventListener( "dragover", (e)=>{
+  e.preventDefault();
+  dropArea.classList.add( "active" );
+  dragText.textContent = 'Suelta para subir los archivos';
+} );
+
+dropArea.addEventListener( "dragleave", (e)=>{
+  e.preventDefault();
+  dropArea.classList.remove( "active" );
+  dragText.textContent = 'Arrastra y suelta los documentos';
+} );
+
+dropArea.addEventListener( "drop", (e)=>{
+  e.preventDefault();
+  files = e.dataTransfer.files;
+  showFiles(files);
+  dropArea.classList.remove( "active" );
+  dragText.textContent = 'Arrastra y suelta los documentos';
+} );
+
+
+function showFiles(files){
+  if(files.length=== undefined){
+    processFile(files);
+    arrayFiles.push(files);
+  }else{
+    for(const file of files){
+      console.log( 'Esta es una prueba' );
+      for( let i = 0; i< arrayFiles.length; i++ ){
+        if( arrayFiles[i] === false ){
+          console.log( 'dentro del array' );
+          indexFile++;
+          processFile(file, indexFile, i);
+          break;
+        }
+      }
+    }
+  }
+  // formCompleted(5);
+}
 
 
 function processFile(file, index, i){
   const docType = file.type;
-  const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'text/txt'];
+  console.log(docType);
+  const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'text/plain', 'application/pdf'];
   if(validExtensions.includes(docType)){
     const fileReader = new FileReader();
     const id = `file-${Math.random().toString(32).substring(7)}`;
