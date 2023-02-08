@@ -1431,13 +1431,6 @@ const changeTab = (numVentana, e)=>{
 }
 
 
-// ventanas[0].addEventListener( 'click', (e)=> changeTab( 0, e) );
-// ventanas[1].addEventListener( 'click', (e)=> changeTab( 1, e) );
-// ventanas[2].addEventListener( 'click', (e)=> changeTab( 2, e) );
-
-
-
-
 /*------------------------------------Drag and Drop---------------------------------------*/
 
 const dropArea = document.querySelector( '.drop-area' );
@@ -1630,9 +1623,3 @@ const deleteFile = (index)=>{
   arrayFiles[index] = false;
   disableButtonNext();
 }
-
-
-// buttonAsalariado.addEventListener( "click", setAsalariado );
-// buttonComerciante.addEventListener( "click", setComerciante );
-// buttonVolverAsalariado.addEventListener( "click", volverTipoClienteAsalariado );
-// buttonVolverCliente.addEventListener( "click", volverTipoClienteComerciante );

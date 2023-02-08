@@ -763,3 +763,18 @@ footer{
   border-radius: 12px;
   margin: 12px 0;
 }
+
+.selfie-container{
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+
+.img-selfie{
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
