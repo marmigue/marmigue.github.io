@@ -1447,6 +1447,8 @@ const buttonAdd = document.querySelectorAll( '.button-add' );
 const input = dropArea.querySelector( '#input-file' );
 const inputCamera = document.querySelectorAll( '.cameraFileInput' );
 const preview = document.querySelector( '#preview' );
+const imgCamara = document.querySelectorAll('.img-camara');
+const containerClickable = document.querySelectorAll('.container-clickable');
 let files;
 let arrayFiles = [false,false,false,false,false];
 
@@ -1456,6 +1458,8 @@ document
     document
       .getElementById("pictureFromCamera1")
       .setAttribute("src", window.URL.createObjectURL(this.files[0]));
+    imgCamara[0].style.display = 'block';
+    containerClickable[0].style.display = 'none';
   });
 
   document
@@ -1464,6 +1468,8 @@ document
     document
       .getElementById("pictureFromCamera2")
       .setAttribute("src", window.URL.createObjectURL(this.files[0]));
+    imgCamara[1].style.display = 'block';
+    containerClickable[1].style.display = 'none';
   });
 
 
@@ -1473,6 +1479,8 @@ document
     document
       .getElementById("pictureFromCamera3")
       .setAttribute("src", window.URL.createObjectURL(this.files[0]));
+    imgCamara[2].style.display = 'block';
+    containerClickable[2].style.display = 'none';
   });
 
 const llamarInput = ()=>{
