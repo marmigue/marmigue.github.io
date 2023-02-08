@@ -1454,7 +1454,24 @@ document
   .getElementById("cameraFileInput1")
   .addEventListener("change", function () {
     document
-      .getElementById("pictureFromCamera")
+      .getElementById("pictureFromCamera1")
+      .setAttribute("src", window.URL.createObjectURL(this.files[0]));
+  });
+
+  document
+  .getElementById("cameraFileInput2")
+  .addEventListener("change", function () {
+    document
+      .getElementById("pictureFromCamera2")
+      .setAttribute("src", window.URL.createObjectURL(this.files[0]));
+  });
+
+
+  document
+  .getElementById("cameraFileInput3")
+  .addEventListener("change", function () {
+    document
+      .getElementById("pictureFromCamera3")
       .setAttribute("src", window.URL.createObjectURL(this.files[0]));
   });
 
