@@ -662,6 +662,19 @@
             <div class="seccion fotos">
               <div class="container-clickable">
                 <div class="clickable-option">
+                  <button type="button" class="button-add button-add-1">+</button>
+                  <input
+                  id="cameraFileInput"
+                  type="file"
+                  accept="image/*"
+                  capture="environment"
+                  hidden
+                />
+                  <p class="red-text">Documento de Identidad</p>
+                </div>
+              </div>
+              <div class="container-clickable">
+                <div class="clickable-option">
                   <button type="button" class="button-add">+</button>
                   <p class="red-text">Documento de Identidad</p>
                 </div>
@@ -674,11 +687,11 @@
               </div>
             </div>
             <input
-            id="cameraFileInput"
-            type="file"
-            accept="image/*"
-            capture="environment"
-          />
+              id="cameraFileInput"
+              type="file"
+              accept="image/*"
+              capture="environment"
+            />
             
             <!-- <p>Boletas</p>
             <div class="archivos-boletas">
