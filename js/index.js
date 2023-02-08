@@ -1443,9 +1443,9 @@ const changeTab = (numVentana, e)=>{
 const dropArea = document.querySelector( '.drop-area' );
 const dragText = dropArea.querySelector( 'h2' );
 const button = dropArea.querySelector( 'button' );
-const buttonAdd1 = document.querySelector( '.button-add-1' );
+const buttonAdd = document.querySelectorAll( '.button-add' );
 const input = dropArea.querySelector( '#input-file' );
-const inputCamera = document.querySelector( '#cameraFileInput' );
+const inputCamera = document.querySelectorAll( '.cameraFileInput' );
 const preview = document.querySelector( '#preview' );
 let files;
 let arrayFiles = [false,false,false,false,false];
@@ -1454,11 +1454,13 @@ const llamarInput = ()=>{
   input.click();
 }
 
-const llamarInputCamera = ()=>{
-  inputCamera.click();
+const llamarInputCamera = (i)=>{
+  inputCamera[i].click();
 }
 
-buttonAdd1.addEventListener( "click", llamarInputCamera );
+buttonAdd[0].addEventListener( "click", ()=> llamarInputCamera(0) );
+buttonAdd[1].addEventListener( "click", ()=> llamarInputCamera(1) );
+buttonAdd[2].addEventListener( "click", ()=> llamarInputCamera(2) );
 
 
 button.addEventListener( "click", llamarInput );
