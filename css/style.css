@@ -754,3 +754,8 @@ footer{
 .red-text, .button-add:hover{
   cursor: pointer;
 }
+
+
+.img-camara{
+  width: 100%;
+}
