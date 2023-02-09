@@ -1541,7 +1541,6 @@ function processFile(file, index, i){
       const fileUrl = fileReader.result;
       const image = `
         <div id="archivo${index}" class="card archivo">
-          <img src="${fileUrl}" alt="${file.name}" width="50px">
           <span class="text-card">${file.name}</span>
           <img class="delete-image delete-archivo${i}" src="./img/red-x.webp" alt="archivo${index}" onclick="deleteFile(${i})">
         </div>
