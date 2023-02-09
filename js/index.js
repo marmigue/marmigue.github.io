@@ -1443,7 +1443,7 @@ const preview = document.querySelector( '#preview' );
 const fotoDescriptions = [...document.querySelectorAll('.foto-descripcion')];
 console.log(fotoDescriptions)
 let files;
-let arrayFiles = [false,false,false,false,false];
+let arrayFiles = [false,false,false,false,false, false];
 
 document
   .getElementById("cameraFileInput1")
@@ -1466,6 +1466,13 @@ document
   console.log(this.files[0].name);
 });
 
+document
+.getElementById("documentFileinput")
+.addEventListener("change", function () {
+  fotoDescriptions[3].innerText = 'documento-respaldatorio-de-domicilio.jpg';
+  console.log(this.files[0].name);
+});
+
 const llamarInput = ()=>{
   input.click();
 }
@@ -1477,6 +1484,7 @@ const llamarInputCamera = (i)=>{
 buttonAdd[0].addEventListener( "click", ()=> llamarInputCamera(0) );
 buttonAdd[1].addEventListener( "click", ()=> llamarInputCamera(1) );
 buttonAdd[2].addEventListener( "click", ()=> llamarInputCamera(2) );
+buttonAdd[3].addEventListener( "click", ()=> llamarInputCamera(3) );
 
 
 button.addEventListener( "click", llamarInput );
