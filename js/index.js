@@ -1486,8 +1486,8 @@ buttonAdd[1].addEventListener( "click", ()=> llamarInputCamera(1) );
 buttonAdd[2].addEventListener( "click", ()=> llamarInputCamera(2) );
 buttonAdd[3].addEventListener( "click", ()=> llamarInputCamera(3) );
 
-
 button.addEventListener( "click", llamarInput );
+
 input.addEventListener( "change", (e)=>{
   files = e.target.files;
   dropArea.classList.add("active");
