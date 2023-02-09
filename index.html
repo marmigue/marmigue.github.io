@@ -656,63 +656,49 @@
 
           <div class="pre-load-section">
             <p class="titulo titulo-main">Necesitamos que suba algunos documentos</p>
-            <p class="parrafo">Para subir los documentos requeridos por favor presione sobre el boton o el texto en rojo
-              y siga las instrucciones.</p>
+            <p class="parrafo">Para subir los documentos requeridos por favor siga las instrucciones listadas abajo.</p>
+            <p class="parrafo">Es necesario que suba una foto frontal de su cedula. Para abrir la cámara presione el boton de abajo</p>
 
-            <div class="seccion fotos">
-              <div class="container-clickable">
-                <div class="clickable-option">
-                  <button type="button" class="button-add">+</button>
-                  <input
-                    id="cameraFileInput1"
-                    class="cameraFileInput"
-                    type="file"
-                    accept="image/*"
-                    capture="environment"
-                    hidden
-                  />
-                  <p class="red-text">Frente de tu cédula</p>
-                </div>
-              </div>
-              <img class="img-camara" id="pictureFromCamera1" />
+            <button type="button" class="button-red button-camera">Foto C.I. frontal</button>
+              <input
+                id="cameraFileInput1"
+                class="cameraFileInput button-red"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                hidden
+              />
 
+              <p class="foto-descripcion"></p>
 
-              <div class="container-clickable">
-                <div class="clickable-option">
-                  <button type="button" class="button-add">+</button>
-                  <input
-                    id="cameraFileInput2"
-                    class="cameraFileInput"
-                    type="file"
-                    accept="image/*"
-                    capture="environment"
-                    hidden
-                  />
-                  <p class="red-text">Dorso de tu cédula</p>
-                </div>
-              </div>
-              <img class="img-camara" id="pictureFromCamera2" />
+              <p class="parrafo">Es necesario que suba una foto del dorso de su cedula.</p>
 
+              <button type="button" class="button-red button-camera">Foto dorso C.I.</button>
+              <input
+                id="cameraFileInput2"
+                class="cameraFileInput"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                hidden
+              />
 
-              <div class="container-clickable selfie-container">
-                <div class="clickable-option">
-                  <button type="button" class="button-add">+</button>
-                  <input
-                    id="cameraFileInput3"
-                    class="cameraFileInput"
-                    type="file"
-                    accept="image/*"
-                    capture="environment"
-                    hidden
-                  />
-                </div>
-              </div>
-              <img class="img-camara img-selfie" id="pictureFromCamera3" />
-              <!-- <p class="red-text">Selfie</p> -->
+              <p class="foto-descripcion"></p>
 
+              <p class="parrafo">Es necesario que suba una foto del dorso de su cedula.</p>
 
-            </div>
-            
+              <button type="button" class="button-red button-camera">Tomar foto selfie</button>
+              <input
+                id="cameraFileInput3"
+                class="cameraFileInput"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                hidden
+              />
+
+              <p class="foto-descripcion"></p>
+
             <!-- <p>Boletas</p>
             <div class="archivos-boletas">
               <div class="drop-area">
@@ -725,6 +711,7 @@
             </div> -->
             
             <!-- <p>Documento Respaldatorio De Domicilio</p> -->
+            <p class="parrafo"></p>
             <div class="archivos-boletas">
               <div class="drop-area">
                 <h2>Arrastra y suelta los documentos</h2>

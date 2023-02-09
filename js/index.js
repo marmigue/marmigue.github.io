@@ -1436,45 +1436,35 @@ const changeTab = (numVentana, e)=>{
 const dropArea = document.querySelector( '.drop-area' );
 const dragText = dropArea.querySelector( 'h2' );
 const button = dropArea.querySelector( 'button' );
-const buttonAdd = document.querySelectorAll( '.button-add' );
+const buttonAdd = document.querySelectorAll( '.button-camera' );
 const input = dropArea.querySelector( '#input-file' );
 const inputCamera = document.querySelectorAll( '.cameraFileInput' );
 const preview = document.querySelector( '#preview' );
-const imgCamara = document.querySelectorAll('.img-camara');
-const containerClickable = document.querySelectorAll('.container-clickable');
+const fotoDescriptions = [...document.querySelectorAll('.foto-descripcion')];
+console.log(fotoDescriptions)
 let files;
 let arrayFiles = [false,false,false,false,false];
 
 document
   .getElementById("cameraFileInput1")
   .addEventListener("change", function () {
-    document
-      .getElementById("pictureFromCamera1")
-      .setAttribute("src", window.URL.createObjectURL(this.files[0]));
-    imgCamara[0].style.display = 'block';
-    containerClickable[0].style.display = 'none';
+    fotoDescriptions[0].innerText = this.files[0].name;
+    console.log(this.files[0].name);
   });
 
-  document
-  .getElementById("cameraFileInput2")
-  .addEventListener("change", function () {
-    document
-      .getElementById("pictureFromCamera2")
-      .setAttribute("src", window.URL.createObjectURL(this.files[0]));
-    imgCamara[1].style.display = 'block';
-    containerClickable[1].style.display = 'none';
-  });
+document
+.getElementById("cameraFileInput2")
+.addEventListener("change", function () {
+  fotoDescriptions[1].innerText = this.files[0].name;
+  console.log(this.files[0].name);
+});
 
-
-  document
-  .getElementById("cameraFileInput3")
-  .addEventListener("change", function () {
-    document
-      .getElementById("pictureFromCamera3")
-      .setAttribute("src", window.URL.createObjectURL(this.files[0]));
-    imgCamara[2].style.display = 'block';
-    containerClickable[2].style.display = 'none';
-  });
+document
+.getElementById("cameraFileInput3")
+.addEventListener("change", function () {
+  fotoDescriptions[2].innerText = this.files[0].name;
+  console.log(this.files[0].name);
+});
 
 const llamarInput = ()=>{
   input.click();

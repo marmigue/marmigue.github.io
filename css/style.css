@@ -711,9 +711,9 @@ footer{
 
 
 .parrafo{
-  width: 60%;
-  text-align: center;
-  margin: auto;
+  width: 100%;
+  text-align: justify;
+  margin: 12px 0;
 }
 
 
@@ -736,22 +736,12 @@ footer{
   gap: 8px;
 }
 
-.button-add{
-  border-radius: 50%;
-  border: none;
-  font-size: 28px;
-  color: white;
-  background-color: #CC0033;
-  height: 40px;
-  width: 40px;
-}
-
 .red-text{
   color: #CC0033;
 }
 
 
-.red-text, .button-add:hover{
+.red-text:hover{
   cursor: pointer;
 }
 
