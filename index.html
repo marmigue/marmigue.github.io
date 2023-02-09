@@ -659,7 +659,8 @@
             <p class="parrafo">Para subir los documentos requeridos por favor siga las instrucciones listadas abajo.</p>
             <p class="parrafo">Es necesario que suba una foto frontal de su cedula. Para abrir la cámara presione el boton de abajo</p>
 
-            <button type="button" class="button-red button-camera">Foto C.I. frontal</button>
+            <div class="container-img-nombre">
+              <button type="button" class="button-red button-camera">Foto C.I. frontal</button>
               <input
                 id="cameraFileInput1"
                 class="cameraFileInput button-red"
@@ -668,11 +669,13 @@
                 capture="environment"
                 hidden
               />
+  
+              <p class="card foto-descripcion"></p>
+            </div>
 
-              <p class="foto-descripcion"></p>
+            <p class="parrafo">Es necesario que suba una foto del dorso de su cedula.</p>
 
-              <p class="parrafo">Es necesario que suba una foto del dorso de su cedula.</p>
-
+            <div class="container-img-nombre">
               <button type="button" class="button-red button-camera">Foto dorso C.I.</button>
               <input
                 id="cameraFileInput2"
@@ -682,11 +685,13 @@
                 capture="environment"
                 hidden
               />
+              <p class="card foto-descripcion"></p>
+            </div>
 
-              <p class="foto-descripcion"></p>
 
-              <p class="parrafo">Es necesario que suba una foto del dorso de su cedula.</p>
+            <p class="parrafo">Es necesario que suba una foto del dorso de su cedula.</p>
 
+            <div class="container-img-nombre">
               <button type="button" class="button-red button-camera">Tomar foto selfie</button>
               <input
                 id="cameraFileInput3"
@@ -697,7 +702,8 @@
                 hidden
               />
 
-              <p class="foto-descripcion"></p>
+              <p class="card foto-descripcion"></p>
+            </div>
 
             <!-- <p>Boletas</p>
             <div class="archivos-boletas">
