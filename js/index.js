@@ -1448,24 +1448,21 @@ let arrayFiles = [false,false,false,false,false];
 document
   .getElementById("cameraFileInput1")
   .addEventListener("change", function () {
-    this.files[0].name = 'foto-frontal-ci.jpg';
-    fotoDescriptions[0].innerText = this.files[0].name;
+    fotoDescriptions[0].innerText = 'foto-frontal-ci.jpg';
     console.log(this.files[0].name);
   });
 
 document
 .getElementById("cameraFileInput2")
 .addEventListener("change", function () {
-  this.files[0].name = 'foto-dorso-ci.jpg';
-  fotoDescriptions[1].innerText = this.files[0].name;
+  fotoDescriptions[1].innerText = 'foto-dorso-ci.jpg';
   console.log(this.files[0].name);
 });
 
 document
 .getElementById("cameraFileInput3")
 .addEventListener("change", function () {
-  this.files[0].name = 'foto-selfie.jpg';
-  fotoDescriptions[2].innerText = this.files[0].name;
+  fotoDescriptions[2].innerText = 'foto-selfie.jpg';
   console.log(this.files[0].name);
 });
 
