@@ -292,55 +292,55 @@ const infoConfirm = ()=>{
   info[20].innerText = inputDir.value;
   info[21].innerText = inputCalle1.value;
   info[22].innerText = inputCalle2.value;
-  // if(numeroCasa.value !== ''){
-  //   infoSection[23].style.display = 'block';
-  //   info[23].innerText = numeroCasa.value;
-  // }else{
-  //   infoSection[23].style.display = 'none';
-  // }
-  // if(referencias[0].value !== ''){
-  //   infoSection[24].style.display = 'block';
-  //   info[24].innerText = referencias[0].value;
-  // }else{
-  //   infoSection[24].style.display = 'none';
-  // }
-  // info[25].innerText = ciudadesTrabajo.value;
-  // info[26].innerText = barrioTrabajo.value;
-  // info[27].innerText = calle1Trabajo.value;
-  // info[28].innerText = calle2Trabajo.value;
-  // if(edificioTrabajo.value !== ''){
-  //   infoSection[29].style.display = 'block';
-  //   info[29].innerText = edificioTrabajo.value;
-  // }else{
-  //   infoSection[29].style.display = 'none';
-  // }
-  // if(referencias[1].value !== ''){
-  //   infoSection[30].style.display = 'block';
-  //   info[30].innerText = referencias[1].value;
-  // }else{
-  //   infoSection[30].style.display = 'none';
+  if(numeroCasa.value !== ''){
+    infoSection[23].style.display = 'block';
+    info[23].innerText = numeroCasa.value;
+  }else{
+    infoSection[23].style.display = 'none';
+  }
+  if(referencias[0].value !== ''){
+    infoSection[24].style.display = 'block';
+    info[24].innerText = referencias[0].value;
+  }else{
+    infoSection[24].style.display = 'none';
+  }
+  info[25].innerText = ciudadesTrabajo.value;
+  info[26].innerText = barrioTrabajo.value;
+  info[27].innerText = calle1Trabajo.value;
+  info[28].innerText = calle2Trabajo.value;
+  if(edificioTrabajo.value !== ''){
+    infoSection[29].style.display = 'block';
+    info[29].innerText = edificioTrabajo.value;
+  }else{
+    infoSection[29].style.display = 'none';
+  }
+  if(referencias[1].value !== ''){
+    infoSection[30].style.display = 'block';
+    info[30].innerText = referencias[1].value;
+  }else{
+    infoSection[30].style.display = 'none';
 
-  // }
-  // if( inputSiPep.value !== ''){
-  //   info[31].innerText = 'Si';
-  //   pepConfirm.style.display = 'block';
-  //   pepEnteidadConfirm[0].innerText = inputEnt.value;
-  //   pepEnteidadConfirm[1].innerText = inputCarg.value;
-  //   pepBool1 = true;
-  // } else{
-  //   info[31].innerText = 'No';
-  //   pepBool1 = false;
-  // }
-  // if( inputFamSi.value !== '' ){
-  //   info[32].innerText = 'Si';
-  //   pepFamConfirm.style.display = 'block';
-  // pepFamEntidadConfirm[0].innerText = inputEntFam.value;
-  // pepFamEntidadConfirm[1].innerText = inputCargFam.value;
-  //   pepBool2 = true;
-  // }else{
-  //   info[32].innerText = 'No';
-  //   pepBool2 = false;
-  // }
+  }
+  if( inputSiPep.value !== ''){
+    info[31].innerText = 'Si';
+    pepConfirm.style.display = 'block';
+    pepEnteidadConfirm[0].innerText = inputEnt.value;
+    pepEnteidadConfirm[1].innerText = inputCarg.value;
+    pepBool1 = true;
+  } else{
+    info[31].innerText = 'No';
+    pepBool1 = false;
+  }
+  if( inputFamSi.value !== '' ){
+    info[32].innerText = 'Si';
+    pepFamConfirm.style.display = 'block';
+  pepFamEntidadConfirm[0].innerText = inputEntFam.value;
+  pepFamEntidadConfirm[1].innerText = inputCargFam.value;
+    pepBool2 = true;
+  }else{
+    info[32].innerText = 'No';
+    pepBool2 = false;
+  }
   // if(isAsalariado === true ){
   //   archivoContainer.style.display = 'none';
   //   boletaContainer.style.display = 'block';
