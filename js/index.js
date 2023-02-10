@@ -89,7 +89,6 @@ const errorFechaNacimiento = document.querySelector('.err-fecha-nacimiento');
 const errorFechaIngreso = document.querySelector( '.err-fecha-entrada' );
 const circularButtonDelete = document.querySelector( '.circular-button-delete' );
 const infoSection = [...document.querySelectorAll( '.info-section' )];
-const referencias = [...document.querySelectorAll( '.referencia' )];
 
 // console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -268,7 +267,7 @@ const infoConfirm = ()=>{
   
   let pepBool1 = false;
   let pepBool2 = false;
-  
+  console.log(info)
   info[0].innerText = inputNombre.value;
   info[1].innerText = inputCI.value;
   info[2].innerText = `${dia.value}-${mes.value}-${year.value}`;
@@ -298,64 +297,36 @@ const infoConfirm = ()=>{
   }else{
     infoSection[23].style.display = 'none';
   }
-  if(referencias[0].value !== ''){
-    infoSection[24].style.display = 'block';
-    info[24].innerText = referencias[0].value;
-  }else{
-    infoSection[24].style.display = 'none';
-  }
-  info[25].innerText = ciudadesTrabajo.value;
-  info[26].innerText = barrioTrabajo.value;
-  info[27].innerText = calle1Trabajo.value;
-  info[28].innerText = calle2Trabajo.value;
+  info[24].innerText = ciudadesTrabajo.value;
+  info[25].innerText = barrioTrabajo.value;
+  info[26].innerText = calle1Trabajo.value;
+  info[27].innerText = calle2Trabajo.value;
   if(edificioTrabajo.value !== ''){
-    infoSection[29].style.display = 'block';
-    info[29].innerText = edificioTrabajo.value;
+    infoSection[28].style.display = 'block';
+    info[28].innerText = edificioTrabajo.value;
   }else{
-    infoSection[29].style.display = 'none';
-  }
-  if(referencias[1].value !== ''){
-    infoSection[30].style.display = 'block';
-    info[30].innerText = referencias[1].value;
-  }else{
-    infoSection[30].style.display = 'none';
-
+    infoSection[28].style.display = 'none';
   }
   if( inputSiPep.value !== ''){
-    info[31].innerText = 'Si';
+    info[29].innerText = 'Si';
     pepConfirm.style.display = 'block';
     pepEnteidadConfirm[0].innerText = inputEnt.value;
     pepEnteidadConfirm[1].innerText = inputCarg.value;
     pepBool1 = true;
   } else{
-    info[31].innerText = 'No';
+    info[29].innerText = 'No';
     pepBool1 = false;
   }
   if( inputFamSi.value !== '' ){
-    info[32].innerText = 'Si';
+    info[30].innerText = 'Si';
     pepFamConfirm.style.display = 'block';
   pepFamEntidadConfirm[0].innerText = inputEntFam.value;
   pepFamEntidadConfirm[1].innerText = inputCargFam.value;
     pepBool2 = true;
   }else{
-    info[32].innerText = 'No';
+    info[30].innerText = 'No';
     pepBool2 = false;
   }
-  // if(isAsalariado === true ){
-  //   archivoContainer.style.display = 'none';
-  //   boletaContainer.style.display = 'block';
-  //   boletaIPS.src = lienzo4.toDataURL();
-  //   boletaSalario.src = lienzo5.toDataURL();
-  // }else if(isComerciante === true){
-  //   archivoContainer.style.display = 'block';
-  //   boletaContainer.style.display = 'none';
-  //   documento1.innerText = arrayFiles[0].name;
-  //   documento2.innerText = arrayFiles[1].name;
-  //   documento3.innerText = arrayFiles[2].name;
-  //   documento4.innerText = arrayFiles[3].name;
-  //   documento5.innerText = arrayFiles[4].name;
-  // }
-  // documentoDomicilio.src = lienzo6.toDataURL();
   
   let subCad = inputNombre.value.split( ' ' );
   
