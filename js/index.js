@@ -298,12 +298,12 @@ const infoConfirm = ()=>{
   }else{
     infoSection[23].style.display = 'none';
   }
-  if(referencias[0].value !== ''){
-    infoSection[24].style.display = 'block';
-    info[24].innerText = referencias[0].value;
-  }else{
-    infoSection[24].style.display = 'none';
-  }
+  // if(referencias[0].value !== ''){
+    // infoSection[24].style.display = 'block';
+    // info[24].innerText = referencias[0].value;
+  // }else{
+    // infoSection[24].style.display = 'none';
+  // }
   info[25].innerText = ciudadesTrabajo.value;
   info[26].innerText = barrioTrabajo.value;
   info[27].innerText = calle1Trabajo.value;
