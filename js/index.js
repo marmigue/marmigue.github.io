@@ -292,118 +292,115 @@ const infoConfirm = ()=>{
   info[20].innerText = inputDir.value;
   info[21].innerText = inputCalle1.value;
   info[22].innerText = inputCalle2.value;
-  if(numeroCasa.value !== ''){
-    infoSection[23].style.display = 'block';
-    info[23].innerText = numeroCasa.value;
-  }else{
-    infoSection[23].style.display = 'none';
-  }
-  if(referencias[0].value !== ''){
-    infoSection[24].style.display = 'block';
-    info[24].innerText = referencias[0].value;
-  }else{
-    infoSection[24].style.display = 'none';
-  }
-  info[25].innerText = ciudadesTrabajo.value;
-  info[26].innerText = barrioTrabajo.value;
-  info[27].innerText = calle1Trabajo.value;
-  info[28].innerText = calle2Trabajo.value;
-  if(edificioTrabajo.value !== ''){
-    infoSection[29].style.display = 'block';
-    info[29].innerText = edificioTrabajo.value;
-  }else{
-    infoSection[29].style.display = 'none';
-  }
-  if(referencias[1].value !== ''){
-    infoSection[30].style.display = 'block';
-    info[30].innerText = referencias[1].value;
-  }else{
-    infoSection[30].style.display = 'none';
+  // if(numeroCasa.value !== ''){
+  //   infoSection[23].style.display = 'block';
+  //   info[23].innerText = numeroCasa.value;
+  // }else{
+  //   infoSection[23].style.display = 'none';
+  // }
+  // if(referencias[0].value !== ''){
+  //   infoSection[24].style.display = 'block';
+  //   info[24].innerText = referencias[0].value;
+  // }else{
+  //   infoSection[24].style.display = 'none';
+  // }
+  // info[25].innerText = ciudadesTrabajo.value;
+  // info[26].innerText = barrioTrabajo.value;
+  // info[27].innerText = calle1Trabajo.value;
+  // info[28].innerText = calle2Trabajo.value;
+  // if(edificioTrabajo.value !== ''){
+  //   infoSection[29].style.display = 'block';
+  //   info[29].innerText = edificioTrabajo.value;
+  // }else{
+  //   infoSection[29].style.display = 'none';
+  // }
+  // if(referencias[1].value !== ''){
+  //   infoSection[30].style.display = 'block';
+  //   info[30].innerText = referencias[1].value;
+  // }else{
+  //   infoSection[30].style.display = 'none';
 
-  }
-  if( inputSiPep.value !== ''){
-    info[31].innerText = 'Si';
-    pepConfirm.style.display = 'block';
-    pepEnteidadConfirm[0].innerText = inputEnt.value;
-    pepEnteidadConfirm[1].innerText = inputCarg.value;
-    pepBool1 = true;
-  } else{
-    info[31].innerText = 'No';
-    pepBool1 = false;
-  }
-  if( inputFamSi.value !== '' ){
-    info[32].innerText = 'Si';
-    pepFamConfirm.style.display = 'block';
-    // pepFamEntidadConfirm[0].innerText = inputEntFam.value;
-    // pepFamEntidadConfirm[1].innerText = inputCargFam.value;
-    pepBool2 = true;
-  }else{
-    info[32].innerText = 'No';
-    pepBool2 = false;
-  }
-  fotoFrontalConfirm.src = lienzo1.toDataURL();
-  fotoTraseraConfirm.src = lienzo2.toDataURL();
-  selfieConfirm.src = lienzo3.toDataURL();
-  if(isAsalariado === true ){
-    archivoContainer.style.display = 'none';
-    boletaContainer.style.display = 'block';
-    boletaIPS.src = lienzo4.toDataURL();
-    boletaSalario.src = lienzo5.toDataURL();
-  }else if(isComerciante === true){
-    archivoContainer.style.display = 'block';
-    boletaContainer.style.display = 'none';
-    documento1.innerText = arrayFiles[0].name;
-    documento2.innerText = arrayFiles[1].name;
-    documento3.innerText = arrayFiles[2].name;
-    documento4.innerText = arrayFiles[3].name;
-    documento5.innerText = arrayFiles[4].name;
-  }
-  documentoDomicilio.src = lienzo6.toDataURL();
+  // }
+  // if( inputSiPep.value !== ''){
+  //   info[31].innerText = 'Si';
+  //   pepConfirm.style.display = 'block';
+  //   pepEnteidadConfirm[0].innerText = inputEnt.value;
+  //   pepEnteidadConfirm[1].innerText = inputCarg.value;
+  //   pepBool1 = true;
+  // } else{
+  //   info[31].innerText = 'No';
+  //   pepBool1 = false;
+  // }
+  // if( inputFamSi.value !== '' ){
+  //   info[32].innerText = 'Si';
+  //   pepFamConfirm.style.display = 'block';
+  // pepFamEntidadConfirm[0].innerText = inputEntFam.value;
+  // pepFamEntidadConfirm[1].innerText = inputCargFam.value;
+  //   pepBool2 = true;
+  // }else{
+  //   info[32].innerText = 'No';
+  //   pepBool2 = false;
+  // }
+  // if(isAsalariado === true ){
+  //   archivoContainer.style.display = 'none';
+  //   boletaContainer.style.display = 'block';
+  //   boletaIPS.src = lienzo4.toDataURL();
+  //   boletaSalario.src = lienzo5.toDataURL();
+  // }else if(isComerciante === true){
+  //   archivoContainer.style.display = 'block';
+  //   boletaContainer.style.display = 'none';
+  //   documento1.innerText = arrayFiles[0].name;
+  //   documento2.innerText = arrayFiles[1].name;
+  //   documento3.innerText = arrayFiles[2].name;
+  //   documento4.innerText = arrayFiles[3].name;
+  //   documento5.innerText = arrayFiles[4].name;
+  // }
+  // documentoDomicilio.src = lienzo6.toDataURL();
   
   let subCad = inputNombre.value.split( ' ' );
   
   
-  let send1 = {
-    "tipoPersona": "F",
-    "tipoDocumento": "CI",
-    "numeroDocumento": inputCI.value,
-    "primerNombre": subCad[0],
-    "primerApellido": subCad[1],
+  // let send1 = {
+  //   "tipoPersona": "F",
+  //   "tipoDocumento": "CI",
+  //   "numeroDocumento": inputCI.value,
+  //   "primerNombre": subCad[0],
+  //   "primerApellido": subCad[1],
     // "fechaNacimiento": inputFecha.value, 
-    "estadoCivil": selectEstCiv.value,
-    "idNacionalidad": 1,
-    "sexo": selectGenero.value,
-    "telefono": "021456789",
-    "correoElectronico": inputEmail.value,
-    "numeroCelular": inputPhone.value,
-    "direccion": inputDir.value,
-    "idLocalidad": selectCiudad.selectedIndex,
-    "lugarTrabajo": inputTrabajo.value,
-    "ocupacionLaboral": inputAL.value,
-    "ingresosMensuales": inputIngresos.value,
-    "pep": ( pepBool1 || pepBool2 ),
-    "referenciasPersonales": [
-      {
-        "origenReferencia": inputNameRef.value,
-        "numeroTelefono": inputFirstRef.value
-      },
-        {
-          "origenReferencia": inputNameSecondRef.value,
-          "numeroTelefono": inputSecondRef.value
-        }
-      ],
-      "referenciasComerciales": [
-        {
-          "origenReferencia": inputNameComercial.value,
-          "numeroTelefono": inputRefComer.value
-        },
-    ],
-    // "montoSolicitado": inputCredito.value,
-    "idMoneda": "GS",
-    "idModalidad": 65,
-    "plazo": 360,
-    "comentarioCliente": "PRUEBA"
-  }
+  //   "estadoCivil": selectEstCiv.value,
+  //   "idNacionalidad": 1,
+  //   "sexo": selectGenero.value,
+  //   "telefono": "021456789",
+  //   "correoElectronico": inputEmail.value,
+  //   "numeroCelular": inputPhone.value,
+  //   "direccion": inputDir.value,
+  //   "idLocalidad": selectCiudad.selectedIndex,
+  //   "lugarTrabajo": inputTrabajo.value,
+  //   "ocupacionLaboral": inputAL.value,
+  //   "ingresosMensuales": inputIngresos.value,
+  //   "pep": ( pepBool1 || pepBool2 ),
+  //   "referenciasPersonales": [
+  //     {
+  //       "origenReferencia": inputNameRef.value,
+  //       "numeroTelefono": inputFirstRef.value
+  //     },
+  //       {
+  //         "origenReferencia": inputNameSecondRef.value,
+  //         "numeroTelefono": inputSecondRef.value
+  //       }
+  //     ],
+  //     "referenciasComerciales": [
+  //       {
+  //         "origenReferencia": inputNameComercial.value,
+  //         "numeroTelefono": inputRefComer.value
+  //       },
+  //   ],
+  //   "montoSolicitado": inputCredito.value,
+  //   "idMoneda": "GS",
+  //   "idModalidad": 65,
+  //   "plazo": 360,
+  //   "comentarioCliente": "PRUEBA"
+  // }
   // console.log( JSON.stringify( send1 ) );
   // prueba( 'http://192.168.0.103:3000/api/creditos/finlatina/solicitar');
 }
@@ -445,7 +442,6 @@ const moverSiguiente = ()=>{
 
     setForm( previousPointer, currentPointer );
   }else{
-    apagarCamara();
     progressContainer.style.display = 'none';
     btnSiguiente.style.display = 'none';
     btnConfirm.style.display = 'inline';
@@ -582,23 +578,11 @@ const formCompleted = ( current )=>{ //verifica si el primer formulario esta lle
       valid = true;
     }
   }else if( current === 5 ){
-    if(isAsalariado===true){
-      if( fotosTomadas[0] === true && fotosTomadas[1] === true && fotosTomadas[2] === true && 
-        fotosTomadas[3] === true && fotosTomadas[4] === true && fotosTomadas[5] === true ){
-        btnSiguiente.disabled = false;
-        btnSiguiente.classList.remove( "button-disabled" );
-        aLink.classList.remove( "link-disabled" );
-        valid = true;
-      }
-    }else{
-      if( fotosTomadas[0] === true && fotosTomadas[1] === true && fotosTomadas[2] === true && fotosTomadas[5] === true ){
-        if(arrayFiles.length===5){
-          btnSiguiente.disabled = false;
-          btnSiguiente.classList.remove( "button-disabled" );
-          aLink.classList.remove( "link-disabled" );
-          valid = true;
-        }
-      }
+    if(form6[0] !== false && form6[1] !== false && form6[2] !== false && form6[3] !== false && form6[4] !== false ){
+      btnSiguiente.disabled = false;
+      btnSiguiente.classList.remove( "button-disabled" );
+      aLink.classList.remove( "link-disabled" );
+      valid = true;
     }
   }
   return valid;
@@ -1444,26 +1428,32 @@ const fotoDescriptions = [...document.querySelectorAll('.foto-descripcion')];
 console.log(fotoDescriptions)
 let files;
 let arrayFiles = [false,false,false,false,false, false];
+let form6 = [false, false, false, false, false];
 
 document
   .getElementById("cameraFileInput1")
   .addEventListener("change", function () {
     fotoDescriptions[0].innerText = 'foto-frontal-ci.jpg';
-    console.log(this.files[0].name);
+    fotoFrontalConfirm.src = window.URL.createObjectURL(this.files[0]);
+    form6[0] = true;
   });
 
 document
 .getElementById("cameraFileInput2")
 .addEventListener("change", function () {
   fotoDescriptions[1].innerText = 'foto-dorso-ci.jpg';
+  fotoTraseraConfirm.src = window.URL.createObjectURL(this.files[0]);
   console.log(this.files[0].name);
+  form6[1] = true;
 });
 
 document
 .getElementById("cameraFileInput3")
 .addEventListener("change", function () {
   fotoDescriptions[2].innerText = 'foto-selfie.jpg';
+  selfieConfirm.src = window.URL.createObjectURL(this.files[0]);
   console.log(this.files[0].name);
+  form6[2] = true;
 });
 
 document
@@ -1471,6 +1461,7 @@ document
 .addEventListener("change", function () {
   fotoDescriptions[3].innerText = 'documento-respaldatorio-de-domicilio.jpg';
   console.log(this.files[0].name);
+  form6[3] = true;
 });
 
 const llamarInput = ()=>{
@@ -1534,11 +1525,13 @@ function showFiles(files){
       }
     }
   }
-  // formCompleted(5);
+  formCompleted(5);
 }
 
 
 function processFile(file, index, i){
+  form6[4] = true;
+  console.log(form6);
   const docType = file.type;
   console.log('file')
   console.log(docType);
