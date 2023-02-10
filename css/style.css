@@ -777,3 +777,7 @@ footer{
 .foto-descripcion{
   width: 70%;
 }
+
+.foto-frontal-confirm, .foto-trasera-confirm, .selfie-confirm{
+  width: 70%;
+}
