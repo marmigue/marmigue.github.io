@@ -1540,6 +1540,7 @@ function showFiles(files){
 
 function processFile(file, index, i){
   const docType = file.type;
+  console.log('file')
   console.log(docType);
   const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'text/plain', 'application/pdf'];
   if(validExtensions.includes(docType)){
@@ -1569,48 +1570,6 @@ function processFile(file, index, i){
 
 
 /*------------------Asalariado-Comerciante--------------------------*/
-
-const optionClient = document.querySelector( '.card-options-client' );
-const asalariado = document.querySelector( '.lista-boletas' );
-const comerciante = document.querySelector( '.archivos-boletas' );
-const buttonAsalariado = document.querySelector( '.button-asalariado' );
-const buttonComerciante = document.querySelector( '.button-comerciante' );
-const buttonVolverAsalariado = document.querySelector( '.button-volver-asalariado' );
-const buttonVolverCliente = document.querySelector( '.button-volver-comerciante' );
-let isAsalariado = false;
-let isComerciante = false;
-
-
-const setAsalariado = ()=>{
-  asalariado.style.display = 'block';
-  optionClient.style.display = 'none';
-  isAsalariado = true;
-  isComerciante = false;
-  formCompleted(5);
-};
-
-const setComerciante = ()=>{
-  comerciante.style.display = 'block';
-  optionClient.style.display = 'none';
-  isAsalariado = false;
-  isComerciante = true;
-  formCompleted(5);
-};
-
-const volverTipoClienteAsalariado = ()=>{
-  optionClient.style.display = 'flex';
-  asalariado.style.display = 'none';
-  isAsalariado = false;
-  disableButtonNext();
-}
-
-
-const volverTipoClienteComerciante = ()=>{
-  optionClient.style.display = 'flex';
-  comerciante.style.display = 'none';
-  isComerciante = false;
-  disableButtonNext();
-}
 
 const deleteFile = (index)=>{
   const prueba = document.querySelector(`.delete-archivo${index}`);
