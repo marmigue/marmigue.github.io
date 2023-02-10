@@ -450,8 +450,6 @@ const moverAtras = ()=>{
     if( previousPointer === 0 ){
       btnAtras.disabled = true;
       btnAtras.classList.add( "button-disabled" );
-    }else if( currentPointer === 5 ){
-      apagarCamara();
     }
   }
 }
@@ -836,7 +834,6 @@ const volverInicio = ()=>{
   btnSiguiente.style.display = 'inline';
   currentPointer--;
   previousPointer--;
-  iniciarCamara( dispositivosDisponibles[0].deviceId );
 }
 
 
