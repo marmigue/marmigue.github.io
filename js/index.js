@@ -320,8 +320,8 @@ const infoConfirm = ()=>{
   if( inputFamSi.value !== '' ){
     info[30].innerText = 'Si';
     pepFamConfirm.style.display = 'block';
-  pepFamEntidadConfirm[0].innerText = inputEntFam.value;
-  pepFamEntidadConfirm[1].innerText = inputCargFam.value;
+    pepFamEntidadConfirm[0].innerText = inputEntFam.value;
+    pepFamEntidadConfirm[1].innerText = inputCargFam.value;
     pepBool2 = true;
   }else{
     info[30].innerText = 'No';
