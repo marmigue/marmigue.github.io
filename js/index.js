@@ -89,6 +89,7 @@ const errorFechaNacimiento = document.querySelector('.err-fecha-nacimiento');
 const errorFechaIngreso = document.querySelector( '.err-fecha-entrada' );
 const circularButtonDelete = document.querySelector( '.circular-button-delete' );
 const infoSection = [...document.querySelectorAll( '.info-section' )];
+const infoDoc = [...document.querySelectorAll( '.info-doc' )];
 
 // console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -327,7 +328,36 @@ const infoConfirm = ()=>{
     info[30].innerText = 'No';
     pepBool2 = false;
   }
-  
+
+  if(arrayFiles[0] !== false){
+    infoDoc[0].innerText = 'prueba';
+    infoSection[34].style.display = 'block';
+  }
+  else
+    infoSection[34].style.display = 'none';
+  if(arrayFiles[1] !== false){
+    infoDoc[1].innerText = 'prueba2';
+    infoSection[35].style.display = 'block';
+  }
+  else
+    infoSection[35].style.display = 'none';
+  if(arrayFiles[2] !== false)
+    infoDoc[0].innerText = 'prueba3';
+  else
+    infoSection[36].style.display = 'none';
+  if(arrayFiles[3] !== false)
+    infoDoc[1].innerText = 'prueba4';
+  else
+    infoSection[37].style.display = 'none';
+  if(arrayFiles[4] !== false)
+    infoDoc[1].innerText = 'prueba4';
+  else
+    infoSection[38].style.display = 'none';
+  if(arrayFiles[5] !== false)
+    infoDoc[1].innerText = 'prueba4';
+  else
+    infoSection[39].style.display = 'none';
+
   let subCad = inputNombre.value.split( ' ' );
   
   
@@ -1428,6 +1458,7 @@ document
 .getElementById("documentFileinput")
 .addEventListener("change", function () {
   fotoDescriptions[3].innerText = 'documento-respaldatorio-de-domicilio.jpg';
+  documentoDomicilio.src = window.URL.createObjectURL(this.files[0]);
   console.log(this.files[0].name);
   form6[3] = true;
 });
