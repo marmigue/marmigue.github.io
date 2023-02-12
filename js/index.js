@@ -341,20 +341,28 @@ const infoConfirm = ()=>{
   }
   else
     infoSection[35].style.display = 'none';
-  if(arrayFiles[2] !== false)
+  if(arrayFiles[2] !== false){
     infoDoc[0].innerText = 'prueba3';
+    infoSection[36].style.display = 'block';
+  }
   else
     infoSection[36].style.display = 'none';
-  if(arrayFiles[3] !== false)
+  if(arrayFiles[3] !== false){
     infoDoc[1].innerText = 'prueba4';
+    infoSection[37].style.display = 'block';
+  }
   else
     infoSection[37].style.display = 'none';
-  if(arrayFiles[4] !== false)
+  if(arrayFiles[4] !== false){
     infoDoc[1].innerText = 'prueba4';
+    infoSection[38].style.display = 'block';
+  }
   else
     infoSection[38].style.display = 'none';
-  if(arrayFiles[5] !== false)
+  if(arrayFiles[5] !== false){
+    infoSection[39].style.display = 'block';
     infoDoc[1].innerText = 'prueba4';
+  }
   else
     infoSection[39].style.display = 'none';
 
