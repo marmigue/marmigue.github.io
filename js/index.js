@@ -369,48 +369,54 @@ const infoConfirm = ()=>{
   let subCad = inputNombre.value.split( ' ' );
   
   
-  // let send1 = {
-  //   "tipoPersona": "F",
-  //   "tipoDocumento": "CI",
-  //   "numeroDocumento": inputCI.value,
-  //   "primerNombre": subCad[0],
-  //   "primerApellido": subCad[1],
-    // "fechaNacimiento": inputFecha.value, 
-  //   "estadoCivil": selectEstCiv.value,
-  //   "idNacionalidad": 1,
-  //   "sexo": selectGenero.value,
-  //   "telefono": "021456789",
-  //   "correoElectronico": inputEmail.value,
-  //   "numeroCelular": inputPhone.value,
-  //   "direccion": inputDir.value,
-  //   "idLocalidad": selectCiudad.selectedIndex,
-  //   "lugarTrabajo": inputTrabajo.value,
-  //   "ocupacionLaboral": inputAL.value,
-  //   "ingresosMensuales": inputIngresos.value,
-  //   "pep": ( pepBool1 || pepBool2 ),
-  //   "referenciasPersonales": [
-  //     {
-  //       "origenReferencia": inputNameRef.value,
-  //       "numeroTelefono": inputFirstRef.value
-  //     },
-  //       {
-  //         "origenReferencia": inputNameSecondRef.value,
-  //         "numeroTelefono": inputSecondRef.value
-  //       }
-  //     ],
-  //     "referenciasComerciales": [
-  //       {
-  //         "origenReferencia": inputNameComercial.value,
-  //         "numeroTelefono": inputRefComer.value
-  //       },
-  //   ],
-  //   "montoSolicitado": inputCredito.value,
-  //   "idMoneda": "GS",
-  //   "idModalidad": 65,
-  //   "plazo": 360,
-  //   "comentarioCliente": "PRUEBA"
-  // }
-  // console.log( JSON.stringify( send1 ) );
+  let send1 = {
+    "tipoPersona": "F",
+    "tipoDocumento": "CI",
+    "numeroDocumento": inputCI.value,
+    "primerNombre": subCad[0],
+    "primerApellido": subCad[1],
+    "fechaNacimiento": `${dia.value}-${mes.value}-${year.value}`, 
+    "estadoCivil": selectEstCiv.value,
+    "idNacionalidad": 1,
+    "sexo": selectGenero.value,
+    "telefono": "021456789",
+    "correoElectronico": inputEmail.value,
+    "numeroCelular": inputPhone.value,
+    "direccion": inputDir.value,
+    "idLocalidad": selectCiudad.selectedIndex,
+    "lugarTrabajo": inputTrabajo.value,
+    "seccionLaboral" : inputAL.value,
+    "ocupacionLaboral": inputAL.value,
+    "fechaIngresoLaboral": `${diaEntrada.value}-${mesEntrada.value}-${yearEntrada.value}`,
+    "ingresosMensuales": inputIngresos.value,
+    "numeroCelularCorporativo": inputNumberCorp.value,
+    "direccionLaboral": barrioTrabajo.value,
+    "pep": ( pepBool1 || pepBool2 ),
+    "referenciasPersonales": [
+      {
+        "origenReferencia": inputNameRef.value,
+        "numeroTelefono": inputFirstRef.value,
+        "parentesco": parentezco1.value
+      },
+        {
+          "origenReferencia": inputNameSecondRef.value,
+          "numeroTelefono": inputSecondRef.value,
+          "parentesco": parentezco2.value
+        }
+      ],
+      "referenciasComerciales": [
+        {
+          "origenReferencia": inputNameComercial.value,
+          "numeroTelefono": inputRefComer.value,
+        },
+    ],
+    "montoSolicitado": 100,
+    "idMoneda": "GS",
+    "idModalidad": 65,
+    "plazo": 360,
+    "comentarioCliente": "PRUEBA"
+  }
+  console.log( send1 );
   // prueba( 'http://192.168.0.103:3000/api/creditos/finlatina/solicitar');
 }
 
@@ -1559,7 +1565,7 @@ function processFile(file, index, i){
     arrayFiles[i] = file;
     // uploadFile(file, id)
   }else{
-    alert('Error');
+    alert('Formato de documento no aceptado.');
   }
 }
 
