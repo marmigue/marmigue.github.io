@@ -1516,16 +1516,13 @@ dropArea.addEventListener( "drop", (e)=>{
 
 
 function showFiles(files){
-  console.log(files)
   if(files.length=== undefined){
     processFile(files);
     arrayFiles.push(files);
   }else{
     for(const file of files){
-      console.log( 'Esta es una prueba' );
       for( let i = 0; i< arrayFiles.length; i++ ){
         if( arrayFiles[i] === false ){
-          console.log( 'dentro del array' );
           indexFile++;
           processFile(file, indexFile, i);
           break;
@@ -1533,23 +1530,19 @@ function showFiles(files){
       }
     }
   }
-  console.log(arrayFiles);
   formCompleted(5);
 }
 
 
 function processFile(file, index, i){
   form6[4] = true;
-  console.log(form6);
   const docType = file.type;
-  console.log('file')
-  console.log(docType);
   const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'text/plain', 'application/pdf'];
   if(validExtensions.includes(docType)){
     const fileReader = new FileReader();
-    const id = `file-${Math.random().toString(32).substring(7)}`;
+    // const id = `file-${Math.random().toString(32).substring(7)}`;
     fileReader.addEventListener( 'load', e=>{
-      const fileUrl = fileReader.result;
+      // const fileUrl = fileReader.result;
       const image = `
         <div id="archivo${index}" class="card archivo">
           <span class="text-card">${file.name}</span>
@@ -1562,8 +1555,6 @@ function processFile(file, index, i){
     } );
     fileReader.readAsDataURL(file);
     arrayFiles[i] = file;
-    console.log('index: '+index);
-    console.log( 'i: '+i );
     // uploadFile(file, id)
   }else{
     alert('Error');
@@ -1571,11 +1562,8 @@ function processFile(file, index, i){
 }
 
 const deleteFile = (index)=>{
-  console.log('prueba');
   const prueba = document.querySelector(`.delete-archivo${index}`);
   prueba.parentElement.remove();
-  console.log(index);
-  console.log(prueba);
   arrayFiles[index] = false;
   disableButtonNext();
 }
