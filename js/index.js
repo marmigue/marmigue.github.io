@@ -330,37 +330,37 @@ const infoConfirm = ()=>{
   }
 
   if(arrayFiles[0] !== false){
-    infoDoc[0].innerText = 'prueba';
+    infoDoc[0].innerText = arrayFiles[0].name;
     infoSection[34].style.display = 'block';
   }
   else
     infoSection[34].style.display = 'none';
   if(arrayFiles[1] !== false){
-    infoDoc[1].innerText = 'prueba2';
+    infoDoc[1].innerText = arrayFiles[1].name;
     infoSection[35].style.display = 'block';
   }
   else
     infoSection[35].style.display = 'none';
   if(arrayFiles[2] !== false){
-    infoDoc[2].innerText = 'prueba3';
+    infoDoc[2].innerText = arrayFiles[2].name;
     infoSection[36].style.display = 'block';
   }
   else
     infoSection[36].style.display = 'none';
   if(arrayFiles[3] !== false){
-    infoDoc[3].innerText = 'prueba4';
+    infoDoc[3].innerText = arrayFiles[3].name;
     infoSection[37].style.display = 'block';
   }
   else
     infoSection[37].style.display = 'none';
   if(arrayFiles[4] !== false){
-    infoDoc[4].innerText = 'prueba4';
+    infoDoc[4].innerText = arrayFiles[4].name;
     infoSection[38].style.display = 'block';
   }
   else
     infoSection[38].style.display = 'none';
   if(arrayFiles[5] !== false){
-    infoDoc[5].innerText = 'prueba4';
+    infoDoc[5].innerText = arrayFiles[4].name;
     infoSection[39].style.display = 'block';
   }
   else
@@ -1442,6 +1442,7 @@ document
     fotoDescriptions[0].innerText = 'foto-frontal-ci.jpg';
     fotoFrontalConfirm.src = window.URL.createObjectURL(this.files[0]);
     form6[0] = true;
+    formCompleted(5);
   });
 
 document
@@ -1530,6 +1531,7 @@ function showFiles(files){
       }
     }
   }
+  console.log(arrayFiles);
   formCompleted(5);
 }
 
@@ -1565,6 +1567,5 @@ const deleteFile = (index)=>{
   const prueba = document.querySelector(`.delete-archivo${index}`);
   prueba.parentElement.remove();
   arrayFiles[index] = false;
-  disableButtonNext();
 }
 
