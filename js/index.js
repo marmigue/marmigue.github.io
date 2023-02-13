@@ -1516,6 +1516,7 @@ dropArea.addEventListener( "drop", (e)=>{
 
 
 function showFiles(files){
+  console.log(files)
   if(files.length=== undefined){
     processFile(files);
     arrayFiles.push(files);
@@ -1532,6 +1533,7 @@ function showFiles(files){
       }
     }
   }
+  console.log(arrayFiles);
   formCompleted(5);
 }
 
@@ -1568,10 +1570,8 @@ function processFile(file, index, i){
   }
 }
 
-
-/*------------------Asalariado-Comerciante--------------------------*/
-
 const deleteFile = (index)=>{
+  console.log('prueba');
   const prueba = document.querySelector(`.delete-archivo${index}`);
   prueba.parentElement.remove();
   console.log(index);
@@ -1579,3 +1579,4 @@ const deleteFile = (index)=>{
   arrayFiles[index] = false;
   disableButtonNext();
 }
+
