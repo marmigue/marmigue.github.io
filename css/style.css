@@ -255,7 +255,7 @@ select {
   /* margin-bottom: 80px; */
 }
 
-.form-2, .form-3, .form-4, .form-5, .form-6{
+.form-2, .form-3, .form-4, .form-5, .form-1{
   display: none;
 }
 
@@ -812,6 +812,7 @@ footer{
 
 
 .modal__container{
+  position: relative;
   margin: auto;
   width: 90%;
   background-color: white;
@@ -838,4 +839,12 @@ footer{
   display: none;
   width: 80%;
   justify-content: space-around;
+}
+
+
+.img-close-modal{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 45px;
 }

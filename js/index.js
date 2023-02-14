@@ -94,6 +94,7 @@ const fotoDescriptionsPc = [...document.querySelectorAll('.foto-descripcion-pc')
 const aceptarFotoButton = [...document.querySelectorAll('.aceptar-foto')];
 const rechazarFotoButton = [...document.querySelectorAll('.rechazar-foto')];
 const buttonContainerModal = [...document.querySelectorAll('.button-container-modal')];
+const closeModalX = [...document.querySelectorAll('.img-close-modal')];
 
 // console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -1559,6 +1560,9 @@ aceptarFotoButton[2].addEventListener("click", ()=>aceptarFoto(2));
 rechazarFotoButton[0].addEventListener("click", ()=>rechazarFoto(0));
 rechazarFotoButton[1].addEventListener("click", ()=>rechazarFoto(1));
 rechazarFotoButton[2].addEventListener("click", ()=>rechazarFoto(2));
+closeModalX[0].addEventListener("click", ()=>closeModal(0));
+closeModalX[1].addEventListener("click", ()=>closeModal(1));
+closeModalX[2].addEventListener("click", ()=>closeModal(2));
 
 function openModalEvent(index){
   console.log('click');
@@ -1568,13 +1572,6 @@ function openModalEvent(index){
   modal[index].classList.add('modal--show');
   iniciarConexion(index);
   currentIndex = index;
-  if(index === 0){
-    fotoDescriptionsPc[index].innerText = 'foto-ci-frontal.png';
-  }else if(index === 1){
-    fotoDescriptionsPc[index].innerText = 'foto-ci-dorso.png';
-  }else{
-    fotoDescriptionsPc[index].innerText = 'foto-selfie.png'
-  }
 }
 
 function closeModal(index){
@@ -1591,6 +1588,13 @@ function rechazarFoto(index){
 }
 
 function aceptarFoto(index){
+  if(index === 0){
+    fotoDescriptionsPc[index].innerText = 'foto-ci-frontal.png';
+  }else if(index === 1){
+    fotoDescriptionsPc[index].innerText = 'foto-ci-dorso.png';
+  }else{
+    fotoDescriptionsPc[index].innerText = 'foto-selfie.png'
+  }
   closeModal(index);
   form6[index] = true;
 }
