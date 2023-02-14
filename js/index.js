@@ -1147,7 +1147,7 @@ const cambiarDispositivo = ()=>{
 const pintar = (indice) =>{
   if( indice === 0 ){
     // noImage1.style.display = 'none';
-    // lienzo1.style.display = 'inline';
+    lienzo1.style.display = 'inline';
     let ctx = lienzo1.getContext('2d');
     ctx.drawImage(video[0], 0, 0, lienzo1.width, lienzo1.height );
     fotosTomadas[0] = true;
@@ -1160,25 +1160,6 @@ const pintar = (indice) =>{
     ctx.drawImage(video[2], 0, 0, lienzo3.width, lienzo3.height );
     fotosTomadas[2] = true;
   }
-  // else if( indice === 3 ){
-  //   noImage4.style.display = 'none';
-  //   lienzo4.style.display = 'inline';
-  //   let ctx = lienzo4.getContext('2d');
-  //   ctx.drawImage(video, 0, 0, lienzo4.width, lienzo4.height );
-  //   fotosTomadas[3] = true;
-  // }else if( indice === 4 ){
-  //   noImage5.style.display = 'none';
-  //   lienzo5.style.display = 'inline';
-  //   let ctx = lienzo5.getContext('2d');
-  //   ctx.drawImage(video, 0, 0, lienzo5.width, lienzo5.height );
-  //   fotosTomadas[4] = true;
-  // }else if( indice === 5 ){
-  //   noImage6.style.display = 'none';
-  //   lienzo6.style.display = 'inline';
-  //   let ctx = lienzo6.getContext('2d');
-  //   ctx.drawImage(video, 0, 0, lienzo6.width, lienzo6.height );
-  //   fotosTomadas[5] = true;
-  // }
 }
 
 
@@ -1233,12 +1214,6 @@ const eliminarFoto = ( indice )=>{
 buttonFoto[0].addEventListener( "click", ()=>tomarFoto(0) );
 buttonFoto[1].addEventListener( "click", ()=>tomarFoto(1) );
 buttonFoto[2].addEventListener( "click", ()=>tomarFoto(2) );
-// delete1.addEventListener( "click", ()=> eliminarFoto( 0 ) );
-// delete2.addEventListener( "click", ()=> eliminarFoto( 1 ) );
-// delete3.addEventListener( "click", ()=> eliminarFoto( 2 ) );
-// delete4.addEventListener( "click", ()=> eliminarFoto( 3 ) );
-// delete5.addEventListener( "click", ()=> eliminarFoto( 4 ) );
-// delete6.addEventListener( "click", ()=> eliminarFoto( 5 ) );
 
 select.addEventListener( "change", cambiarDispositivo );
 
@@ -1498,7 +1473,7 @@ dropArea.addEventListener( "drop", (e)=>{
 
 
 function showFiles(files){
-  if(files.length=== undefined){
+  if(files.length === undefined){
     processFile(files);
     arrayFiles.push(files);
   }else{
@@ -1512,7 +1487,6 @@ function showFiles(files){
       }
     }
   }
-  console.log(arrayFiles);
   formCompleted(5);
 }
 
@@ -1523,9 +1497,7 @@ function processFile(file, index, i){
   const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'text/plain', 'application/pdf'];
   if(validExtensions.includes(docType)){
     const fileReader = new FileReader();
-    // const id = `file-${Math.random().toString(32).substring(7)}`;
     fileReader.addEventListener( 'load', e=>{
-      // const fileUrl = fileReader.result;
       const image = `
         <div id="archivo${index}" class="card archivo">
           <span class="text-card">${file.name}</span>

@@ -37,6 +37,12 @@
   .confirm-container{
     width: 70%;
   }
+  .pc-form{
+    display: none;
+  }
+  .mobile-form{
+    display: block;
+  }
 }
 
 /*=============================================  ====*/

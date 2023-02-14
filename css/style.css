@@ -824,6 +824,10 @@ footer{
   grid-auto-columns: 100%;
 }
 
-.pc-form{
+.mobile-form{
   display: none;
+}
+
+.pc-form{
+  display: block;
 }
