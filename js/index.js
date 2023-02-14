@@ -1150,12 +1150,16 @@ const pintar = (indice) =>{
     lienzo1.style.display = 'inline';
     let ctx = lienzo1.getContext('2d');
     ctx.drawImage(video[0], 0, 0, lienzo1.width, lienzo1.height );
+    let prueba = lienzo1.toDataURL("image/jpeg", 1);
+    console.log(prueba);
     fotosTomadas[0] = true;
   }else if( indice === 1 ){
+    lienzo2.style.display = 'inline';
     let ctx = lienzo2.getContext('2d');
     ctx.drawImage(video[1], 0, 0, lienzo2.width, lienzo2.height );
     fotosTomadas[1] = true;
   }else if( indice === 2 ){
+    lienzo3.style.display = 'inline';
     let ctx = lienzo3.getContext('2d');
     ctx.drawImage(video[2], 0, 0, lienzo3.width, lienzo3.height );
     fotosTomadas[2] = true;
@@ -1165,7 +1169,8 @@ const pintar = (indice) =>{
 
 const tomarFoto = (index)=>{
   pintar(index);
-  closeModal(currentIndex);
+  // closeModal(currentIndex);
+  video[index].style.display = 'none';
   apagarCamara(index);
   formCompleted(5);
 }
