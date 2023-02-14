@@ -774,7 +774,15 @@ footer{
   width: 30%;
 }
 
+.button-camera-pc{
+  width: 30%;
+}
+
 .foto-descripcion{
+  width: 70%;
+}
+
+.foto-descripcion-pc{
   width: 70%;
 }
 

@@ -1186,7 +1186,7 @@ const pintar = (indice) =>{
 
 
 const tomarFoto = (index)=>{
-  pintar(index)
+  pintar(index);
   closeModal(currentIndex);
   apagarCamara(index);
   formCompleted(5);
