@@ -1154,7 +1154,8 @@ const pintar = (indice) =>{
     lienzo1.style.display = 'inline';
     let ctx = lienzo1.getContext('2d');
     ctx.drawImage(video[0], 0, 0, lienzo1.width, lienzo1.height );
-    let prueba = lienzo1.toDataURL("image/jpeg", 1);
+    let imgUrl = lienzo1.toDataURL("image/jpeg", 1);
+    fotoFrontalConfirm.src = imgUrl;
     console.log(prueba);
     fotosTomadas[0] = true;
   }else if( indice === 1 ){
@@ -1162,11 +1163,15 @@ const pintar = (indice) =>{
     let ctx = lienzo2.getContext('2d');
     ctx.drawImage(video[1], 0, 0, lienzo2.width, lienzo2.height );
     fotosTomadas[1] = true;
+    imgUrl = lienzo2.toDataURL("image/jpeg", 1);
+    fotoTraseraConfirm.src = imgUrl;
   }else if( indice === 2 ){
     lienzo3.style.display = 'inline';
     let ctx = lienzo3.getContext('2d');
     ctx.drawImage(video[2], 0, 0, lienzo3.width, lienzo3.height );
     fotosTomadas[2] = true;
+    imgUrl = lienzo3.toDataURL("image/jpeg", 1);
+    selfieConfirm.src = imgUrl;
   }
 }
 
@@ -1419,6 +1424,7 @@ document
   fotoTraseraConfirm.src = window.URL.createObjectURL(this.files[0]);
   console.log(this.files[0].name);
   form6[1] = true;
+  formCompleted(5);
 });
 
 document
@@ -1428,6 +1434,7 @@ document
   selfieConfirm.src = window.URL.createObjectURL(this.files[0]);
   console.log(this.files[0].name);
   form6[2] = true;
+  formCompleted(5);
 });
 
 document
@@ -1437,6 +1444,7 @@ document
   documentoDomicilio.src = window.URL.createObjectURL(this.files[0]);
   console.log(this.files[0].name);
   form6[3] = true;
+  formCompleted(5);
 });
 
 const llamarInput = ()=>{
@@ -1545,9 +1553,9 @@ let currentIndex;
 openModal1.addEventListener("click", ()=>openModalEvent(0));
 openModal2.addEventListener("click", ()=>openModalEvent(1));
 openModal3.addEventListener("click", ()=>openModalEvent(2));
-aceptarFotoButton[0].addEventListener("click", ()=>closeModal(0));
-aceptarFotoButton[1].addEventListener("click", ()=>closeModal(1));
-aceptarFotoButton[2].addEventListener("click", ()=>closeModal(2));
+aceptarFotoButton[0].addEventListener("click", ()=>aceptarFoto(0));
+aceptarFotoButton[1].addEventListener("click", ()=>aceptarFoto(1));
+aceptarFotoButton[2].addEventListener("click", ()=>aceptarFoto(2));
 rechazarFotoButton[0].addEventListener("click", ()=>rechazarFoto(0));
 rechazarFotoButton[1].addEventListener("click", ()=>rechazarFoto(1));
 rechazarFotoButton[2].addEventListener("click", ()=>rechazarFoto(2));
@@ -1580,4 +1588,9 @@ function rechazarFoto(index){
   lienzos[index].style.display = 'none';
   buttonContainerModal[index].style.display = 'none';
   buttonFoto[index].style.display = 'block';
+}
+
+function aceptarFoto(index){
+  closeModal(index);
+  form6[index] = true;
 }
