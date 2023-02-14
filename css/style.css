@@ -846,5 +846,18 @@ footer{
   position: absolute;
   right: 0;
   top: 0;
-  width: 45px;
+}
+
+.material-symbols-outlined {
+  color: red;
+  font-size: 36px !important;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.material-symbols-outlined:hover{
+  cursor: pointer;
 }

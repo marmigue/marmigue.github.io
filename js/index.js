@@ -421,7 +421,6 @@ const infoConfirm = ()=>{
     "plazo": 360,
     "comentarioCliente": "PRUEBA"
   }
-  console.log( send1 );
   // prueba( 'http://192.168.0.103:3000/api/creditos/finlatina/solicitar');
 }
 
