@@ -1021,7 +1021,7 @@ calle2Trabajo.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) 
 
 /*------------------Inicio de funciones relacionadas al manejo de la camara---------------------- */
 
-const video = document.querySelector( ".video" );
+const video = [...document.querySelectorAll( ".video" )];
 const select = document.getElementById( "select-disp" );
 const lienzo1 = document.querySelector( ".lienzo-1" );
 const lienzo2 = document.querySelector( ".lienzo-2" );
@@ -1084,19 +1084,19 @@ const llenarSelect = ()=>{
         } );
       }
     }
-    iniciarCamara(dispositivosDisponibles[0].deviceId);
+    iniciarCamara(dispositivosDisponibles[0].deviceId, currentIndex);
   });
 }
 
-const iniciarConexion = ()=>{
-  console.log(video)
+const iniciarConexion = (index)=>{
+  console.log(video[index])
   navigator.getMedia( {video: true, audio: false}, streamObtenido=>{
     try{
       localStream = streamObtenido;
-      apagarCamara();
+      apagarCamara(index);
       llenarSelect();
     }catch(error){
-      video.srcObject = null;
+      video[index].srcObject = null;
     }
   }, error=>{
     console.log( error );//TODO: manejar los errores de forma eficiente
@@ -1104,7 +1104,7 @@ const iniciarConexion = ()=>{
 }
 
 
-const iniciarCamara = ( idObtenido )=>{
+const iniciarCamara = ( idObtenido, index )=>{
   navigator.getMedia( {
     audio:false,
     video:{
@@ -1113,12 +1113,12 @@ const iniciarCamara = ( idObtenido )=>{
   }, streamObtenido=>{
     try{
       localStream = streamObtenido;
-      video.srcObject = streamObtenido;
-      video.play();
-      video.style.display = 'inline';
+      video[index].srcObject = streamObtenido;
+      video[index].play();
+      video[index].style.display = 'inline';
       loader.style.display = 'none';
     }catch(error){
-      video.srcObject = null;
+      video[index].srcObject = null;
     }
   }, error=>{
     console.log( error );//TODO: manejar los errores de forma eficiente para que el usuario vea el problema
@@ -1126,13 +1126,13 @@ const iniciarCamara = ( idObtenido )=>{
 }
 
 
-const apagarCamara = ()=>{
+const apagarCamara = (index)=>{
   let arr = [...localStream.getTracks()];
   arr.forEach( value => {
     value.stop();
   } );
-  video.srcObject = null;
-  video.pause();
+  video[index].srcObject = null;
+  video[index].pause();
 }
 
 
@@ -1148,74 +1148,48 @@ const pintar = (indice) =>{
     noImage1.style.display = 'none';
     lienzo1.style.display = 'inline';
     let ctx = lienzo1.getContext('2d');
-    ctx.drawImage(video, 0, 0, lienzo1.width, lienzo1.height );
+    ctx.drawImage(video[0], 0, 0, lienzo1.width, lienzo1.height );
     fotosTomadas[0] = true;
   }else if( indice === 1 ){
     noImage2.style.display = 'none';
     lienzo2.style.display = 'inline';
     let ctx = lienzo2.getContext('2d');
-    ctx.drawImage(video, 0, 0, lienzo2.width, lienzo2.height );
+    ctx.drawImage(video[1], 0, 0, lienzo2.width, lienzo2.height );
     fotosTomadas[1] = true;
   }else if( indice === 2 ){
     noImage3.style.display = 'none';
     lienzo3.style.display = 'inline';
     let ctx = lienzo3.getContext('2d');
-    ctx.drawImage(video, 0, 0, lienzo3.width, lienzo3.height );
+    ctx.drawImage(video[2], 0, 0, lienzo3.width, lienzo3.height );
     fotosTomadas[2] = true;
-  }else if( indice === 3 ){
-    noImage4.style.display = 'none';
-    lienzo4.style.display = 'inline';
-    let ctx = lienzo4.getContext('2d');
-    ctx.drawImage(video, 0, 0, lienzo4.width, lienzo4.height );
-    fotosTomadas[3] = true;
-  }else if( indice === 4 ){
-    noImage5.style.display = 'none';
-    lienzo5.style.display = 'inline';
-    let ctx = lienzo5.getContext('2d');
-    ctx.drawImage(video, 0, 0, lienzo5.width, lienzo5.height );
-    fotosTomadas[4] = true;
-  }else if( indice === 5 ){
-    noImage6.style.display = 'none';
-    lienzo6.style.display = 'inline';
-    let ctx = lienzo6.getContext('2d');
-    ctx.drawImage(video, 0, 0, lienzo6.width, lienzo6.height );
-    fotosTomadas[5] = true;
   }
+  // else if( indice === 3 ){
+  //   noImage4.style.display = 'none';
+  //   lienzo4.style.display = 'inline';
+  //   let ctx = lienzo4.getContext('2d');
+  //   ctx.drawImage(video, 0, 0, lienzo4.width, lienzo4.height );
+  //   fotosTomadas[3] = true;
+  // }else if( indice === 4 ){
+  //   noImage5.style.display = 'none';
+  //   lienzo5.style.display = 'inline';
+  //   let ctx = lienzo5.getContext('2d');
+  //   ctx.drawImage(video, 0, 0, lienzo5.width, lienzo5.height );
+  //   fotosTomadas[4] = true;
+  // }else if( indice === 5 ){
+  //   noImage6.style.display = 'none';
+  //   lienzo6.style.display = 'inline';
+  //   let ctx = lienzo6.getContext('2d');
+  //   ctx.drawImage(video, 0, 0, lienzo6.width, lienzo6.height );
+  //   fotosTomadas[5] = true;
+  // }
 }
 
 
-const tomarFoto = ()=>{
+const tomarFoto = (index)=>{
+  console.log('click')
   let fotoTomada = true;
-  let index;
-  if(ventanaActiva === 0){
-    for( i = 0; i<3; i++ ){
-      if( fotosTomadas[i] === false ){
-        fotoTomada=false;
-        index = i;
-        break;
-      }
-    }
-    if( fotoTomada !== true ){
-      pintar( index );
-    }
-  }else if(ventanaActiva === 1 && isAsalariado == true){
-    for( i = 3; i<5; i++ ){
-      if( fotosTomadas[i] === false ){
-        fotoTomada=false;
-        index = i;
-        break;
-      }
-    }
-    if( fotoTomada !== true ){
-      pintar( index );
-    }
-  }else if(ventanaActiva === 2){
-    if( fotosTomadas[5] === false ){
-      pintar(5);
-    }
-  }
   closeModal(currentIndex);
-  apagarCamara();
+  apagarCamara(index);
   formCompleted(5);
 }
 
@@ -1260,7 +1234,7 @@ const eliminarFoto = ( indice )=>{
 }
 
 
-buttonFoto.addEventListener( "click", tomarFoto );
+buttonFoto.addEventListener( "click", ()=>tomarFoto(currentIndex) );
 delete1.addEventListener( "click", ()=> eliminarFoto( 0 ) );
 delete2.addEventListener( "click", ()=> eliminarFoto( 1 ) );
 delete3.addEventListener( "click", ()=> eliminarFoto( 2 ) );
@@ -1594,7 +1568,7 @@ openModal3.addEventListener("click", ()=>openModalEvent(2));
 function openModalEvent(index){
   console.log('click')
   modal[index].classList.add('modal--show');
-  iniciarConexion();
+  iniciarConexion(index);
   currentIndex = index;
 }
 
