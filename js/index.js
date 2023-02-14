@@ -1146,20 +1146,16 @@ const cambiarDispositivo = ()=>{
 
 const pintar = (indice) =>{
   if( indice === 0 ){
-    noImage1.style.display = 'none';
+    // noImage1.style.display = 'none';
     // lienzo1.style.display = 'inline';
     let ctx = lienzo1.getContext('2d');
     ctx.drawImage(video[0], 0, 0, lienzo1.width, lienzo1.height );
     fotosTomadas[0] = true;
   }else if( indice === 1 ){
-    noImage2.style.display = 'none';
-    lienzo2.style.display = 'inline';
     let ctx = lienzo2.getContext('2d');
     ctx.drawImage(video[1], 0, 0, lienzo2.width, lienzo2.height );
     fotosTomadas[1] = true;
   }else if( indice === 2 ){
-    noImage3.style.display = 'none';
-    lienzo3.style.display = 'inline';
     let ctx = lienzo3.getContext('2d');
     ctx.drawImage(video[2], 0, 0, lienzo3.width, lienzo3.height );
     fotosTomadas[2] = true;
@@ -1237,9 +1233,9 @@ const eliminarFoto = ( indice )=>{
 buttonFoto[0].addEventListener( "click", ()=>tomarFoto(0) );
 buttonFoto[1].addEventListener( "click", ()=>tomarFoto(1) );
 buttonFoto[2].addEventListener( "click", ()=>tomarFoto(2) );
-delete1.addEventListener( "click", ()=> eliminarFoto( 0 ) );
-delete2.addEventListener( "click", ()=> eliminarFoto( 1 ) );
-delete3.addEventListener( "click", ()=> eliminarFoto( 2 ) );
+// delete1.addEventListener( "click", ()=> eliminarFoto( 0 ) );
+// delete2.addEventListener( "click", ()=> eliminarFoto( 1 ) );
+// delete3.addEventListener( "click", ()=> eliminarFoto( 2 ) );
 // delete4.addEventListener( "click", ()=> eliminarFoto( 3 ) );
 // delete5.addEventListener( "click", ()=> eliminarFoto( 4 ) );
 // delete6.addEventListener( "click", ()=> eliminarFoto( 5 ) );

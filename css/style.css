@@ -823,3 +823,7 @@ footer{
   place-items: center;
   grid-auto-columns: 100%;
 }
+
+.pc-form{
+  display: none;
+}
