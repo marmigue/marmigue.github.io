@@ -1035,7 +1035,7 @@ const noImage3 = document.querySelector( ".no-image-3" );
 const noImage4 = document.querySelector( ".no-image-4" );
 const noImage5 = document.querySelector( ".no-image-5" );
 const noImage6 = document.querySelector( ".no-image-6" );
-const buttonFoto = document.querySelector( ".button-foto" );
+const buttonFoto = [...document.querySelectorAll( ".button-foto" )];
 const delete1 = document.querySelector( ".delete-1" );
 const delete2 = document.querySelector( ".delete-2" );
 const delete3 = document.querySelector( ".delete-3" );
@@ -1186,8 +1186,7 @@ const pintar = (indice) =>{
 
 
 const tomarFoto = (index)=>{
-  console.log('click')
-  let fotoTomada = true;
+  pintar(index)
   closeModal(currentIndex);
   apagarCamara(index);
   formCompleted(5);
@@ -1234,7 +1233,9 @@ const eliminarFoto = ( indice )=>{
 }
 
 
-buttonFoto.addEventListener( "click", ()=>tomarFoto(currentIndex) );
+buttonFoto[0].addEventListener( "click", ()=>tomarFoto(0) );
+buttonFoto[1].addEventListener( "click", ()=>tomarFoto(1) );
+buttonFoto[2].addEventListener( "click", ()=>tomarFoto(2) );
 delete1.addEventListener( "click", ()=> eliminarFoto( 0 ) );
 delete2.addEventListener( "click", ()=> eliminarFoto( 1 ) );
 delete3.addEventListener( "click", ()=> eliminarFoto( 2 ) );
