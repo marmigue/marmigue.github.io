@@ -90,6 +90,7 @@ const errorFechaIngreso = document.querySelector( '.err-fecha-entrada' );
 const circularButtonDelete = document.querySelector( '.circular-button-delete' );
 const infoSection = [...document.querySelectorAll( '.info-section' )];
 const infoDoc = [...document.querySelectorAll( '.info-doc' )];
+const fotoDescriptionsPc = [...document.querySelectorAll('.foto-descripcion-pc')]
 
 // console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -1146,7 +1147,7 @@ const cambiarDispositivo = ()=>{
 const pintar = (indice) =>{
   if( indice === 0 ){
     noImage1.style.display = 'none';
-    lienzo1.style.display = 'inline';
+    // lienzo1.style.display = 'inline';
     let ctx = lienzo1.getContext('2d');
     ctx.drawImage(video[0], 0, 0, lienzo1.width, lienzo1.height );
     fotosTomadas[0] = true;
@@ -1571,6 +1572,13 @@ function openModalEvent(index){
   modal[index].classList.add('modal--show');
   iniciarConexion(index);
   currentIndex = index;
+  if(index === 0){
+    fotoDescriptionsPc[index].innerText = 'foto-ci-frontal.png';
+  }else if(index === 1){
+    fotoDescriptionsPc[index].innerText = 'foto-ci-dorso.png';
+  }else{
+    fotoDescriptionsPc[index].innerText = 'foto-selfie.png'
+  }
 }
 
 function closeModal(index){
