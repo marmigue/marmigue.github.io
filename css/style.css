@@ -832,3 +832,10 @@ footer{
 .pc-form{
   display: block;
 }
+
+
+.button-container-modal{
+  display: none;
+  width: 80%;
+  justify-content: space-around;
+}

@@ -90,7 +90,10 @@ const errorFechaIngreso = document.querySelector( '.err-fecha-entrada' );
 const circularButtonDelete = document.querySelector( '.circular-button-delete' );
 const infoSection = [...document.querySelectorAll( '.info-section' )];
 const infoDoc = [...document.querySelectorAll( '.info-doc' )];
-const fotoDescriptionsPc = [...document.querySelectorAll('.foto-descripcion-pc')]
+const fotoDescriptionsPc = [...document.querySelectorAll('.foto-descripcion-pc')];
+const aceptarFotoButton = [...document.querySelectorAll('.aceptar-foto')];
+const rechazarFotoButton = [...document.querySelectorAll('.rechazar-foto')];
+const buttonContainerModal = [...document.querySelectorAll('.button-container-modal')];
 
 // console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -1030,6 +1033,7 @@ const lienzo3 = document.querySelector( ".lienzo-3" );
 const lienzo4 = document.querySelector( ".lienzo-4" );
 const lienzo5 = document.querySelector( ".lienzo-5" );
 const lienzo6 = document.querySelector( ".lienzo-6" );
+const lienzos = [...document.querySelectorAll(".lienzo")];
 const noImage1 = document.querySelector( ".no-image-1" );
 const noImage2 = document.querySelector( ".no-image-2" );
 const noImage3 = document.querySelector( ".no-image-3" );
@@ -1171,6 +1175,8 @@ const tomarFoto = (index)=>{
   pintar(index);
   // closeModal(currentIndex);
   video[index].style.display = 'none';
+  buttonContainerModal[index].style.display = 'flex';
+  buttonFoto[index].style.display = 'none';
   apagarCamara(index);
   formCompleted(5);
 }
@@ -1539,9 +1545,18 @@ let currentIndex;
 openModal1.addEventListener("click", ()=>openModalEvent(0));
 openModal2.addEventListener("click", ()=>openModalEvent(1));
 openModal3.addEventListener("click", ()=>openModalEvent(2));
+aceptarFotoButton[0].addEventListener("click", ()=>closeModal(0));
+aceptarFotoButton[1].addEventListener("click", ()=>closeModal(1));
+aceptarFotoButton[2].addEventListener("click", ()=>closeModal(2));
+rechazarFotoButton[0].addEventListener("click", ()=>rechazarFoto(0));
+rechazarFotoButton[1].addEventListener("click", ()=>rechazarFoto(1));
+rechazarFotoButton[2].addEventListener("click", ()=>rechazarFoto(2));
 
 function openModalEvent(index){
-  console.log('click')
+  console.log('click');
+  buttonContainerModal[index].style.display = 'none';
+  buttonFoto[index].style.display = 'block';
+  lienzos[index].style.display = 'none'
   modal[index].classList.add('modal--show');
   iniciarConexion(index);
   currentIndex = index;
@@ -1556,4 +1571,13 @@ function openModalEvent(index){
 
 function closeModal(index){
   modal[index].classList.remove('modal--show');
+  apagarCamara(index);
+}
+
+function rechazarFoto(index){
+  apagarCamara(index);
+  iniciarConexion(index);
+  lienzos[index].style.display = 'none';
+  buttonContainerModal[index].style.display = 'none';
+  buttonFoto[index].style.display = 'block';
 }
