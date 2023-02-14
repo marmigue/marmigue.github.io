@@ -789,6 +789,7 @@ footer{
 
 .foto-frontal-confirm, .foto-trasera-confirm, .selfie-confirm, .domicilio{
   width: 70%;
+  border-radius: 8px;
 }
 
 
