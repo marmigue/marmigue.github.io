@@ -1089,6 +1089,7 @@ const llenarSelect = ()=>{
 }
 
 const iniciarConexion = ()=>{
+  console.log(video)
   navigator.getMedia( {video: true, audio: false}, streamObtenido=>{
     try{
       localStream = streamObtenido;
@@ -1213,6 +1214,8 @@ const tomarFoto = ()=>{
       pintar(5);
     }
   }
+  closeModal(currentIndex);
+  apagarCamara();
   formCompleted(5);
 }
 
@@ -1257,15 +1260,15 @@ const eliminarFoto = ( indice )=>{
 }
 
 
-// buttonFoto.addEventListener( "click", tomarFoto );
-// delete1.addEventListener( "click", ()=> eliminarFoto( 0 ) );
-// delete2.addEventListener( "click", ()=> eliminarFoto( 1 ) );
-// delete3.addEventListener( "click", ()=> eliminarFoto( 2 ) );
+buttonFoto.addEventListener( "click", tomarFoto );
+delete1.addEventListener( "click", ()=> eliminarFoto( 0 ) );
+delete2.addEventListener( "click", ()=> eliminarFoto( 1 ) );
+delete3.addEventListener( "click", ()=> eliminarFoto( 2 ) );
 // delete4.addEventListener( "click", ()=> eliminarFoto( 3 ) );
 // delete5.addEventListener( "click", ()=> eliminarFoto( 4 ) );
 // delete6.addEventListener( "click", ()=> eliminarFoto( 5 ) );
 
-// select.addEventListener( "change", cambiarDispositivo );
+select.addEventListener( "change", cambiarDispositivo );
 
 const setCities = async ()=>{
   const response = await fetch( 'https://apidesa.vaquita.com.py/api/ciudades' );
@@ -1575,3 +1578,26 @@ const deleteFile = (index)=>{
   arrayFiles[index] = false;
 }
 
+
+const openModal1 = document.querySelector('.open-modal1');
+const openModal2 = document.querySelector('.open-modal2');
+const openModal3 = document.querySelector('.open-modal3');
+const modal = [...document.querySelectorAll('.modal')];
+console.log(modal)
+let currentIndex;
+
+
+openModal1.addEventListener("click", ()=>openModalEvent(0));
+openModal2.addEventListener("click", ()=>openModalEvent(1));
+openModal3.addEventListener("click", ()=>openModalEvent(2));
+
+function openModalEvent(index){
+  console.log('click')
+  modal[index].classList.add('modal--show');
+  iniciarConexion();
+  currentIndex = index;
+}
+
+function closeModal(index){
+  modal[index].classList.remove('modal--show');
+}
