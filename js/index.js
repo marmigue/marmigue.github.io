@@ -33,7 +33,7 @@ const inputFamSi = document.getElementById( "fam-pol-si" );
 const inputFamNo = document.getElementById( "fam-pol-no" );
 const inputPep = document.querySelector( ".input-pep1" );
 const inputPepFam = document.querySelector( ".input-pep2" );
-const loader = document.querySelector( ".loader" );
+const loader = document.querySelector( ".loader-container" );
 const responsiveStep = [...document.querySelectorAll( ".responsive-step" )];
 const progressResponsive = document.querySelector( ".progress-responsive" );
 const progressContainer = document.querySelector( ".container-progress" );
@@ -52,6 +52,7 @@ const boletaIPS = document.querySelector( ".boleta-ips" );
 const boletaSalario = document.querySelector( ".boleta-salario" );
 const documentoDomicilio = document.querySelector( ".domicilio" );
 const datosConfirmados = document.querySelector( ".datos-confirmados" );
+const datosNoConfirmados = document.querySelector('.datos-no-confirmados');
 const btnContainer = document.querySelector( ".button-container" );
 const inputCredito = document.querySelector( ".input-credito-solicitar" );//valor del prestamos solicitado
 const inputNameRef = document.querySelector( ".input-name-ref" );//nombre de la primera referencia
@@ -95,6 +96,7 @@ const aceptarFotoButton = [...document.querySelectorAll('.aceptar-foto')];
 const rechazarFotoButton = [...document.querySelectorAll('.rechazar-foto')];
 const buttonContainerModal = [...document.querySelectorAll('.button-container-modal')];
 const closeModalX = [...document.querySelectorAll('.img-close-modal')];
+const volverAIntentar = document.querySelector('.volver-a-intentar');
 
 // console.log( ventanas );
 //Expresiones Regulares usadas para la validacion
@@ -473,7 +475,6 @@ const moverSiguiente = ()=>{
   currentPointer++;
   previousPointer++;
   // if(currentPointer === 6 ){
-  //   loader.style.display = 'inline';
   //   video.style.display = 'none';
   //   iniciarConexion();
   // }
@@ -886,10 +887,11 @@ const volverInicio = ()=>{
 
 
 const enviarDatos = ()=>{
-  datosConfirmados.style.display = 'block';
   formContainer.style.display = 'none';
   confirmContainer.style.display = 'none';
   btnContainer.style.display = 'none';
+  loader.style.display = 'flex';
+  getToken( "https://secure.finlatina.com.py/auth/realms/vaquita-desa/protocol/openid-connect/token", requesToken );
 }
 
 
@@ -1006,6 +1008,7 @@ inputEntFam.addEventListener( "keyup", checkSelectStateFam );
 inputCargFam.addEventListener( "keyup", checkSelectStateFam );
 btnVolver.addEventListener( "click", volverInicio );
 btnConfirm.addEventListener( "click", enviarDatos );
+volverAIntentar.addEventListener("click", ()=> location.reload());
 inputCalle1.addEventListener( "blur", emptyInput );
 inputCalle1.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputCalle2.addEventListener( "blur", emptyInput );
@@ -1121,7 +1124,6 @@ const iniciarCamara = ( idObtenido, index )=>{
       video[index].srcObject = streamObtenido;
       video[index].play();
       video[index].style.display = 'inline';
-      loader.style.display = 'none';
     }catch(error){
       video[index].srcObject = null;
     }
@@ -1156,7 +1158,6 @@ const pintar = (indice) =>{
     ctx.drawImage(video[0], 0, 0, lienzo1.width, lienzo1.height );
     let imgUrl = lienzo1.toDataURL("image/jpeg", 1);
     fotoFrontalConfirm.src = imgUrl;
-    console.log(prueba);
     fotosTomadas[0] = true;
   }else if( indice === 1 ){
     lienzo2.style.display = 'inline';
@@ -1263,120 +1264,109 @@ setCities();
 setCiudadesTrabajo();
 
 
-// var headersToken = new Headers();
-// headersToken.append("Content-Type", "application/x-www-form-urlencoded");
+var headersToken = new Headers();
+headersToken.append("Content-Type", "application/x-www-form-urlencoded");
 
-// var urlencoded = new URLSearchParams();
-// urlencoded.append("grant_type", "client_credentials");
-// urlencoded.append("client_id", "cli-publico-sin-usuario");
-// urlencoded.append("client_secret", "c48d0a0c-cbf5-4182-b35f-53f7d6832210");
+var urlencoded = new URLSearchParams();
+urlencoded.append("grant_type", "client_credentials");
+urlencoded.append("client_id", "cli-publico-sin-usuario");
+urlencoded.append("client_secret", "c48d0a0c-cbf5-4182-b35f-53f7d6832210");
 
-// var requesToken = {
-//   method: 'POST',
-//   headers: headersToken,
-//   body: urlencoded,
-//   redirect: 'follow'
-// };
+var requesToken = {
+  method: 'POST',
+  headers: headersToken,
+  body: urlencoded,
+  redirect: 'follow'
+};
+
+const getToken = async (API, options)=>{
+
+  const response = await fetch( API, options );
+  const data = await response.json();
+  console.log( response.status );
+  console.log( data.access_token );
   
-// const getToken = async (API, options)=>{
+  var headersPeticion = new Headers();
+  headersPeticion.append("Content-Type", "aplication/json");
+  headersPeticion.append("Access-Control-Allow-Origin", "*");
+  headersPeticion.append("Authorization", `Bearer ${data.access_token}`);
 
-//   const response = await fetch( API, options );
-//   const data = await response.json();
-//   console.log( response.status );
-//   console.log( data.access_token );
-  
-//   var headersPeticion = new Headers();
-//   headersPeticion.append("Content-Type", "aplication/json");
-//   headersPeticion.append("Access-Control-Allow-Origin", "*");
-//   headersPeticion.append("Authorization", `Bearer ${data.access_token}`);
+  var raw = JSON.stringify({
+      "tipoPersona": "F",
+      "tipoDocumento": "CI",
+      "numeroDocumento": "4583431",
+      "primerNombre": "A",
+      "primerApellido": "V",
+      "fechaNacimiento": "1994-12-27",
+      "estadoCivil": "S",
+      "idNacionalidad": 1,
+      "sexo": "F",
+      "telefono": "021456789",
+      "correoElectronico": "av@gmail.com",
+      "numeroCelular": "0986123456",
+      "direccion": "Destacamento cazal 123456",
+      "idLocalidad": 1001,
+      "lugarTrabajo": "Granja La Blanca S. A.",
+      "seccionLaboral": "CONTABILIDAD",
+      "ocupacionLaboral": "Auxiliar contable",
+      "fechaIngresoLaboral": "2019-01-01",
+      "ingresosMensuales": 1000,
+      "numeroCelularCorporativo": "0981123456",
+      "direccionLaboral": "RUTA PY02 KM 18",
+      "pep": false,
+      "referenciasPersonales": [
+          {
+              "origenReferencia": "Jorge Almada",
+              "numeroTelefono": "0971456789",
+              "parentesco": "CONOCIDO"
+          },
+          {
+              "origenReferencia": "Gustavo Garcia",
+              "numeroTelefono": "0981456789",
+              "parentesco": "COLEGA"
+          }
+      ],
+      "referenciasComerciales": [
+          {
+              "origenReferencia": "Comercial GODOY",
+              "numeroTelefono": "021654321"
+          },
+          {
+              "origenReferencia": "TUPI S. A.",
+              "numeroTelefono": "021987654"
+          }
+      ],
+      "montoSolicitado": 100,
+      "idMoneda": "GS",
+      "idModalidad": 65,
+      "plazo": 360,
+      "comentarioCliente": "PRUEBA"
+  });
 
-//   var raw = JSON.stringify({
-//     "tipoPersona": "F",
-//     "tipoDocumento": "CI",
-//     "numeroDocumento": "4498993",
-//     "primerNombre": "A",
-//     "primerApellido": "V",
-//     "fechaNacimiento": null,
-//     "estadoCivil": "S",
-//     "idNacionalidad": 1,
-//     "sexo": "F",
-//     "telefono": "021456789",
-//     "correoElectronico": "ap@gmail.com",
-//     "numeroCelular": "0986123456",
-//     "direccion": "Destacamento cazal 123456",
-//     "idLocalidad": 1001,
-//     "montoSolicitado": 1,
-//     "idMoneda": "GS",
-//     "idModalidad": 65,
-//     "plazo": 360,
-//     "comentarioCliente": "PRUEBA"
-//   });
-
-//   var requestOptions2 = {
-//     method: 'POST',
-//     mode: 'cors',
-//     headers: headersPeticion,
-//     body: raw,
-//     redirect: 'follow'
-//   };
+  var requestOptions2 = {
+    method: 'POST',
+    mode: 'cors',
+    headers: headersPeticion,
+    body: raw,
+    redirect: 'follow'
+  };
 
 
-//   fetch("https://secure.finlatina.com.py:8443/desa.gw-safi/api/1.0/public/solicitudes/prestamos", requestOptions2)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));
-
-    
-
-// }
-
-// getToken( "https://secure.finlatina.com.py/auth/realms/vaquita-desa/protocol/openid-connect/token", requesToken );
+  fetch("https://secure.finlatina.com.py:8443/dev.gw-safi/api/1.0/public/solicitudes/prestamos", requestOptions2)
+    .then(result => {
+      datosConfirmados.style.display = 'flex';
+      loader.style.display = 'none';
+      console.log(result);
+    })
+    .catch(error => {
+      datosNoConfirmados.style.display = 'flex';
+      loader.style.display = 'none';
+      console.log('error', error);
+    });
+}
 
 
 // http://192.168.0.103/api/creditos/finlatina/solicitar
-
-
-const prueba = async (API)=>{
-
-  var raw = JSON.stringify({
-    "tipoPersona": "F",
-    "tipoDocumento": "CI",
-    "numeroDocumento": "4498993",
-    "primerNombre": "A",
-    "primerApellido": "V",
-    "fechaNacimiento": null,
-    "estadoCivil": "S",
-    "idNacionalidad": 1,
-    "sexo": "F",
-    "telefono": "021456789",
-    "correoElectronico": "ap@gmail.com",
-    "numeroCelular": "0986123456",
-    "direccion": "Destacamento cazal 123456",
-    "idLocalidad": 1001,
-    "montoSolicitado": 1,
-    "idMoneda": "GS",
-    "idModalidad": 65,
-    "plazo": 360,
-    "comentarioCliente": "PRUEBA"
-  });
-
-
-  let requestOptions2 = {
-    header:{
-      'Content-Type' : 'aplication/json'
-    },
-    method: 'POST',
-    body: raw
-  }
-  try{
-    const response = await fetch(API, requestOptions2);
-    console.log( 'Prueba' );
-    console.log( response );
-  }catch(e){
-    console.log(e);
-  }
-}
-
 
 
 /*-----------------Manejador del estado de los tabs en el form 6-------------------------*/

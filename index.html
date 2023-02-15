@@ -30,7 +30,7 @@
           <span class="responsive-step">Referencias</span>
           <span class="responsive-step">Direcciones</span>
           <span class="responsive-step">P.E.P</span>
-          <span class="responsive-step">Fotos</span>
+          <span class="responsive-step">Documentos</span>
           <div class="progress-bar-responsive" data-label="loading...">
             <div class="progress-responsive"></div>
           </div>
@@ -59,7 +59,7 @@
           </div>
           <div class="step-container">
             <div class="progress-step">6</div>
-            <p class="info-step">Fotos</p>
+            <p class="info-step">Documentos</p>
           </div>
         </div>
       </div>
@@ -650,28 +650,34 @@
         <form class="form form-6" action="">
 
           <div class="pc-form">
-            <p class="titulo titulo-main">Necesitamos que suba algunos documentos</p>
-            <p class="parrafo">Para abrir la cámara presione el boton de abajo</p>
-            <p class="parrafo">Subí una foto frontal de su cedula.</p>
-            <div class="container-img-nombre">
-              <button type="button" class="button-red button-camera-pc open-modal1">Abrir camara</button>
-              <p class="card foto-descripcion-pc"></p>
-            </div>
-            <p class="parrafo">Subí una foto del dorso de su cedula.</p>
-            <div class="container-img-nombre">
-              <button type="button" class="button-red button-camera-pc open-modal2">Abrir camara</button>
-              <p class="card foto-descripcion-pc"></p>
-            </div>
-            <p class="parrafo">Subí una selfie sosteniendo su cédula.</p>
-            <div class="container-img-nombre">
-              <button type="button" class="button-red button-camera-pc open-modal3">Abrir camara</button>
-              <p class="card foto-descripcion-pc"></p>
-            </div>
+            <p class="parrafo">Necesitamos que suba algunos documentos. Para abrir la cámara presione en el boton rojo de la sección correspondiente:</p>
+            <ul>
+              <li class="lista-item-documentos">
+                <p class="parrafo">Subí una foto del frente y del dorso de tu cedula.</p>
+              </li>
+              <div class="container-img-nombre">
+                <button type="button" class="button-red button-camera-pc open-modal1">Foto frontal de su C.I.</button>
+                <p class="card foto-descripcion-pc"></p>
+              </div>
+              <p class="parrafo"></p>
+              <div class="container-img-nombre">
+                <button type="button" class="button-red button-camera-pc open-modal2">Foto del dorso de su C.I.</button>
+                <p class="card foto-descripcion-pc"></p>
+              </div>
+              <li class="lista-item-documentos">
+                <p class="parrafo">Subí una selfie sosteniendo su cédula.</p>
+              </li>
+              <div class="container-img-nombre">
+                <button type="button" class="button-red button-camera-pc open-modal3">Selfie</button>
+                <p class="card foto-descripcion-pc"></p>
+              </div>
+            </ul>
+
           </div>
 
           <div class="pre-load-section">
             <div class="mobile-form">
-              <p class="titulo titulo-main">Necesitamos que suba algunos documentos</p>
+              <p class="parrafo">Necesitamos que suba algunos documentos</p>
               <p class="parrafo">Para abrir la cámara presione el boton de abajo</p>
               <p class="parrafo">Subí una foto frontal de su cedula.</p>
 
@@ -716,31 +722,33 @@
                   capture="environment"
                   hidden
                 />
-
                 <p class="card foto-descripcion"></p>
               </div>
             </div>
 
-            <p class="parrafo">Subí el documento Respaldatorio De Domicilio</p>
-            <div class="container-img-nombre">
-              <button type="button" class="button-red button-camera">Subir archivo</button>
-              <input
-                id="documentFileinput"
-                class="cameraFileInput"
-                type="file"
-                hidden
-              />
+            <ul>
+              <li class="lista-item-documentos"><p class="parrafo">Subí el documento Respaldatorio De Domicilio</p></li>
+              <div class="container-img-nombre">
+                <button type="button" class="button-red button-camera">Subir archivo</button>
+                <input
+                  id="documentFileinput"
+                  class="cameraFileInput"
+                  type="file"
+                  hidden
+                />
+  
+                <p class="card foto-descripcion"></p>
+              </div>
+              <li class="lista-item-documentos">
+                <p class="parrafo">Subí tu comprobante de ingresos (boletas de IPS o boletas de salario y certificado laboral). Si sos contribuyente del IVA, subí tu declaración jurada de los últimos 6 meses.</p>
+              </li>
+              <div class="drop-area">
+                <button type="button">Selecciona tus archivos</button>
+                <input type="file" name="drag-drop" id="input-file" hidden multiple>
+              </div>
+              <div id="preview"></div>
+            </ul>
 
-              <p class="card foto-descripcion"></p>
-            </div>
-
-            <p class="parrafo">Subí tu comprobante de ingresos (boletas de IPS o boletas de salario y certificado laboral). Si sos contribuyente del IVA, subí tu declaración jurada de los últimos 6 meses.</p>
-
-            <div class="drop-area">
-              <button type="button">Selecciona tus archivos</button>
-              <input type="file" name="drag-drop" id="input-file" hidden multiple>
-            </div>
-            <div id="preview"></div>
 
           </div>
 
@@ -751,9 +759,8 @@
             <div class="video-container">
               <canvas class="lienzo lienzo-1"></canvas>
               <video class="video" src=""></video>
-              <div class="loader"></div>
             </div>
-            <div class="select-container">
+            <div class="select-container" style="display: none;">
               <select class="input-data select-foto" name="array-list" id="select-disp"></select>
             </div>
             <div>
@@ -774,7 +781,6 @@
             <div class="video-container">
               <video class="video" src=""></video>
               <canvas class="lienzo lienzo-2"></canvas>
-              <div class="loader"></div>
             </div>
             <div class="select-container">
               <!-- <select class="input-data select-foto" name="array-list" id="select-disp"></select> -->
@@ -797,7 +803,6 @@
             <div class="video-container">
               <video class="video" src=""></video>
               <canvas class="lienzo lienzo-3"></canvas>
-              <div class="loader"></div>
             </div>
             <div class="select-container">
               <!-- <select class="input-data select-foto" name="array-list" id="select-disp"></select> -->
@@ -826,6 +831,13 @@
       </div>
       <div class="datos-confirmados">
         <h2 class="titulo">¡Gracias por acceder a nuestros servicios!</h2>
+      </div>
+      <div class="datos-no-confirmados">
+        <h2 class="titulo">Hubo un error al procesar la solicitud. Intente de nuevo.</h2>
+        <button class="button-red volver-a-intentar">Volver a intentar</button>
+      </div>
+      <div class="loader-container">
+        <div class="loader"></div>
       </div>
     </div>
 
