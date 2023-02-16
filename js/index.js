@@ -446,6 +446,20 @@ const checkButtonState = (regExp, e)=>{ //verifica si el input esta siendo llena
   }
 }
 
+const checkButtonState2 = (e)=>{
+  const field = e.target;//Tambien se encarga de cambiar el estado del boton "siguiente"
+  const fieldvalue = e.target.value;
+  field.nextElementSibling.classList.remove( "error" );
+  field.style.border = '1px solid #ccc';
+  field.nextElementSibling.innerText = "";
+  if( regExpPhone.test( fieldvalue ) || regExpLineaBaja.test( fieldvalue ) ){
+    formCompleted( previousPointer );
+  }else{
+    btnSiguiente.disabled = true;
+    btnSiguiente.classList.add( "button-disabled" );
+  }
+}
+
 const moverSiguiente = ()=>{
   if( currentPointer < 6 ){
     btnAtras.disabled = false;
@@ -993,10 +1007,10 @@ inputFirstRef.addEventListener( "blur", checkNumberPhone );
 inputFirstRef.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
 inputSecondRef.addEventListener( "blur", checkNumberPhone );
 inputSecondRef.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
-inputRefComer.addEventListener( "blur", checkNumberPhone );
-inputRefComer.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
-inputNumberCorp.addEventListener( "blur", checkLineaBajaCelular );
-inputNumberCorp.addEventListener( "keyup", (e)=> checkButtonState( regExpLineaBaja, e ) );
+inputRefComer.addEventListener( "blur", checkLineaBajaCelular );
+inputRefComer.addEventListener( "keyup", checkButtonState2 );
+inputNumberCorp.addEventListener( "blur", checkNumberPhone );
+inputNumberCorp.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone,e ) );
 inputEnt.addEventListener( "blur", emptyInput );
 inputEnt.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputCarg.addEventListener( "blur", emptyInput );

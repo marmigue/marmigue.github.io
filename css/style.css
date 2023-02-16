@@ -647,9 +647,12 @@ footer{
 
 
 .calle {
-  width: 49%;
+  width: 54%;
 }
 
+.nro-edificio, .nro-casa{
+  width: 45%;
+}
 
 
 /*--------------------Drag and drop------------------------------*/
