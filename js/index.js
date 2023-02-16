@@ -106,6 +106,7 @@ const regExpLetras = /^[a-zA-Z\u00C0-\u017F\s]+$/;//probar casos
 const regExpCI = /^([\d]{1,3})?([\s.-]?\d{3}){2}$/;
 const regExpEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const regExpAll = /./;
+const regExpLineaBaja = /^([0-9]{3}[\s]?){3}$/;
 
 let completedPep1 = false;
 let completedPep2 = false;
@@ -233,7 +234,7 @@ const validarFechaIngreso = ()=>{
     let edad = mayorDeEdad( [`${yearEntrada.value}`,`${mesEntrada.value}`, `${diaEntrada.value}`] );
     console.log(edad);
     if( edad < 1 ){
-      errorFechaIngreso.innerText = 'Debes Tener mas de un año en la empresa';
+      errorFechaIngreso.innerText = 'Debes tener más de un año de antigüedad en la empresa';
       errorFechaIngreso.classList.add( "error" );
     }else{
       errorFechaIngreso.innerText = '';
@@ -802,7 +803,7 @@ const checkEmail = (e)=>{
   }else if( regExpEmail.test( fieldvalue ) ){
     field.nextElementSibling.innerText = "";
   }else{
-    setError( field, "Correo electrónico incorrecto" );
+    setError( field, "Correo electrónico inválido" );
   }
 }
 
@@ -865,7 +866,19 @@ const checkNumberPhone = (e)=>{
   const fieldvalue = e.target.value;
   if( isEmpty( fieldvalue ) ){
     setError( field, "Ingrece un numero de Celular" );
-  } else if( !regExpPhone.test( fieldvalue )){
+  } else if( !regExpPhone.test( fieldvalue ) ){
+    setError( field, "Ingrese un número de celular válido" );
+  } else {
+    field.nextElementSibling.innerText = "";
+  }
+}
+
+const checkLineaBajaCelular = (e)=>{
+  const field = e.target;
+  const fieldvalue = e.target.value;
+  if( isEmpty( fieldvalue ) ){
+    setError( field, "Ingrece un numero de Celular" );
+  } else if( !regExpPhone.test( fieldvalue ) && !regExpLineaBaja.test( fieldvalue ) ){
     setError( field, "Ingrese un número de celular válido" );
   } else {
     field.nextElementSibling.innerText = "";
@@ -982,8 +995,8 @@ inputSecondRef.addEventListener( "blur", checkNumberPhone );
 inputSecondRef.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
 inputRefComer.addEventListener( "blur", checkNumberPhone );
 inputRefComer.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
-inputNumberCorp.addEventListener( "blur", checkNumberPhone );
-inputNumberCorp.addEventListener( "keyup", (e)=> checkButtonState( regExpPhone, e ) );
+inputNumberCorp.addEventListener( "blur", checkLineaBajaCelular );
+inputNumberCorp.addEventListener( "keyup", (e)=> checkButtonState( regExpLineaBaja, e ) );
 inputEnt.addEventListener( "blur", emptyInput );
 inputEnt.addEventListener( "keyup", (e)=> checkButtonState( regExpAll, e ) );
 inputCarg.addEventListener( "blur", emptyInput );
