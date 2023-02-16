@@ -1606,10 +1606,13 @@ function rechazarFoto(index){
 function aceptarFoto(index){
   if(index === 0){
     fotoDescriptionsPc[index].innerText = 'foto-ci-frontal.png';
+    fotoDescriptionsPc[index].classList.remove('color-grey');
   }else if(index === 1){
     fotoDescriptionsPc[index].innerText = 'foto-ci-dorso.png';
+    fotoDescriptionsPc[index].classList.remove('color-grey');
   }else{
-    fotoDescriptionsPc[index].innerText = 'foto-selfie.png'
+    fotoDescriptionsPc[index].classList.remove('color-grey');
+    fotoDescriptionsPc[index].innerText = 'foto-selfie.png';
   }
   closeModal(index);
   form6[index] = true;

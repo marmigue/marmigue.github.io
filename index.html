@@ -648,38 +648,31 @@
 
         <!-- -------------------------- Inicio sexto formulario ----------------------------- -->
         <form class="form form-6" action="">
-
+          <h3 class="titulo titulo-main">Cédula y selfie</h3>
           <div class="pc-form">
-            <p class="parrafo">Necesitamos que suba algunos documentos. Para abrir la cámara presione en el boton rojo de la sección correspondiente:</p>
-            <ul>
-              <li class="lista-item-documentos">
-                <p class="parrafo">Subí una foto del frente y del dorso de tu cedula.</p>
-              </li>
-              <div class="container-img-nombre">
-                <button type="button" class="button-red button-camera-pc open-modal1">Foto frontal de su C.I.</button>
-                <p class="card foto-descripcion-pc"></p>
-              </div>
+            <p class="parrafo">Ahora necesitamos que suba una foto del frente y del dorso de su C.I y una selfie sosteniendo su cédula:</p>
+
+            <div class="container-img-nombre">
+              <button type="button" class="button-red button-camera-pc open-modal1">Abrir cámara</button>
+              <p class="card foto-descripcion-pc color-grey">Foto frontal de su C.I.</p>
+            </div>
+            <p class="parrafo"></p>
+            <div class="container-img-nombre">
+              <button type="button" class="button-red button-camera-pc open-modal2">Abrir cámara</button>
+              <p class="card foto-descripcion-pc color-grey">Foto del dorso de su C.I.</p>
+            </div>
               <p class="parrafo"></p>
-              <div class="container-img-nombre">
-                <button type="button" class="button-red button-camera-pc open-modal2">Foto del dorso de su C.I.</button>
-                <p class="card foto-descripcion-pc"></p>
-              </div>
-              <li class="lista-item-documentos">
-                <p class="parrafo">Subí una selfie sosteniendo su cédula.</p>
-              </li>
-              <div class="container-img-nombre">
-                <button type="button" class="button-red button-camera-pc open-modal3">Selfie</button>
-                <p class="card foto-descripcion-pc"></p>
-              </div>
-            </ul>
+            <div class="container-img-nombre">
+              <button type="button" class="button-red button-camera-pc open-modal3">Abrir cámara</button>
+              <p class="card foto-descripcion-pc color-grey">Selfie sosteniendo su cédula</p>
+            </div>
 
           </div>
 
           <div class="pre-load-section">
             <div class="mobile-form">
-              <p class="parrafo">Necesitamos que suba algunos documentos</p>
-              <p class="parrafo">Para abrir la cámara presione el boton de abajo</p>
-              <p class="parrafo">Subí una foto frontal de su cedula.</p>
+              <p class="parrafo">Ahora necesitamos que suba una foto del frente y del dorso de su C.I y una selfie sosteniendo su cédula:</p>
+              <p class="parrafo"></p>
 
               <div class="container-img-nombre">
                 <button type="button" class="button-red button-camera">Abrir cámara</button>
@@ -692,10 +685,10 @@
                   hidden
                 />
 
-                <p class="card foto-descripcion"></p>
+                <p class="card foto-descripcion color-grey">Subí una foto frontal de su cedula</p>
               </div>
 
-              <p class="parrafo">Subí una foto del dorso de su cedula.</p>
+              <p class="parrafo"></p>
 
               <div class="container-img-nombre">
                 <button type="button" class="button-red button-camera">Abrir cámara</button>
@@ -707,10 +700,10 @@
                   capture="environment"
                   hidden
                 />
-                <p class="card foto-descripcion"></p>
+                <p class="card foto-descripcion color-grey">Subí una foto del dorso de su cedula</p>
               </div>
 
-              <p class="parrafo">Subí una selfie sosteniendo su cédula.</p>
+              <p class="parrafo"></p>
 
               <div class="container-img-nombre">
                 <button type="button" class="button-red button-camera">Abrir cámara</button>
@@ -722,34 +715,33 @@
                   capture="environment"
                   hidden
                 />
-                <p class="card foto-descripcion"></p>
+                <p class="card foto-descripcion color-grey">Subí una selfie sosteniendo su cédula</p>
               </div>
             </div>
 
-            <ul>
-              <li class="lista-item-documentos"><p class="parrafo">Subí el documento Respaldatorio De Domicilio</p></li>
-              <div class="container-img-nombre">
-                <button type="button" class="button-red button-camera">Subir archivo</button>
-                <input
-                  id="documentFileinput"
-                  class="cameraFileInput"
-                  type="file"
-                  hidden
-                />
-  
-                <p class="card foto-descripcion"></p>
-              </div>
-              <li class="lista-item-documentos">
-                <p class="parrafo">Subí tu comprobante de ingresos (boletas de IPS o boletas de salario y certificado laboral). Si sos contribuyente del IVA, subí tu declaración jurada de los últimos 6 meses.</p>
-              </li>
-              <div class="drop-area">
-                <button type="button">Selecciona tus archivos</button>
-                <input type="file" name="drag-drop" id="input-file" hidden multiple>
-              </div>
-              <div id="preview"></div>
-            </ul>
+            <h3 class="titulo titulo-main">Documentos</h3>
 
+            <p class="parrafo">Suba un comprobante que respalde su información de domicilio.</p>
+            <div class="container-img-nombre">
+              <button type="button" class="button-red button-camera">Subir archivo</button>
+              <input
+                id="documentFileinput"
+                class="cameraFileInput"
+                type="file"
+                hidden
+              />
 
+              <p class="card foto-descripcion color-grey">Documento Respaldatorio De Domicilio</p>
+            </div>
+
+            <p class="parrafo"></p>
+            <p class="parrafo">Subí tu comprobante de ingresos (boletas de IPS o boletas de salario y certificado laboral). Si sos contribuyente del IVA, subí tu declaración jurada de los últimos 6 meses.</p>
+            <p class="parrafo"></p>
+            <div class="drop-area">
+              <button type="button">Selecciona tus archivos</button>
+              <input type="file" name="drag-drop" id="input-file" hidden multiple>
+            </div>
+            <div id="preview"></div>
           </div>
 
         </form>
