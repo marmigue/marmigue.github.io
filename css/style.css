@@ -524,8 +524,9 @@ select {
 
 .responsive-step{
   margin-top: 12px;
-  font-size: 18px;
+  font-size: 22px;
   color: #a1a5b7;
+  font-weight: 600;
   display: none;
 }
 
