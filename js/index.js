@@ -1429,6 +1429,7 @@ document
   .getElementById("cameraFileInput1")
   .addEventListener("change", function () {
     fotoDescriptions[0].innerText = 'foto-frontal-ci.jpg';
+    fotoDescriptions[0].classList.remove('color-grey');
     fotoFrontalConfirm.src = window.URL.createObjectURL(this.files[0]);
     form6[0] = true;
     formCompleted(5);
@@ -1438,6 +1439,7 @@ document
 .getElementById("cameraFileInput2")
 .addEventListener("change", function () {
   fotoDescriptions[1].innerText = 'foto-dorso-ci.jpg';
+  fotoDescriptions[1].classList.remove('color-grey');
   fotoTraseraConfirm.src = window.URL.createObjectURL(this.files[0]);
   console.log(this.files[0].name);
   form6[1] = true;
@@ -1448,6 +1450,7 @@ document
 .getElementById("cameraFileInput3")
 .addEventListener("change", function () {
   fotoDescriptions[2].innerText = 'foto-selfie.jpg';
+  fotoDescriptions[2].classList.remove('color-grey');
   selfieConfirm.src = window.URL.createObjectURL(this.files[0]);
   console.log(this.files[0].name);
   form6[2] = true;
@@ -1458,6 +1461,7 @@ document
 .getElementById("documentFileinput")
 .addEventListener("change", function () {
   fotoDescriptions[3].innerText = 'documento-respaldatorio-de-domicilio.jpg';
+  fotoDescriptions[3].classList.remove('color-grey');
   documentoDomicilio.src = window.URL.createObjectURL(this.files[0]);
   console.log(this.files[0].name);
   form6[3] = true;
